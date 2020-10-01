@@ -1,9 +1,10 @@
 const router = require('express').Router()
 
-const locations = require('../models/locations')
+const locations = require('../controllers/locations')
 
 
 router.route('/')
-  .get(locations)
+  .get(locations.index)
+  .post(locations.create)
 
 module.exports = router

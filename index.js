@@ -8,6 +8,9 @@ const logger = require('./lib/logger')
 const { dbURI, port } = require('./config/environment')
 const router = require('./config/router')
 
+
+
+
 mongoose.connect(dbURI,
   { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
   (err) => {
@@ -22,6 +25,8 @@ app.use((req, res, next) => {
   console.log(`🚨 Incoming Request: Method: ${req.method}  URL: ${req.url}`)
   next()
 })
+
+app.use(express.json())
 
 app.use(logger)
 
