@@ -1,6 +1,6 @@
 const dbURI = 'mongodb://localhost/sitecamp'
 const port = 4000
-const secret = 'this is a big secret'
+const secret = 'this is a glamper secret'
 
 module.exports = {
   dbURI,
