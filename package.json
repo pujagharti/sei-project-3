@@ -1,0 +1,27 @@
+{
+  "name": "sei-project-3",
+  "version": "1.0.0",
+  "description": "A repository for SEI Group Project MERN",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Simon994/sei-project-3.git"
+  },
+  "author": "PistachioGlampers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Simon994/sei-project-3/issues"
+  },
+  "homepage": "https://github.com/Simon994/sei-project-3#readme"
+}
