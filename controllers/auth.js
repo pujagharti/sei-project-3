@@ -19,6 +19,9 @@ async function login(req, res, next) {
   try {
     const user = await User.findOne({ email: req.body.email })
     
+    if (!user || !user.validatePassword(req.body.password)){
+      throw new Error(unauthorized)
+    }
     const token = jwt.sign(
       { sub: user._id },
       secret,
@@ -34,8 +37,18 @@ async function login(req, res, next) {
   }
 }
 
+async function profile( req, res, next ) {
+  try {
+    const user = await User.findById(req.currentUser._id)
+    if (!user) throw new Error(notFound)
+  } catch (err){
+    next(err)
+  }
+}
+
 module.exports = {
   register, 
-  login
+  login,
+  profile
 }
 

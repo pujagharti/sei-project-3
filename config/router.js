@@ -19,5 +19,7 @@ router.route('/register')
 router.route('/login')
   .post(auth.login)
 
+router.route('/profile')
+  .get(auth.profile)
 
 module.exports = router
