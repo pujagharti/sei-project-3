@@ -2,6 +2,7 @@ const router = require('express').Router()
 
 const locations = require('../controllers/locations')
 const auth = require('../controllers/auth')
+const secureRoute = require('../lib/secureRoute')
 
 
 router.route('/')
