@@ -14,7 +14,7 @@ router.route('/:id')
   .delete(locations.delete)
 
 router.route('/register')
-  .post(auth.register)
+:  .post(auth.register)
 
 router.route('/login')
   .post(auth.login)
