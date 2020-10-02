@@ -21,13 +21,13 @@ mongoose.connect(
       const users = await User.create(userData)
       console.log(`${users.length} user created`)
 
-      const locations = await Location.create(locationData)
+      const locationWithUsers = locationData.map(location => {
+        location.local = users[(Math.floor(Math.random() * (users.length - 1)))]._id
+        return location
+      })
+      const locations = await Location.create(locationWithUsers)
       console.log(`${locations.length} location created`)
       // console.log(locations)
-
-
-
-
 
     } catch (err) {
       console.log(err)

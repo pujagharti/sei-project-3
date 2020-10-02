@@ -4,7 +4,7 @@ const { notFound } = require('../lib/errorMessage')
 
 async function locationIndex(req, res, next) {
   try {
-    const locations = await Location.find()
+    const locations = await Location.find().populate('local')
     if (locations.length === 0) throw new Error(notFound)
     res.status(200).json(locations)
   } catch (err) {
@@ -16,8 +16,7 @@ async function locationIndex(req, res, next) {
 async function locationCreate(req, res, next) {
   console.log('CREATE ')
   try {
-    // const newLocationData = { ...req.body, local: req.currentUser._id  }
-    const newLocationData = { ...req.body }
+    const newLocationData = { ...req.body, local: req.currentUser._id }
     const newLocation = await Location.create(newLocationData)
 
     res.status(201).json(newLocation)
@@ -41,9 +40,9 @@ async function locationShow (req, res, next) {
 }
 
 async function locationDelete(req, res, next) {
-
+  const idlocation = req.params.id
   try {
-    const locationToDelete = await Location.findByIdAndDelete(req.params.id)
+    const locationToDelete = await Location.findByIdAndDelete(idlocation)
     if (!locationToDelete) throw new Error(notFound)
     
     await locationToDelete.remove()
@@ -54,8 +53,9 @@ async function locationDelete(req, res, next) {
 }
 
 async function locationUpdate (req, res, next) {
+  const idlocation = req.params.id
   try {
-    const locationToUpdate = await Location.findById(req.params.id)
+    const locationToUpdate = await Location.findById(idlocation)
     if (!locationToUpdate) throw new Error(notFound)
     Object.assign(locationToUpdate, req.body)
     await locationToUpdate.save()

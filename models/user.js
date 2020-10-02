@@ -11,6 +11,22 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema
+  .virtual('createdLocations', {
+    ref: 'Location',
+    localField: '_id',
+    foreignField: 'local'
+  })
+
+userSchema
+  .set('toJSON', {
+    virtuals: true,
+    transform(_doc, json) {
+      delete json.password
+      return json
+    }  
+  })
+
+userSchema
   .virtual('passwordConfirmation')
   .set(function (passwordConfirmation) {
     this._passwordConfirmation = passwordConfirmation

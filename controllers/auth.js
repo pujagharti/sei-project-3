@@ -33,14 +33,19 @@ async function login(req, res, next) {
     })
 
   } catch (err) {
-    console.log(err)
+    // console.log(err)
+    next(err)
   }
 }
 
-async function profile( req, res, next ) {
+async function profile(req, res, next) {
   try {
-    const user = await User.findById(req.currentUser._id)
+    console.log('req.currentUser._id', req.currentUser._id)
+    const user = await (await User.findById(req.currentUser._id))
+    // .populated('createdLocations')
+    console.log('**', user)
     if (!user) throw new Error(notFound)
+    res.status(200).json(user)
   } catch (err){
     next(err)
   }

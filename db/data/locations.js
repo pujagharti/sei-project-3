@@ -27,6 +27,7 @@ module.exports = [
   },
   {
     placeName: 'Bear Lake',
+    placeName: 'North',
     feature: ['glamping']
   }
 ]
