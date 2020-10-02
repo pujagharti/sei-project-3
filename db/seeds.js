@@ -23,7 +23,7 @@ mongoose.connect(
 
       const locations = await Location.create(locationData)
       console.log(`${locations.length} location created`)
-      console.log(locations)
+      // console.log(locations)
 
 
 
