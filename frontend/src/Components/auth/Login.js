@@ -1,7 +1,9 @@
 import React from 'react'
 import { Button, Form } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom'
 
 import { loginUser } from '../../lib/api'
+import { setToken } from '../../lib/auth'
 
 class Login extends React.Component {
 
@@ -26,7 +28,13 @@ class Login extends React.Component {
 
     try {
       const res = await loginUser(this.state.formData)
-      console.log(res)
+
+      setToken(res.data.token)
+
+      this.setState({
+        redirect: '/features'
+      })
+
     } catch (err) {
       console.log(err)
     }
@@ -37,6 +45,10 @@ class Login extends React.Component {
   render() {
 
     const { email, password } = this.state.formData
+
+    if (this.state.redirect){
+      return <Redirect to={this.state.redirect} />
+    }
 
     return (
 
