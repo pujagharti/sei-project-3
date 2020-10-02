@@ -1,19 +1,23 @@
 import React from 'react'
-import { Card } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 
 
 const LocationCard = (props) => {
 
-  const { placeName } = props
+  const { placeName, placePhoto, placeDescription } = props
 
   return (
+    
     <Card>
+      <Image src={placePhoto[0]}/>
       <Card.Content>
+        <Card.Header>{placeName}</Card.Header>
         <Card.Description>
-          {placeName}
+          {placeDescription}
         </Card.Description>
       </Card.Content>
     </Card>
+    
   )
 
 }
