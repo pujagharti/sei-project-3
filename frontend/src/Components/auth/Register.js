@@ -1,71 +1,75 @@
 import React from 'react'
 // import { Button, Form } from 'semantic-ui-react'
 
-import { registerUser } from '../../lib/auth'
+// import { registerUser } from '../../lib/api'
 
 class Register extends React.Component {
 
 
-  state = {
-    formData: {
-      username: '',
-      email: '',
-      password: '',
-      passwordConfirm: ''
-    }
-  }
+  // state = {
+  //   formData: {
+  //     username: '',
+  //     email: '',
+  //     password: '',
+  //     passwordConfirm: ''
+  //   }
+  // }
 
-  handleChange = (e) => {
-    const formData = {
-      ...this.state.formData,
-      [e.target.name]: e.target.value
-    }
+  // handleChange = (e) => {
+  //   const formData = {
+  //     ...this.state.formData,
+  //     [e.target.name]: e.target.value
+  //   }
 
 
-    this.setState({
-      formData
-    })
-  }
+  //   this.setState({
+  //     formData
+  //   })
+  // }
 
-  handleSubmit = async (e) => {
-    e.preventDefault()
+  // handleSubmit = async (e) => {
+  //   e.preventDefault()
 
-    try {
-      console.log('About to post 🚀')
-      const res = await registerUser(this.state.formData)
+  //   try {
+  //     console.log('About to post 🚀')
+  //     const res = await registerUser(this.state.formData)
 
-      console.log(res)
+  //     console.log(res)
 
-      // this.setState({
-      //   redirect: '/login'
-      // })
-      return
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  //     // this.setState({
+  //     //   redirect: '/login'
+  //     // })
+  //     return
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
 
   render() {
     console.log('About to post 🚀')
-    const { username } = this.state.formData
+    // const { username } = this.state.formData
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>username</label>
-        <br />
-        <input
-          placeholder="username"
-          name="username"
-          value={username}
-          onChange={this.handleChange}
-        >
-        </input>
+      <>
+        {/* <form onSubmit={this.handleSubmit}> */}
+        <h1>HELLO WORLD</h1>
+        {/* <form>
+          <label>username</label>
+          <br />
+          <input
+            placeholder="username"
+            name="username"
+            value={username}
+            // onChange={this.handleChange}
+          >
+          </input>
 
 
-        <button type="submit" >Register</button>
+          <button type="submit" >Register</button>
 
-      </form>
+        </form> */}
+      </>
       // <Form>
       //   <Form.Field>
       //     <label>First Name</label>
