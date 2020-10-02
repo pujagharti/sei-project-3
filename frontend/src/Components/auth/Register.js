@@ -1,88 +1,87 @@
 import React from 'react'
-// import { Button, Form } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 
-// import { registerUser } from '../../lib/api'
+import { registerUser } from '../../lib/api'
 
 class Register extends React.Component {
 
 
-  // state = {
-  //   formData: {
-  //     username: '',
-  //     email: '',
-  //     password: '',
-  //     passwordConfirm: ''
-  //   }
-  // }
+  state = {
+    formData: {
+      username: '',
+      email: '',
+      password: '',
+      passwordConfirmation: ''
+    }
+  }
 
-  // handleChange = (e) => {
-  //   const formData = {
-  //     ...this.state.formData,
-  //     [e.target.name]: e.target.value
-  //   }
+  handleChange = (e) => {
+    const formData = {
+      ...this.state.formData,
+      [e.target.name]: e.target.value
+    }
+    this.setState({ formData })
+    //console.log(this.state)  
+  }
 
+  handleSubmit = async (e) => {
+    
+    e.preventDefault()
+    try {
+      console.log('>>>>submitting')
+      const response = await registerUser(this.state.formData)
+      console.log(response)
 
-  //   this.setState({
-  //     formData
-  //   })
-  // }
-
-  // handleSubmit = async (e) => {
-  //   e.preventDefault()
-
-  //   try {
-  //     console.log('About to post 🚀')
-  //     const res = await registerUser(this.state.formData)
-
-  //     console.log(res)
-
-  //     // this.setState({
-  //     //   redirect: '/login'
-  //     // })
-  //     return
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
 
   render() {
     console.log('About to post 🚀')
-    // const { username } = this.state.formData
+    const { username, email, password, passwordConfirmation } = this.state.formData
 
     return (
+
       <>
-        {/* <form onSubmit={this.handleSubmit}> */}
-        <h1>HELLO WORLD</h1>
-        {/* <form>
-          <label>username</label>
-          <br />
-          <input
-            placeholder="username"
-            name="username"
-            value={username}
-            // onChange={this.handleChange}
-          >
-          </input>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Field>
+            <label>Username</label>
+            <input placeholder='username'
+              onChange={this.handleChange}
+              value={username}
+              name='username'
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Email</label>
+            <input placeholder='email'
+              onChange={this.handleChange}
+              value={email}
+              name='email'
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Password</label>
+            <input placeholder='password'
+              onChange={this.handleChange}
+              value={password}
+              name='password'
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Password Confirmation</label>
+            <input placeholder='password confirmation'
+              onChange={this.handleChange}
+              value={passwordConfirmation}
+              name='passwordConfirmation'
+            />
+          </Form.Field>
 
-
-          <button type="submit" >Register</button>
-
-        </form> */}
+          <Button type='submit'>Submit</Button>
+        </Form>
       </>
-      // <Form>
-      //   <Form.Field>
-      //     <label>First Name</label>
-      //     <input placeholder='First Name'
-      //       value={username}
-      //       onChange={this.handleChange} />
-      //   </Form.Field>
-      //   <Form.Field>
-      //     <label>Last Name</label>
-      //     <input placeholder='Last Name' />
-      //   </Form.Field>
-      //   <Button type='submit'>Submit</Button>
-      // </Form>
     )
   }
 

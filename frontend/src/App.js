@@ -7,15 +7,13 @@ import Register from './Components/auth/Register'
 const App = () => {
   return (
     <>
-      <h1>HELLO WORLD</h1>
 
       <BrowserRouter>
 
 
         <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/front/register' component={Register} />
-
+          <Route exact path='/home' component={Home} />
+          <Route path='/register' component={Register} />
         </Switch>
 
       </BrowserRouter>
