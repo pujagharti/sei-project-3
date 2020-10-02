@@ -6,12 +6,12 @@ const auth = require('../controllers/auth')
 
 router.route('/')
   .get(locations.index)
-  .post(locations.create)
+  .post(secureRoute,locations.create)
 
 router.route('/:id')
   .get(locations.show)
-  .put(locations.update)
-  .delete(locations.delete)
+  .put(secureRoute, locations.update)
+  .delete(secureRoute, locations.delete)
 
 router.route('/register')
   .post(auth.register)
