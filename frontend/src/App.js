@@ -6,6 +6,7 @@ import Register from './Components/auth/Register'
 import Login from './Components/auth/Login'
 import Features from './Components/locations/Features'
 import Navbar from './Components/common/Navbar'
+import LocationsIndex from './Components/locations/LocationsIndex'
 
 const App = () => {
   return (
@@ -21,6 +22,15 @@ const App = () => {
           <Route path='/login' component={Login} />
 
           <Route path='/features' component={Features} />
+          
+          <Route 
+            path='/locations/glamping' 
+            render={(props) => (
+              < LocationsIndex {...props} feature={'glamping'} />
+            )}
+          />
+
+
 
         </Switch>
 
