@@ -1,0 +1,11 @@
+{
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#1d16e7",
+    "titleBar.activeBackground": "#1d16e7",
+    "titleBar.inactiveBackground": "#1d16e7",
+    "statusBar.foreground": "#f9f9f9",
+    "titleBar.inactiveForeground": "#f9f9f9",
+    "titleBar.activeForeground": "#f9f9f9",
+  },
+  "window.title": "BackEND Glampers"
+}

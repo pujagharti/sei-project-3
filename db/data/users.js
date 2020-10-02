@@ -9,6 +9,15 @@ module.exports = [
     bio: '',
     isLocal: false,
     usertelephone: ''
+  },
+  {
+    username: 'Clark',
+    email: 'clark@email.com',
+    password: 'pass',
+    passwordConfirmation: 'pass',
+    userimage: '',
+    bio: '',
+    isLocal: false,
+    usertelephone: ''
   }
-
 ]
