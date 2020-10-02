@@ -8,7 +8,6 @@ router.route('/')
   .get(locations.index)
   .post(locations.create)
 
-
 router.route('/register')
   .post(auth.register)
 
