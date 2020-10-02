@@ -16,5 +16,15 @@ userSchema
     this._passwordConfirmation = passwordConfirmation
   })
 
+userSchema
+  .pre('validate', function(next) {
+    if (this.isModified('password') && this.password !== this._passwordConfirmation) {
+      this.invalidate('passwordConfirmation', 'does not match')
+    }
+    next()
+  })
+
+userSchema.plugin(require('mongoose-unique-validator'))
+
 module.exports = mongoose.model('User', userSchema)
 

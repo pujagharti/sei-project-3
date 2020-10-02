@@ -8,6 +8,11 @@ router.route('/')
   .get(locations.index)
   .post(locations.create)
 
+router.route('/:id')
+  .get(locations.show)
+  .put(locations.update)
+  .delete(locations.delete)
+
 router.route('/register')
   .post(auth.register)
 
