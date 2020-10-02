@@ -2,7 +2,8 @@
 module.exports = [
 
   {
-    placeName: 'Wisconsin'
+    placeName: 'Wisconsin',
+    feature: ['glamping']
   }
 
 ]
