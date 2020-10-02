@@ -2,7 +2,7 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../config/environment')
-// const { unauthorized, notFound } = require('../lib/errorMessage')
+const { unauthorized, notFound } = require('../lib/errorMessage')
 
 
 async function register(req, res, next) {
@@ -10,7 +10,8 @@ async function register(req, res, next) {
     const user = await User.create(req.body)
     res.status(201).json({ message: `Welcome ${user.username}` })
   } catch (err) {
-    console.log(err)
+    // console.log('***', err)
+    next(err)
   }
 }
 
