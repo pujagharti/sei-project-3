@@ -17,8 +17,8 @@ class LocationsMap extends React.Component {
   render() {
     return (
       <MapGL
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         className='locations-map'
-        mapboxApiAccessToken='pk.eyJ1Ijoic3J0bjEwIiwiYSI6ImNrZjZhazFzMjB1bjEyeW55ank2czZ1NmcifQ.kT5J0kWX-_Tk6HF6uFyahw'
         height={'30vh'}
         width={'30vw'}
         mapStyle='mapbox://styles/mapbox/dark-v10'
