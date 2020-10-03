@@ -31,7 +31,7 @@ async function locationCreate(req, res, next) {
 async function locationShow (req, res, next) {
 
   try {
-    const location = await Location.findById(req.params.id)
+    const location = await Location.findById(req.params.id).populate('local')
     if (!location) throw new Error(notFound)
     res.status(200).json(location)
   } catch (err) {
