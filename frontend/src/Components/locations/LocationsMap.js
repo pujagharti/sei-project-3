@@ -1,13 +1,24 @@
 import React from 'react'
-import axios from 'axios'
-import MapGL, { Marker } from 'react-map-gl'
+import MapGL, { Marker, NavigationControl } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 
 class LocationsMap extends React.Component {
 
   state = {
-    locationsData: null
+    viewport: null
+  }
+
+  componentDidMount(){
+    this.setState({
+      viewport: {
+        latitude: 56.1304,
+        longitude: -106.3468,
+        zoom: 3,
+        width: '500px',
+        height: '500px'
+      }
+    })
   }
 
   addMarker(locationToAdd) {
@@ -22,20 +33,20 @@ class LocationsMap extends React.Component {
 
   render() {
     const { locationsData } = this.props
-
+    const { viewport } = this.state
     return (
-      <MapGL
+      <MapGL 
+        { ...viewport }
+        onViewportChange={(viewport) => this.setState({ viewport })}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-        className='locations-map'
-        height={'30vh'}
-        width={'30vw'}
-        mapStyle='mapbox://styles/mapbox/dark-v10'
-        latitude={56.1304}
-        longitude={-106.3468}
-        zoom={3}
+        mapStyle='mapbox://styles/mapbox/outdoors-v11'
       >
+        <div>
+          <NavigationControl onViewportChange={(viewport) => this.setState({ viewport })}/>
+        </div>
         {locationsData.map((location) => location.coords[0] ? this.addMarker(location) : null) }
       </MapGL>
+
     )
   }
 }

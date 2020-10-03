@@ -3,7 +3,7 @@ import axios from 'axios'
 // const baseUrl = '/api'
 
 export function getLocations(){
-  return axios.get('/api/')
+  return axios.get('/api/locations')
 }
 
 export const registerUser = (formData) => {
