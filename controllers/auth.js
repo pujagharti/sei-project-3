@@ -41,7 +41,7 @@ async function login(req, res, next) {
 async function profile(req, res, next) {
   try {
     console.log('req.currentUser._id', req.currentUser._id)
-    const user = await (await User.findById(req.currentUser._id))
+    const user = await User.findById(req.currentUser._id)
     // .populated('createdLocations')
     console.log('**', user)
     if (!user) throw new Error(notFound)
