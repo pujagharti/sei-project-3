@@ -79,8 +79,15 @@ class Register extends React.Component {
                 name='passwordConfirmation'
               />
             </Form.Field>
-
-            <Button type='submit'>Submit</Button>
+            <div className='ui animated button' tabIndex='0'>
+              <div className='visible content'>
+                <Button className='tiny ui button'>Submit</Button>
+              </div>
+              <div className='hidden content'>
+                <i className='send icon'></i>
+              </div>
+            </div>
+            {/* <Button type='submit'>Submit</Button> */}
           </Form>
         </div>
       </>
