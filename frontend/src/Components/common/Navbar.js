@@ -12,7 +12,7 @@ const Navbar = () => {
           Home
         </Link>
       </Menu.Item>
-
+      <div className='ui container'></div>
       <Menu.Item>
         <Link to='/register'>
           <Button primary>Register</Button>

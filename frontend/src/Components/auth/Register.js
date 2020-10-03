@@ -25,7 +25,7 @@ class Register extends React.Component {
   }
 
   handleSubmit = async (e) => {
-    
+
     e.preventDefault()
     try {
       console.log('>>>>submitting')
@@ -45,42 +45,44 @@ class Register extends React.Component {
     return (
 
       <>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Field>
-            <label>Username</label>
-            <input placeholder='username'
-              onChange={this.handleChange}
-              value={username}
-              name='username'
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Email</label>
-            <input placeholder='email'
-              onChange={this.handleChange}
-              value={email}
-              name='email'
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Password</label>
-            <input placeholder='password'
-              onChange={this.handleChange}
-              value={password}
-              name='password'
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Password Confirmation</label>
-            <input placeholder='password confirmation'
-              onChange={this.handleChange}
-              value={passwordConfirmation}
-              name='passwordConfirmation'
-            />
-          </Form.Field>
+        <div className='ui container size mini'>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Field>
+              <label>Username</label>
+              <input placeholder='username'
+                onChange={this.handleChange}
+                value={username}
+                name='username'
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Email</label>
+              <input placeholder='email'
+                onChange={this.handleChange}
+                value={email}
+                name='email'
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Password</label>
+              <input placeholder='password'
+                onChange={this.handleChange}
+                value={password}
+                name='password'
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Password Confirmation</label>
+              <input placeholder='password confirmation'
+                onChange={this.handleChange}
+                value={passwordConfirmation}
+                name='passwordConfirmation'
+              />
+            </Form.Field>
 
-          <Button type='submit'>Submit</Button>
-        </Form>
+            <Button type='submit'>Submit</Button>
+          </Form>
+        </div>
       </>
     )
   }

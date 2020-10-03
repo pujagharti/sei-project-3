@@ -14,13 +14,13 @@ class Login extends React.Component {
     }
   }
 
-  handleChange = (e) =>{
+  handleChange = (e) => {
     const formData = {
       ...this.state.formData,
       [e.target.name]: e.target.value
     }
     this.setState({ formData })
-  } 
+  }
 
 
   handleSubmit = async (e) => {
@@ -46,32 +46,33 @@ class Login extends React.Component {
 
     const { email, password } = this.state.formData
 
-    if (this.state.redirect){
+    if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
     }
 
     return (
+      <div className='ui container small'>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Field>
+            <label>email</label>
+            <input placeholder='email'
+              onChange={this.handleChange}
+              value={email}
+              name='email'
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Password</label>
+            <input placeholder='password'
+              onChange={this.handleChange}
+              value={password}
+              name='password'
+            />
+          </Form.Field>
 
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Field>
-          <label>email</label>
-          <input placeholder='email'
-            onChange={this.handleChange}
-            value={email}
-            name='email'
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <input placeholder='password'
-            onChange={this.handleChange}
-            value={password}
-            name='password'
-          />
-        </Form.Field>
-
-        <Button type='submit'>Submit</Button>
-      </Form>
+          <Button type='submit'>Submit</Button>
+        </Form>
+      </div>
     )
   }
 
