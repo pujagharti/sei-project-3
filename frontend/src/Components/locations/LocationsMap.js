@@ -32,7 +32,7 @@ class LocationsMap extends React.Component {
         mapStyle='mapbox://styles/mapbox/dark-v10'
         latitude={56.1304}
         longitude={-106.3468}
-        zoom={1}
+        zoom={3}
       >
         {locationsData.map((location) => location.coords[0] ? this.addMarker(location) : null) }
       </MapGL>
