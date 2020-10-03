@@ -8,7 +8,7 @@ const LocationCard = (props) => {
 
   return (
     
-    <Card>
+    <Card className='location-card'>
       <Image src={placePhotos[0]}/>
       <Card.Content>
         <Card.Header>{placeName}</Card.Header>

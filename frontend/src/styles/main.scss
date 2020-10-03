@@ -38,10 +38,16 @@
 //END of Features Component 
 
 
+
+
 // START of Locations Index Component
 
 .locations-index-container{
   display: flex;
+}
+
+.card.location-card{
+  border: 3px solid red;
 }
 
 .locations-index-cards{
@@ -50,5 +56,9 @@
   background-color: black;
 }
 
+
+.locations-map{
+  border: 1px solid red;
+}
 
 
