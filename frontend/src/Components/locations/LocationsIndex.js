@@ -38,7 +38,7 @@ class LocationsIndex extends React.Component {
           }
         </section>
         <div>
-          <LocationsMap />
+          <LocationsMap locationsData={locationsData}/>
         </div>
       </div>
     )
