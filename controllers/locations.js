@@ -1,6 +1,6 @@
 
 const Location = require('../models/location')
-const { notFound } = require('../lib/errorMessage')
+const { notFound, forbidden } = require('../lib/errorMessage')
 
 async function locationIndex(req, res, next) {
   try {
@@ -65,10 +65,42 @@ async function locationUpdate (req, res, next) {
   }
 }
 
+async function locationCommentCreate(req, res, next) {
+  try {
+    const location = await Location.findById(req.params.id)
+      .populate('local')
+      .populate('comments.local')
+    if (!location) throw new Error(notFound)
+    const comment = { ...req.body, local: req.currentUser._id }
+    location.comments.push(comment)
+    await location.save()
+    res.status(201).json(location)
+  } catch (err) {
+    next(err)
+  }
+}
+
+async function locationCommentDelete(req, res, next) {
+  try {
+    const location = await Location.findById(req.params.id)
+    if (!location) throw new Error(notFound)
+    const commentToDelete = location.comments.id(req.params.commentId)
+    if (!commentToDelete) throw new Error(notFound)
+    if (!commentToDelete.local.equals(req.currentUser._id)) throw new Error(forbidden)
+    await commentToDelete.remove()
+    await location.save()
+    res.sendStatus(202).json({ message: 'Deleted Successfully' })
+  } catch (err) {
+    next(err)
+  }
+}
+
 module.exports = {
   index: locationIndex,
   create: locationCreate,
   show: locationShow,
   delete: locationDelete,
-  update: locationUpdate
+  update: locationUpdate,
+  commentCreate: locationCommentCreate,
+  commentDelete: locationCommentDelete
 }

@@ -13,6 +13,12 @@ router.route('/locations/:id')
   .put(secureRoute, locations.update)
   .delete(secureRoute, locations.delete)
 
+router.route('/locations/:id/comments')
+  .post(secureRoute, locations.commentCreate)
+  
+router.route('/locations/:id/comments/:commentId')
+  .delete(secureRoute, locations.commentDelete)
+
 router.route('/register')
   .post(auth.register)
 
