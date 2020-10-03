@@ -4,12 +4,11 @@ const locations = require('../controllers/locations')
 const auth = require('../controllers/auth')
 const secureRoute = require('../lib/secureRoute')
 
-
-router.route('/')
+router.route('/locations')
   .get(locations.index)
   .post(secureRoute,locations.create)
 
-router.route('/:id')
+router.route('/locations/:id')
   .get(locations.show)
   .put(secureRoute, locations.update)
   .delete(secureRoute, locations.delete)
