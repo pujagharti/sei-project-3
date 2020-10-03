@@ -2,6 +2,7 @@ import React from 'react'
 
 import { getLocations } from '../../lib/api'
 import LocationCard from './LocationCard'
+import LocationsMap from './LocationsMap'
 
 class LocationsIndex extends React.Component {
 
@@ -28,7 +29,7 @@ class LocationsIndex extends React.Component {
 
     return (
 
-      <>
+      <div className='locations-index-container'>
         <section className='locations-index-cards'>
           {
             locationsData.map((location => {
@@ -36,8 +37,10 @@ class LocationsIndex extends React.Component {
             }))
           }
         </section>
-        <div></div>
-      </>
+        <div>
+          <LocationsMap />
+        </div>
+      </div>
     )
   }
 }

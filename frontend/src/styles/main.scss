@@ -40,12 +40,15 @@
 
 // START of Locations Index Component
 
+.locations-index-container{
+  display: flex;
+}
+
 .locations-index-cards{
   border: 1px solid red;
   width: 60%;
   background-color: black;
 }
-
 
 
 
