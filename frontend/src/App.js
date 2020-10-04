@@ -9,6 +9,7 @@ import Navbar from './Components/common/Navbar'
 import LocationsIndex from './Components/locations/LocationsIndex'
 import LocationShow from './Components/locations/LocationShow'
 import LocalRegister from './Components/locals/LocalRegister'
+import LocalProfile from './Components/locals/LocalProfile'
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path='/register' component={Register} />
           <Route path='/login' component={Login} />
           <Route path='/local-register' component={LocalRegister} />
+          <Route path='/profile' component={LocalProfile} />
 
           <Route path='/features' component={Features} />
           
@@ -37,7 +39,6 @@ const App = () => {
           />
 
           <Route path='/locations/:id' component={LocationShow} />
-
 
         </Switch>
 

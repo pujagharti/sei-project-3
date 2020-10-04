@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { Form, Input, TextArea, Button } from 'semantic-ui-react'
 
-import { registerUser } from '../../lib/api'
+import { registerUser, updateUser, getUserProfile } from '../../lib/api'
 import { isAuthenticated } from '../../lib/auth'
 
 class LocalRegister extends React.Component {
@@ -21,6 +21,21 @@ class LocalRegister extends React.Component {
     return isAuthenticated()
   }
 
+  async componentDidMount(){
+    try {
+      const res = await getUserProfile()
+      if (this.authenticated()){
+        this.setState({
+          formData: res.data
+        })
+      }
+
+    } catch (err) {
+      console.log(err)
+    }  
+  }
+
+
   handleChange = (e) => {
     const formData = {
       ...this.state.formData,
@@ -34,9 +49,9 @@ class LocalRegister extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault()
     const authenticated = this.authenticated()
-
+    const dataToSend = ({ ...this.state.formData, isLocal: true })
+    
     if (!authenticated) {
-      const dataToSend = ({ ...this.state.formData, isLocal: true })
       try {
         await registerUser(dataToSend)
 
@@ -50,8 +65,15 @@ class LocalRegister extends React.Component {
     }
 
     if (authenticated) {
+      
       try {
-        console.log('TESTING!')
+        const res = await updateUser(dataToSend)
+        console.log(res)
+
+        this.setState({
+          redirect: '/profile'
+        })
+
       } catch (err){
         console.log(err)
       }

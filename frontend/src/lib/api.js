@@ -23,6 +23,10 @@ export function createComment(locationId, formText){
   return axios.post(`/api/locations/${locationId}/comments`, formText, withHeaders())
 }
 
+export function getUserProfile(){
+  return axios.get('/api/profile', withHeaders())
+}
+
 
 
 //Authentication
@@ -35,7 +39,9 @@ export const loginUser = (formData) => {
   return axios.post('/api/login/', formData )
 }
 
-
+export const updateUser = (formData) => {
+  return axios.put('/api/profileupdate', formData, withHeaders())
+}
 
 
 
