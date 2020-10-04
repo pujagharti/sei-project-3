@@ -34,6 +34,19 @@ const Navbar = () => {
         </Link>
       </Menu.Item>
 
+      <Menu.Item>
+        <Link to='/local-register'>
+          <div className='ui animated button' tabIndex='0'>
+            <div className='visible content'>
+              <Button className='tiny ui button'>Local Register</Button>
+            </div>
+            <div className='hidden content'>
+              <i className='right arrow icon'></i>
+            </div>
+          </div>
+        </Link>
+      </Menu.Item>
+
 
 
       <Menu.Item>

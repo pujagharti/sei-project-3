@@ -8,6 +8,7 @@ import Features from './Components/locations/Features'
 import Navbar from './Components/common/Navbar'
 import LocationsIndex from './Components/locations/LocationsIndex'
 import LocationShow from './Components/locations/LocationShow'
+import LocalRegister from './Components/locals/LocalRegister'
 
 const App = () => {
   return (
@@ -23,8 +24,10 @@ const App = () => {
 
           <Route path='/register' component={Register} />
           <Route path='/login' component={Login} />
+          <Route path='/local-register' component={LocalRegister} />
 
           <Route path='/features' component={Features} />
+          
 
           <Route
             path='/locations/glamping'
