@@ -21,14 +21,14 @@ mongoose.connect(
       console.log('Database dropped')
 
       const users = await User.create(userData)
-      console.log(`${users.length} user created`)
+      console.log(`${users.length} users created`)
 
       const locationWithUsers = locationData.map(location => {
         location.local = users[(Math.floor(Math.random() * (users.length - 1)))]._id
         return location
       })
       const locations = await Location.create(locationWithUsers)
-      console.log(`${locations.length} location created`)
+      console.log(`${locations.length} locations created`)
       
       const commentWithUsers = commentData.map(comment => {
         comment.local = users[(Math.floor(Math.random() * (users.length - 1)))]._id
@@ -42,10 +42,10 @@ mongoose.connect(
         await locationById.save()
       }
       console.log(`${commentWithUsers.length} comments created`)
-      const locationsResult = await Location.find()
-      locationsResult.forEach(location => {
-        console.log(location.placeName, 'comments: ', location.comments)
-      })
+      // const locationsResult = await Location.find()
+      // locationsResult.forEach(location => {
+      //   console.log(location.placeName, 'comments: ', location.comments)
+      // })
     
     } catch (err) {
       console.log(err)
