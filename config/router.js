@@ -25,6 +25,9 @@ router.route('/register')
 router.route('/login')
   .post(auth.login)
 
+router.route('/profileupdate')
+  .put(secureRoute, auth.update)
+
 router.route('/profile')
   .get(secureRoute, auth.profile)
 
