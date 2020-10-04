@@ -61,8 +61,10 @@ class LocationComments extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault()
 
+    const formData = { text: this.state.formText, rating: this.state.ratingValue }
+
     try {
-      const res = await createComment(this.props.locationId, this.state.formText)
+      const res = await createComment(this.props.locationId, formData)
 
       console.log(res)
 
