@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   userimage: { type: String },
   bio: { type: String },
-  isLocal: { type: Boolean },
+  isLocal: { type: Boolean, default: false },
   usertelephone: { type: String }
 })
 
