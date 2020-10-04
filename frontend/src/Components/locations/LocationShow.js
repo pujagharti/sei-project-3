@@ -30,6 +30,8 @@ class LocationShow extends React.Component {
 
     const { placePhotos, placeName, placeDescription, amenities, local, comments } = this.state.locationData
     const features = this.state.locationData.feature
+    const locationId = this.props.match.params.id
+
     return (
       <>
         <div className='location-show-container'>
@@ -49,7 +51,7 @@ class LocationShow extends React.Component {
             <p>Has:
               {
                 features.map((element, index) => {
-                  return <div key={index}>{element}</div>
+                  return <span key={index}>{element}</span>
                 })
               }
             </p>
@@ -57,14 +59,14 @@ class LocationShow extends React.Component {
             <p>Amenities:
               {
                 amenities.map((amenity, index) => {
-                  return <div key={index}>{amenity}</div>
+                  return <span key={index}>{amenity}</span>
                 })
               }
             </p>
           </div>
         </div>
         
-        <LocationComments comments={comments}/>
+        <LocationComments locationId={locationId} comments={comments}/>
         
         <LocalPublic { ...local }/>      
       </>

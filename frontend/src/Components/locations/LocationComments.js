@@ -1,7 +1,15 @@
 import React from 'react'
-import { Button, Comment, Form, Header } from 'semantic-ui-react'
+import { Button, Comment, Form, Header, Dropdown } from 'semantic-ui-react'
 
 import LocationSingleComment from './LocationSingleComment'
+import { createComment } from '../../lib/api'
+
+
+const options = [
+  { key: 1, text: 'One', value: 1 },
+  { key: 2, text: 'Two', value: 2 },
+  { key: 3, text: 'Three', value: 3 },
+]
 
 
 class LocationComments extends React.Component {
@@ -32,13 +40,41 @@ class LocationComments extends React.Component {
           isLocal: false
         }
       }
-    ]
+    ],
+    formText: '',
+    ratingValue: null
+  }
+
+
+  handleTextChange = (e) => {
+    const formText = e.target.value
+
+    this.setState({
+      formText
+    })
+  }
+
+
+  handleDropdownChange = (e, { value }) => this.setState({ ratingValue: value })
+
+
+  handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const res = await createComment(this.props.locationId, this.state.formText)
+
+      console.log(res)
+
+    } catch (err) {
+      console.log(err)
+    }
+
   }
 
   render() {
 
-    // const {comments} = this.props.comments
-    const { comments } = this.state
+    const { comments, value } = this.state
 
     return (
 
@@ -47,13 +83,22 @@ class LocationComments extends React.Component {
           What people say
         </Header>
 
-        {comments.map((comment, index)=>{
-          return <LocationSingleComment key={index} { ...comment }/>
+        {comments.map((comment, index) => {
+          return <LocationSingleComment key={index} {...comment} />
         })
         }
 
-        <Form reply>
-          <Form.TextArea />
+        <Form onSubmit={this.handleSubmit} reply>
+          <Form.TextArea onChange={this.handleTextChange} />
+
+          <Dropdown
+            onChange={this.handleDropdownChange}
+            options={options}
+            placeholder='Choose an option'
+            selection
+            value={value}
+          />
+
           <Button content='Add Reply' labelPosition='left' icon='edit' primary />
         </Form>
       </Comment.Group>
