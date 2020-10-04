@@ -4,6 +4,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 import { getSingleLocation } from '../../lib/api'
 import CarouselSlide from './CarouselSlide'
+import LocalPublic from '../locals/LocalPublic'
 
 class LocationShow extends React.Component {
 
@@ -26,7 +27,7 @@ class LocationShow extends React.Component {
 
     if (!this.state.locationData) return <h1>Trying to find that for you now</h1>
 
-    const { placePhotos, placeName, placeDescription, amenities } = this.state.locationData
+    const { placePhotos, placeName, placeDescription, amenities, local } = this.state.locationData
     const features = this.state.locationData.feature
     return (
       <>
@@ -62,7 +63,7 @@ class LocationShow extends React.Component {
           </div>
         </div>
 
-              
+        <LocalPublic { ...local }/>      
       </>
     )
   }
