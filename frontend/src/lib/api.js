@@ -20,7 +20,6 @@ export function getSingleLocation(id){
 }
 
 export function createComment(locationId, formText){
-  console.log(locationId)
   return axios.post(`/api/locations/${locationId}/comments`, formText, withHeaders())
 }
 

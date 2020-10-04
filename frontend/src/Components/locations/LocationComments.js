@@ -8,7 +8,7 @@ import { createComment } from '../../lib/api'
 const options = [
   { key: 1, text: 'One', value: 1 },
   { key: 2, text: 'Two', value: 2 },
-  { key: 3, text: 'Three', value: 3 },
+  { key: 3, text: 'Three', value: 3 }
 ]
 
 
@@ -16,33 +16,39 @@ class LocationComments extends React.Component {
 
   state = {
     comments: [
-      {
-        text: 'Great place to stay! Loved it!',
-        rating: 4,
-        local: {
-          _id: '5f78b33f26d5042567fc6098',
-          username: 'Jess_Reinger',
-          email: 'Presley.Hickle@email.com',
-          userimage: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-          bio: '',
-          isLocal: false
-        }
-      },
-      {
-        text: 'OK, but too expensive for what it is!',
-        rating: 3,
-        local: {
-          _id: '5f78b33f26d5042567fc6099',
-          username: 'Casimir.Doyle',
-          email: 'Ebony.Botsford@email.com',
-          userimage: 'https://s3.amazonaws.com/uifaces/faces/twitter/frankiefreesbie/128.jpg',
-          bio: '',
-          isLocal: false
-        }
-      }
+      // {
+      //   text: 'Great place to stay! Loved it!',
+      //   rating: 4,
+      //   local: {
+      //     _id: '5f78b33f26d5042567fc6098',
+      //     username: 'Jess_Reinger',
+      //     email: 'Presley.Hickle@email.com',
+      //     userimage: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+      //     bio: '',
+      //     isLocal: false
+      //   }
+      // },
+      // {
+      //   text: 'OK, but too expensive for what it is!',
+      //   rating: 3,
+      //   local: {
+      //     _id: '5f78b33f26d5042567fc6099',
+      //     username: 'Casimir.Doyle',
+      //     email: 'Ebony.Botsford@email.com',
+      //     userimage: 'https://s3.amazonaws.com/uifaces/faces/twitter/frankiefreesbie/128.jpg',
+      //     bio: '',
+      //     isLocal: false
+      //   }
+      // }
     ],
     formText: '',
     ratingValue: null
+  }
+
+  componentDidMount(){
+    this.setState({
+      comments: this.props.comments
+    })
   }
 
 
@@ -60,23 +66,26 @@ class LocationComments extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault()
-
     const formData = { text: this.state.formText, rating: this.state.ratingValue }
-
     try {
       const res = await createComment(this.props.locationId, formData)
-
       console.log(res)
+      const newComments = res.data.comments
+
+      this.setState({
+        comments: newComments,
+        formText: '',
+        ratingValue: null
+      })
 
     } catch (err) {
       console.log(err)
     }
-
   }
 
   render() {
 
-    const { comments, value } = this.state
+    const { comments, formText, ratingValue } = this.state
 
     return (
 
@@ -85,20 +94,24 @@ class LocationComments extends React.Component {
           What people say
         </Header>
 
+
+        {!comments.length &&
+        <p>Be the first to comment on this location</p>
+        }
         {comments.map((comment, index) => {
           return <LocationSingleComment key={index} {...comment} />
         })
         }
 
         <Form onSubmit={this.handleSubmit} reply>
-          <Form.TextArea onChange={this.handleTextChange} />
+          <Form.TextArea onChange={this.handleTextChange} value={formText}/>
 
           <Dropdown
             onChange={this.handleDropdownChange}
             options={options}
             placeholder='Choose an option'
             selection
-            value={value}
+            value={ratingValue}
           />
 
           <Button content='Add Reply' labelPosition='left' icon='edit' primary />

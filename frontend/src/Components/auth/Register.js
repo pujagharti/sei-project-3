@@ -21,16 +21,13 @@ class Register extends React.Component {
       [e.target.name]: e.target.value
     }
     this.setState({ formData })
-    //console.log(this.state)  
   }
 
   handleSubmit = async (e) => {
 
     e.preventDefault()
     try {
-      console.log('>>>>submitting')
-      const response = await registerUser(this.state.formData)
-      console.log(response)
+      await registerUser(this.state.formData)
 
     } catch (err) {
       console.log(err)
@@ -39,7 +36,6 @@ class Register extends React.Component {
 
 
   render() {
-    console.log('About to post 🚀')
     const { username, email, password, passwordConfirmation } = this.state.formData
 
     return (
