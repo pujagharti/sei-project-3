@@ -33,7 +33,7 @@ const locationsSchema = new mongoose.Schema({
 locationsSchema
   .virtual('avgRating')
   .get(function () {
-    if (!this.comments.length) return 'Glampers, please leave a comment.'
+    if (this.comments.length === 0) return 'Glampers, please leave a comment.'
     return Math.round(this.comments.reduce((sum, curr) => {
       return sum + curr.rating
     }, 0)) / this.comments.length
