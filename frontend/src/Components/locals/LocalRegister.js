@@ -1,6 +1,8 @@
 import React from 'react'
 import { Form, Input, TextArea, Button } from 'semantic-ui-react'
 
+import { registerUser } from '../../lib/api'
+
 class LocalRegister extends React.Component {
   state = { 
     formData: {
@@ -23,13 +25,22 @@ class LocalRegister extends React.Component {
     })
   }
 
-
+  handleSubmit = async (e) => {
+    e.preventDefault()
+    const dataToSend = ({ ...this.state.formData, isLocal: true })    
+    try {
+      const res = await registerUser(dataToSend)
+      console.log(res)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   render() {
     const { username, email, password, passwordConfirmation, bio } = this.state.formData
 
     return (
-      <Form>
+      <Form onSubmit={this.handleSubmit}>
         <Form.Group widths='equal'>
           <Form.Field
             control={Input}
