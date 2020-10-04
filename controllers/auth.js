@@ -110,11 +110,8 @@ module.exports = {
   register, 
   login,
   profile,
-<<<<<<< HEAD
-  update: userUpdate
-=======
+  update: userUpdate,
   local,
   becomeLocal
->>>>>>> fakeprofile
 }
 
