@@ -28,7 +28,6 @@ class Register extends React.Component {
     e.preventDefault()
     try {
       await registerUser(this.state.formData)
-      console.log('RUNNING!')
     } catch (err) {
       console.log(err)
     }

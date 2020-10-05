@@ -9,6 +9,10 @@
 // .container-three {
 //   background-color: green;
 // }
+
+$dark-grey: #333;
+
+
 .ui.card, body .ui.cards>.card{
   box-shadow: none;
   font-size: 24px;
@@ -93,4 +97,14 @@
 
 .location-show-info{
   width: 40%;
+}
+
+
+//Start of Navbar section
+
+#active-nav-div,
+#active-nav-btn{
+  border: 1px solid $dark-grey;
+  background-color: $dark-grey;
+  color: white;
 }

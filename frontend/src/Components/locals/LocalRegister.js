@@ -54,7 +54,6 @@ class LocalRegister extends React.Component {
     if (!authenticated) {
       try {
         await registerUser(dataToSend)
-
         this.setState({
           redirect: '/login'
         })
@@ -97,7 +96,7 @@ class LocalRegister extends React.Component {
             <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' /> 
         Register as a Local
           </Header>
-          <Form>
+          <Form onSubmit={this.handleSubmit}>
             <Form.Group widths='equal'>
               <Form.Field
                 control={Input}
