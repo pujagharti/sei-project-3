@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Grid, Header, Segment, Card, List, Container } from 'semantic-ui-react'
+import { Grid, Header, Segment, Card, List, Container } from 'semantic-ui-react'
 
 function Home() {
 
@@ -36,13 +36,13 @@ function Home() {
           <Grid.Row textAlign='center'>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
               <Header as='h3' style={{ fontSize: '2em' }}>
-                "What a great place to meet people"
+                {'"What a great place to meet people"'}
               </Header>
               <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
             </Grid.Column>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
               <Header as='h3' style={{ fontSize: '2em' }}>
-                "Become a Local to Comment & Like"
+                {'"Become a Local to Comment & Like"'}
               </Header>
             </Grid.Column>
           </Grid.Row>
@@ -110,13 +110,13 @@ function Home() {
             <Grid.Row textAlign='center'>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                 <Header as='h3' style={{ fontSize: '2em' }}>
-                  "Community rich city"
+                  {'"Community rich city"'}
                 </Header>
                 <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
               </Grid.Column>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                 <Header as='h3' style={{ fontSize: '2em' }}>
-                  "Line here about ......"
+                  {'"Line here about ......"'}
                 </Header>
                 <p style={{ fontSize: '1.33em' }}>
                   Come
