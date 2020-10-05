@@ -29,7 +29,7 @@ mongoose.connect(
         const firstName = faker.name.firstName() // ! A fake first name
         const lastName = faker.name.lastName() // ! A fake last name
         const email = `${firstName}.${lastName}@email.com` // ! concatening them together to make the email
-        /* const userImage = faker.image.avatar() */ // ! and a fake profile image
+        const userImage = faker.image.avatar()  // ! and a fake profile image
         const password = faker.internet.password()
         const bio = faker.lorem.paragraph()
         // const isLocal = randomBoolean()
@@ -38,7 +38,7 @@ mongoose.connect(
         users.push({
           username,
           email,
-          /* userImage, */
+          userImage,
           password, // ! setting all the passwords the same
           passwordConfirmation: password,
           bio,
