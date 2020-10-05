@@ -53,7 +53,7 @@ class Login extends React.Component {
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as='h2' color='black' textAlign='center'>
-            {/* <Image src='/logo.png' />  */}
+            <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' /> 
             Log-in to your account
           </Header>
           <div className='ui container small'>
