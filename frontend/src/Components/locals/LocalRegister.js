@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, TextArea, Button, Grid, Header } from 'semantic-ui-react'
+import { Form, Input, TextArea, Button, Grid, Header, Image } from 'semantic-ui-react'
 
 class LocalRegister extends React.Component {
   state = {
@@ -32,7 +32,7 @@ class LocalRegister extends React.Component {
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as='h2' color='black' textAlign='center'>
-            {/* <Image src='/logo.png' />  */}
+            <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' /> 
         Register as a Local
           </Header>
           <Form>
