@@ -15,6 +15,10 @@ export function getLocations(){
   return axios.get('/api/locations')
 }
 
+export function createNewLocation(formData){
+  return axios.post('/api/locations', formData, withHeaders())
+}
+
 export function getSingleLocation(id){
   return axios.get(`${baseUrl}/locations/${id}`)
 }
@@ -26,6 +30,7 @@ export function createComment(locationId, formText){
 export function getUserProfile(){
   return axios.get('/api/profile', withHeaders())
 }
+
 
 
 

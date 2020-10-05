@@ -1,6 +1,8 @@
 import React from 'react'
 
+import LocationNew from '../locations/LocationNew'
 import { getUserProfile } from '../../lib/api'
+
 
 class LocalProfile extends React.Component {
 
@@ -28,6 +30,10 @@ class LocalProfile extends React.Component {
       <>
         <p>{this.state.profileData.email}</p>
         <p>{this.state.profileData.bio}</p>
+
+
+
+        <LocationNew />
       </>
     )
   }
