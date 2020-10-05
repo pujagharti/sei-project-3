@@ -22,6 +22,47 @@ $dark-grey: #333;
   width: 400px;
 }
 
+//Start of Home Component
+
+.home-images{
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  border-radius: 5px;
+}
+
+#street-img{
+  background-image: url('https://malloryontravel.com/wp-content/uploads/2014/06/Iain-Mallory-300-101-1-1024x697.jpg');
+}
+
+#culture-img{
+  background-image: url('https://cdn.theculturetrip.com/wp-content/uploads/2017/12/33554467340_65375926e8_k.jpg');
+}
+
+#park-img{
+  background-image: url('https://www.lemontroyal.qc.ca/images/nouvelles/credit_PixupMTL.jpg');
+}
+
+.home-card-imgs{
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+}
+
+#parks-card-img{
+  background-image: url('https://cache.desktopnexus.com/thumbseg/1891/1891138-bigthumbnail.jpg');
+}
+
+#wild-card-img{
+  background-image: url('https://cdn.tourradar.com/s3/tour/645x430/102695_5efbd8dc97a69.jpg');
+}
+
+#hiking-card-img{
+  background-image: url('https://www.lemontroyal.qc.ca/images/amis-s-montigne-2009-randonnee-sentier-escarpement-pano-2018-07-12-exAKqcSevEJ4TmVyr8Xoz1vI.jpg');
+}
+
+//End of Home Component
+
 // START of Features Component
 
 .features-container{

@@ -25,7 +25,7 @@ function Home() {
 
 
             <Grid.Column floated='right' width={6}>
-              <Image bordered rounded size='large' src='https://www.lemontroyal.qc.ca/images/nouvelles/credit_PixupMTL.jpg' />
+              <div id='park-img' className='home-images'></div>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -52,10 +52,11 @@ function Home() {
       <Segment>
         <Grid>
           <Grid.Column floated='left' width={7}>
-            <Image bordered rounded size='large' src='https://malloryontravel.com/wp-content/uploads/2014/06/Iain-Mallory-300-101-1-1024x697.jpg' />
+            <div id='street-img' className='home-images'></div>
           </Grid.Column>
           <Grid.Column floated='right' width={7}>
-            <Image bordered rounded size='large' src='https://cdn.theculturetrip.com/wp-content/uploads/2017/12/33554467340_65375926e8_k.jpg' />
+            <div id='culture-img' className='home-images'></div>
+            {/* <Image bordered rounded size='large' src='https://cdn.theculturetrip.com/wp-content/uploads/2017/12/33554467340_65375926e8_k.jpg' /> */}
           </Grid.Column>
         </Grid>
       </Segment>
@@ -72,25 +73,36 @@ function Home() {
         </Grid>
       </Segment>
 
-
-      <Grid className='images-bottom'>
-        <Grid.Row columns={3}>
-          <Grid.Column>
-            <Card>
-              <Image src='https://cache.desktopnexus.com/thumbseg/1891/1891138-bigthumbnail.jpg' wrapped ui={false} />
-            </Card>
-          </Grid.Column>
-          <Grid.Column>
-            <Card>
-              <Image src='https://cdn.tourradar.com/s3/tour/645x430/102695_5efbd8dc97a69.jpg' wrapped ui={false} />
-            </Card>
-          </Grid.Column>
-          <Grid.Column>
-            <Image src='https://www.lemontroyal.qc.ca/images/amis-s-montigne-2009-randonnee-sentier-escarpement-pano-2018-07-12-exAKqcSevEJ4TmVyr8Xoz1vI.jpg' />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-
+      <Segment>
+        <Grid >
+          <Grid.Row columns={3}>
+            <Grid.Column>
+              <Card>
+                <div id='parks-card-img' className='home-card-imgs'></div>
+                <Card.Content>
+                  <Card.Header>Parks and Recreation</Card.Header>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card>
+                <div id='wild-card-img' className='home-card-imgs'></div>
+                <Card.Content>
+                  <Card.Header>Wild Outdoors</Card.Header>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card>
+                <div id='hiking-card-img' className='home-card-imgs'></div>
+                <Card.Content>
+                  <Card.Header>Hiking and Walks</Card.Header>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Segment>
 
       <Segment>
         <Segment style={{ padding: '0em' }} vertical>
