@@ -3,10 +3,40 @@ import { Button, Menu } from 'semantic-ui-react'
 import { Link, withRouter } from 'react-router-dom'
 
 import { isAuthenticated, logout } from '../../lib/auth'
+import { getUserProfile } from '../../lib/api'
 
 class Navbar extends React.Component {
 
-  state = {}
+  state = {
+    activeItem: '',
+    isLocal: false
+  }
+
+
+  async componentDidMount() {
+    if (!isAuthenticated()) return
+    try {
+      const res = await getUserProfile()
+      this.setState({
+        isLocal: res.data.isLocal
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  async componentDidUpdate(){
+    if (!isAuthenticated() || this.state.isLocal ) return
+    try {
+      const res = await getUserProfile()
+      console.log('UPDATING!', res.data.isLocal)
+      this.setState({
+        isLocal: res.data.isLocal
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name })
@@ -14,12 +44,15 @@ class Navbar extends React.Component {
 
   handleLogoutClick = (e, { name }) => {
     logout()
-    this.setState({ activeItem: name })
+    this.setState({ 
+      activeItem: name,
+      isLocal: false 
+    })
   }
 
 
   render() {
-    const { activeItem } = this.state
+    const { activeItem, isLocal } = this.state
 
     return (
 
@@ -71,6 +104,34 @@ class Navbar extends React.Component {
           </Menu.Item>
         }
 
+        {isLocal && 
+        <Menu.Item
+          name='profile'
+          onClick={this.handleItemClick}
+          as={Link}
+          to='/profile'
+        >
+          <div
+            id={activeItem === 'profile' ? 'active-nav-btn' : '' }
+            className='ui animated button'
+            tabIndex='0'
+          >
+            <div className='visible content'>
+              <Button 
+                id={activeItem === 'profile' ? 'active-nav-btn' : '' }
+                className='tiny ui button'
+              >
+                Your Profile
+              </Button>
+            </div>
+            <div className='hidden content'>
+              <i className='right arrow icon'></i>
+            </div>
+          </div>
+        </Menu.Item>
+        }
+
+        {!isLocal && 
         <Menu.Item
           name='local-register'
           onClick={this.handleItemClick}
@@ -95,6 +156,7 @@ class Navbar extends React.Component {
             </div>
           </div>
         </Menu.Item>
+        }
 
         {isAuthenticated() &&
           <Menu.Item
