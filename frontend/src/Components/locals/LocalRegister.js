@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { Form, Input, TextArea, Button } from 'semantic-ui-react'
+import { Form, Input, TextArea, Button, Grid, Header } from 'semantic-ui-react'
 
 import { registerUser, updateUser, getUserProfile } from '../../lib/api'
 import { isAuthenticated } from '../../lib/auth'
