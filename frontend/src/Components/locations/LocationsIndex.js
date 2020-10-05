@@ -12,25 +12,44 @@ class LocationsIndex extends React.Component {
 
 
   async componentDidMount() {
-    const feature = this.props
-    console.log(feature.match.params.feature)
     const res = await getLocations()
-    console.log(res)
-    const allLocations = res.data
-    console.log(typeof(feature.match.params.feature))
-
-    const filteredLocations = allLocations.filter((location) => {
-      console.log(location.feature)
-      return location.feature.some((feature) => feature === feature.match.params.feature)
+    const featureSelected = this.props.match.params.feature
+    console.log('SELECTED!', featureSelected)
+    console.log(res.data)
+    const isFeaturePresent = (feature) => feature === featureSelected 
+    const filteredLocations = res.data.filter((location) => {
+      return location.feature.some(isFeaturePresent)
     })
-    console.log('////////', filteredLocations)
-    // console.log('test')
-
-    
+    console.log('LOCATIONS!', filteredLocations)
     this.setState({
-      locationsData: res.data
+      locationsData: filteredLocations
     })
   }
+
+
+
+
+
+  // async componentDidMount() {
+  //   const feature = this.props
+  //   console.log(feature.match.params.feature)
+  //   const res = await getLocations()
+  //   console.log(res)
+  //   const allLocations = await res.data
+  //   console.log(typeof(feature.match.params.feature))
+
+  //   const filteredLocations = await allLocations.filter((location) => {
+  //     console.log(location.feature)
+  //     return location.feature.some((feature) => feature === feature.match.params.feature)
+  //   })
+  //   console.log('////////', filteredLocations)
+  //   // console.log('test')
+
+    
+  //   this.setState({
+  //     locationsData: res.data
+  //   })
+  // }
 
   render() {
 
