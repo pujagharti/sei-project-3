@@ -21,6 +21,7 @@ userSchema
   .set('toJSON', {
     virtuals: true,
     transform(_doc, json) {
+      delete json.email
       delete json.password
       return json
     }  
