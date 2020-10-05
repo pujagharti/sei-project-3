@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Input, TextArea, Button } from 'semantic-ui-react'
+import Select from 'react-select'
 
 import { createNewLocation } from '../../lib/api'
 
@@ -8,10 +9,15 @@ class LocationNew extends React.Component {
   state = {
     formData: {
       placeName: '',
-      placeDescription: ''
+      placeDescription: '',
+      feature: ['']
     }
   }
 
+
+  options = [
+    { value: }
+  ]
 
   handleChange = (e) => {
     const formData = {
