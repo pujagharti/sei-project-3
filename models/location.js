@@ -26,6 +26,7 @@ const locationsSchema = new mongoose.Schema({
   feature: [{ type: String }],
   local: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   comments: [commentSchema]
+
 }, {
   timestamps: true
 })
