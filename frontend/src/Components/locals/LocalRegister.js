@@ -23,13 +23,12 @@ class LocalRegister extends React.Component {
 
   async componentDidMount() {
     try {
-      const res = await getUserProfile()
-      if (this.authenticated()) {
-        this.setState({
-          formData: res.data
-        })
-      }
-
+      // const res = await getUserProfile()
+      // if (this.authenticated()) {
+      //   this.setState({
+      //     formData: res.data
+      //   })
+      // }
     } catch (err) {
       console.log(err)
     }
@@ -77,9 +76,6 @@ class LocalRegister extends React.Component {
         console.log(err)
       }
     }
-
-
-
   }
 
   render() {
