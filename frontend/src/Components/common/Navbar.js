@@ -12,6 +12,12 @@ class Navbar extends React.Component {
     this.setState({ activeItem: name })
   }
 
+  handleLogoutClick = (e, { name }) => {
+    logout()
+    this.setState({ activeItem: name })
+  }
+
+
   render() {
     const { activeItem } = this.state
 
@@ -93,7 +99,7 @@ class Navbar extends React.Component {
         {isAuthenticated() &&
           <Menu.Item
             name='home'
-            onClick={this.handleItemClick}
+            onClick={this.handleLogoutClick}
             as={Link}
             to='/home'
           >
@@ -102,7 +108,7 @@ class Navbar extends React.Component {
               tabIndex='0'
             >
               <div className='visible content'>
-                <Button onClick={logout} className='tiny ui button'>Logout</Button>
+                <Button className='tiny ui button'>Logout</Button>
               </div>
               <div className='hidden content'>
                 <i className='right arrow icon'></i>
