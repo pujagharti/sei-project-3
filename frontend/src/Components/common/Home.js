@@ -78,6 +78,7 @@ function Home() {
         </Grid>
       </Segment>
 
+<<<<<<< HEAD
       <Segment>
         <Grid >
           <Grid.Row columns={3}>
@@ -108,6 +109,49 @@ function Home() {
           </Grid.Row>
         </Grid>
       </Segment>
+=======
+
+      <Grid className='images-bottom'>
+        <Grid.Row columns={3}>
+          <Grid.Column>
+            <Card>
+              <Image src='https://sofitel.accor.com/destinations/imagerie/saint-joseph-oratory-304x253.jpg' wrapped ui={false} />
+              <Card.Content>
+                <Card.Header>St Joseph Oratory</Card.Header>
+                <Card.Description>
+                  What started out as a small chapel has since become one of the world’s most visited sacred spaces and one of Montréal’s most iconic landmarks.
+                </Card.Description>
+              </Card.Content>
+            </Card>
+          </Grid.Column>
+
+          <Grid.Column>
+            <Card>
+              <Image src='https://www.routedurichelieu.ca/fr/wp-content/uploads/2012/06/mont-st-hilaire2.jpg' wrapped ui={false} />
+              <Card.Content>
+                <Card.Header>Mont Saint-Hilaire</Card.Header>
+                <Card.Description>
+                  Just outside of Montreal, Mont Saint-Hilaire nature reserve is another great local spot for those who like their hikes to be more scenic than strenuous, with relatively easy, straightforward trails open all year round.
+                </Card.Description>
+              </Card.Content>
+            </Card>
+          </Grid.Column>
+
+          <Grid.Column>
+            <Card>
+              <Image src='https://www.lemontroyal.qc.ca/images/amis-s-montigne-2009-randonnee-sentier-escarpement-pano-2018-07-12-exAKqcSevEJ4TmVyr8Xoz1vI.jpg' />
+              <Card.Content>
+                <Card.Header>Mont Royal Park</Card.Header>
+                <Card.Description>
+                  The centerpiece and the namesake of Montreal, this small mountain offers sightseeing in every direction as you explore every angle.
+                </Card.Description>
+              </Card.Content>
+            </Card>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+
+>>>>>>> locationShow-basic-styling
 
       <Segment>
         <Segment style={{ padding: '0em' }} vertical>
@@ -115,7 +159,11 @@ function Home() {
             <Grid.Row textAlign='center'>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                 <Header as='h3' style={{ fontSize: '2em' }}>
+<<<<<<< HEAD
                   {'"Community rich city"'}
+=======
+                  ""
+>>>>>>> locationShow-basic-styling
                 </Header>
                 <p style={{ fontSize: '1.33em' }}>Words here.........</p>
               </Grid.Column>
