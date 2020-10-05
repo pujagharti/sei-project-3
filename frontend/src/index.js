@@ -4,6 +4,8 @@ import 'semantic-ui-css/semantic.min.css'
 import './styles/main.scss'
 import App from './App'
 
+import './styles/features.css'
+
 
 // import { Button, Form } from 'semantic--react'
 

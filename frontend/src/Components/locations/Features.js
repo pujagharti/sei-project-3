@@ -7,11 +7,9 @@ const Features = () => {
   return (
 
     <section className='features-container'>
-      <div className='features-glamping'>
-        <Link to={'/locations/glamping'}>Glamping</Link>
-      </div>
-      <div className='features-activities'>Activities</div>
-      <div className='features-events'>Events</div>
+      <Link to="" className='features-nightLife'>Night Life</Link>
+      <Link to="" className='features-summer'>Summer</Link>
+      <Link to="" className='features-goWild'>Go Wild</Link>
     </section>
 
 
