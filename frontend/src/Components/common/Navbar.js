@@ -1,10 +1,11 @@
 import React from 'react'
 import { Button, Menu } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
-
+import { isAuthenticated, logout } from '../../lib/auth'
 
 const Navbar = () => {
+
   return (
 
     <Menu>
@@ -21,18 +22,20 @@ const Navbar = () => {
 
       <div className='ui container'></div>
 
-      <Menu.Item>
-        <Link to='/register'>
-          <div className='ui animated button' tabIndex='0'>
-            <div className='visible content'>
-              <Button className='tiny ui button'>Register</Button>
+      {!isAuthenticated() &&
+        <Menu.Item>
+          <Link to='/register'>
+            <div className='ui animated button' tabIndex='0'>
+              <div className='visible content'>
+                <Button className='tiny ui button'>Register</Button>
+              </div>
+              <div className='hidden content'>
+                <i className='right arrow icon'></i>
+              </div>
             </div>
-            <div className='hidden content'>
-              <i className='right arrow icon'></i>
-            </div>
-          </div>
-        </Link>
-      </Menu.Item>
+          </Link>
+        </Menu.Item>
+      }
 
       <Menu.Item>
         <Link to='/local-register'>
@@ -47,20 +50,36 @@ const Navbar = () => {
         </Link>
       </Menu.Item>
 
+      {isAuthenticated() &&
+        <Menu.Item>
+          <Link to='/home' onClick={logout}>
+            <div className='ui animated button' tabIndex='0'>
+              <div className='visible content'>
+                <Button className='tiny ui button'>Logout</Button>
+              </div>
+              <div className='hidden content'>
+                <i className='right arrow icon'></i>
+              </div>
+            </div>
+          </Link>
+        </Menu.Item>
+      }
 
 
-      <Menu.Item>
-        <Link to='/login'>
-          <div className='ui animated button' tabIndex='0'>
-            <div className='visible content'>
-              <Button className='tiny ui button'>Login</Button>
+      {!isAuthenticated() &&
+        <Menu.Item>
+          <Link to='/login'>
+            <div className='ui animated button' tabIndex='0'>
+              <div className='visible content'>
+                <Button className='tiny ui button'>Login</Button>
+              </div>
+              <div className='hidden content'>
+                <i className='right arrow icon'></i>
+              </div>
             </div>
-            <div className='hidden content'>
-              <i className='right arrow icon'></i>
-            </div>
-          </div>
-        </Link>
-      </Menu.Item>
+          </Link>
+        </Menu.Item>
+      }
 
 
     </Menu >
@@ -69,4 +88,4 @@ const Navbar = () => {
 
 
 
-export default Navbar
+export default withRouter(Navbar)
