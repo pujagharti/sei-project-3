@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 
 import { loginUser } from '../../lib/api'
@@ -50,28 +50,36 @@ class Login extends React.Component {
     }
 
     return (
-      <div className='ui container small'>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Field>
-            <label>email</label>
-            <input placeholder='email'
-              onChange={this.handleChange}
-              value={email}
-              name='email'
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Password</label>
-            <input placeholder='password'
-              onChange={this.handleChange}
-              value={password}
-              name='password'
-            />
-          </Form.Field>
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as='h2' color='black' textAlign='center'>
+            {/* <Image src='/logo.png' />  */}
+            Log-in to your account
+          </Header>
+          <div className='ui container small'>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Field>
+                <label>email</label>
+                <input placeholder='email'
+                  onChange={this.handleChange}
+                  value={email}
+                  name='email'
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Password</label>
+                <input placeholder='password'
+                  onChange={this.handleChange}
+                  value={password}
+                  name='password'
+                />
+              </Form.Field>
 
-          <Button type='submit'>Submit</Button>
-        </Form>
-      </div>
+              <Button type='submit'>Submit</Button>
+            </Form>
+          </div>
+        </Grid.Column>
+      </Grid>
     )
   }
 
