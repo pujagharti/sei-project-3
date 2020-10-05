@@ -4,6 +4,8 @@ const { dbURI  } = require('../config/environment')
 
 const faker = require('faker')
 const User = require('../models/user')
+const Location = require('../models/location')
+const locationData = require('./data/locations')
 
 
 mongoose.connect(
@@ -48,8 +50,16 @@ mongoose.connect(
       
       const createdUsers = await User.create(users) // ! then pass that users array
 
+
       console.log(`❇️ Created ${createdUsers.length} ❇️`)
       console.log(createdUsers)
+
+      const locationWithUsers = locationData.map(location => {  // create location
+        location.local = createdUsers[(Math.floor(Math.random() * (createdUsers.length - 1)))]._id
+        return location
+      })
+      const locations = await Location.create(locationWithUsers)
+      console.log(`${locations.length} locations created`)
       await mongoose.connection.close()
 
       console.log('👋 Goodbye')
