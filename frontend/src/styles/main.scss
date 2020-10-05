@@ -18,46 +18,6 @@ $dark-grey: #333;
   font-size: 24px;
   width: 400px;
 }
-
-
-// START of Features Component
-
-.features-container{
-  width: 100vw;
-  height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  .features-glamping,
-  .features-activities,
-  .features-events{
-    width: 100%;
-    flex-grow: 1;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .features-glamping{
-    background-color: black;
-    color: white;
- }
-
- .features-events{
-  background-color: black;
-  color: white;
-}
-}
-
-//END of Features Component 
-
-
-
-
 // START of Locations Index Component
 
 .locations-index-container{
@@ -78,10 +38,6 @@ $dark-grey: #333;
 .locations-map{
   border: 1px solid red;
 }
-
-
-
-//END of Locations Index Component
 
 
 //START of LocatioShow component
