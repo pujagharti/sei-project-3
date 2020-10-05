@@ -5,6 +5,8 @@ import { Form, Input, TextArea, Button, Grid, Header, Image } from 'semantic-ui-
 import { registerUser, updateUser, getUserProfile } from '../../lib/api'
 import { isAuthenticated } from '../../lib/auth'
 
+import ImageUpload from '../common/ImageUpload'
+
 class LocalRegister extends React.Component {
   state = {
     formData: {
@@ -12,7 +14,8 @@ class LocalRegister extends React.Component {
       username: '',
       password: '',
       passwordConfirmation: '',
-      bio: ''
+      bio: '',
+      userimage: ''
     },
     redirect: null
   }
@@ -47,6 +50,12 @@ class LocalRegister extends React.Component {
     })
   }
 
+  handleImageChange = url => {
+    console.log('uploaded, and url:', url)
+    const formData = { userimage: url }
+    this.setState({ formData })
+  }
+
   handleSubmit = async (e) => {
     e.preventDefault()
     const authenticated = this.authenticated()
@@ -69,7 +78,8 @@ class LocalRegister extends React.Component {
     if (authenticated) {
 
       try {
-        const dataToSend = ({ bio: this.bio, isLocal: true })
+        // const dataToSend = ({ bio: this.bio, isLocal: true, userimage: this.userimage })
+        const dataToSend = ({ ...this.state.formData, isLocal: true })
         const res = await updateUser(dataToSend)
         console.log(res)
         this.setState({
@@ -147,9 +157,10 @@ class LocalRegister extends React.Component {
               onChange={this.handleChange}
               name='bio'
               value={bio}
-
             />
-
+            <ImageUpload
+              onChange={this.handleImageChange}
+            />
             <Form.Field control={Button}>Submit</Form.Field>
           </Form>
         </Grid.Column>
