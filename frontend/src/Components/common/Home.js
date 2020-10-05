@@ -24,7 +24,7 @@ function Home() {
             </Grid.Column>
 
 
-            <Grid.Column floated='righ' width={6}>
+            <Grid.Column floated='right' width={6}>
               <Image bordered rounded size='large' src='https://www.lemontroyal.qc.ca/images/nouvelles/credit_PixupMTL.jpg' />
             </Grid.Column>
           </Grid.Row>
@@ -73,7 +73,7 @@ function Home() {
       </Segment>
 
 
-      <Grid clasName='images-bottom'>
+      <Grid className='images-bottom'>
         <Grid.Row columns={3}>
           <Grid.Column>
             <Card>
