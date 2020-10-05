@@ -36,7 +36,7 @@ class LocalProfile extends React.Component {
         <p>{this.state.profileData.bio}</p>
 
         {
-          createdLocations.map((location, index) => {
+          createdLocations.map((location) => {
             return <LocationCard key={location._id} {...location} />
 
           })
