@@ -81,7 +81,7 @@ class Navbar extends React.Component {
                 id={activeItem === 'local-register' ? 'active-nav-btn' : '' }
                 className='tiny ui button'
               >
-                Local Register
+                Contribute
               </Button>
             </div>
             <div className='hidden content'>
