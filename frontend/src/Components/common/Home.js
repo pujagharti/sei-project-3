@@ -1,5 +1,6 @@
 import React from 'react'
-import { Image, Grid, Header, Segment, Card, List, Container } from 'semantic-ui-react'
+import { Image, Grid, Header, Segment, Card, List, Container, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 function Home() {
 
@@ -13,14 +14,17 @@ function Home() {
                 Discover your Montreal
               </Header>
               <p style={{ fontSize: '1.33em' }}>
-                With events covering the city, from outdoor......
+                A city that is in love with festivals, the arts, good food, living well and enjoying life to the hilt
               </p>
               <Header as='h3' style={{ fontSize: '2em' }}>
-                We Connect thousands of people across the city
+                We aim to bring people together to share meaningful experiences
               </Header>
               <p style={{ fontSize: '1.33em' }}>
-                Allowing people to share their experiences
+                Share your
               </p>
+              <Link to={'/features'}>
+                <Button type='submit'>Find what's on</Button>
+              </Link>
             </Grid.Column>
 
 
@@ -35,15 +39,16 @@ function Home() {
         <Grid celled='internally' columns='equal' stackable>
           <Grid.Row textAlign='center'>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-              <Header as='h3' style={{ fontSize: '2em' }}>
-                "What a great place to meet people"
+              <Link to='/register'><Header as='h3' style={{ fontSize: '2em' }}>
+                Sign up to Comment & Like
               </Header>
+              </Link>
               <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
             </Grid.Column>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-              <Header as='h3' style={{ fontSize: '2em' }}>
-                "Become a Local to Comment & Like"
-              </Header>
+              <Link to={'/local-register'}><Header as='h3' style={{ fontSize: '2em' }}>
+                Or become a local to share your favorite local spots!
+              </Header></Link>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -77,16 +82,38 @@ function Home() {
         <Grid.Row columns={3}>
           <Grid.Column>
             <Card>
-              <Image src='https://cache.desktopnexus.com/thumbseg/1891/1891138-bigthumbnail.jpg' wrapped ui={false} />
+              <Image src='https://sofitel.accor.com/destinations/imagerie/saint-joseph-oratory-304x253.jpg' wrapped ui={false} />
+              <Card.Content>
+                <Card.Header>St Joseph Oratory</Card.Header>
+                <Card.Description>
+                  What started out as a small chapel has since become one of the world’s most visited sacred spaces and one of Montréal’s most iconic landmarks.
+                </Card.Description>
+              </Card.Content>
             </Card>
           </Grid.Column>
+
           <Grid.Column>
             <Card>
-              <Image src='https://cdn.tourradar.com/s3/tour/645x430/102695_5efbd8dc97a69.jpg' wrapped ui={false} />
+              <Image src='https://www.routedurichelieu.ca/fr/wp-content/uploads/2012/06/mont-st-hilaire2.jpg' wrapped ui={false} />
+              <Card.Content>
+                <Card.Header>Mont Saint-Hilaire</Card.Header>
+                <Card.Description>
+                  Just outside of Montreal, Mont Saint-Hilaire nature reserve is another great local spot for those who like their hikes to be more scenic than strenuous, with relatively easy, straightforward trails open all year round.
+                </Card.Description>
+              </Card.Content>
             </Card>
           </Grid.Column>
+
           <Grid.Column>
-            <Image src='https://www.lemontroyal.qc.ca/images/amis-s-montigne-2009-randonnee-sentier-escarpement-pano-2018-07-12-exAKqcSevEJ4TmVyr8Xoz1vI.jpg' />
+            <Card>
+              <Image src='https://www.lemontroyal.qc.ca/images/amis-s-montigne-2009-randonnee-sentier-escarpement-pano-2018-07-12-exAKqcSevEJ4TmVyr8Xoz1vI.jpg' />
+              <Card.Content>
+                <Card.Header>Mont Royal Park</Card.Header>
+                <Card.Description>
+                  The centerpiece and the namesake of Montreal, this small mountain offers sightseeing in every direction as you explore every angle.
+                </Card.Description>
+              </Card.Content>
+            </Card>
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -98,9 +125,9 @@ function Home() {
             <Grid.Row textAlign='center'>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                 <Header as='h3' style={{ fontSize: '2em' }}>
-                  "Community rich city"
+                  ""
                 </Header>
-                <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
+                <p style={{ fontSize: '1.33em' }}>Words here.........</p>
               </Grid.Column>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                 <Header as='h3' style={{ fontSize: '2em' }}>
