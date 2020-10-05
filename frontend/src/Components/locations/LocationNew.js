@@ -16,7 +16,9 @@ class LocationNew extends React.Component {
 
 
   options = [
-    { value: }
+    { value: 'outdoors', label: 'Outdoors' },
+    { value: 'food', label: 'Food' },
+    { value: 'drink', label: 'Drink' }
   ]
 
   handleChange = (e) => {
@@ -24,6 +26,15 @@ class LocationNew extends React.Component {
       ...this.state.formData,
       [e.target.name]: e.target.value
     }
+    this.setState({
+      formData
+    })
+  }
+
+  handleMultiSelectChange = (selected) => {
+    const selectedItems = selected ? selected.map(item => item.value) : []
+    const formData = { ...this.state.formData, feature: selectedItems }
+    console.log(formData)
     this.setState({
       formData
     })
@@ -66,7 +77,11 @@ class LocationNew extends React.Component {
             name='placeDescription'
             value={placeDescription}
           />
-          
+          <Select
+            options={this.options}
+            isMulti
+            onChange={this.handleMultiSelectChange}
+          />
           <Form.Field control={Button}>Submit</Form.Field>
 
         </Form>
