@@ -1,6 +1,8 @@
 import React from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import { Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 import { getSingleLocation } from '../../lib/api'
 import CarouselSlide from './CarouselSlide'
@@ -44,10 +46,10 @@ class LocationShow extends React.Component {
           </div>
 
           <div className='location-show-info'>
-            
+
             <h1>{placeName}</h1>
             <h2>{placeDescription}</h2>
-            
+
             <p>Has:
               {
                 features.map((element, index) => {
@@ -63,12 +65,22 @@ class LocationShow extends React.Component {
                 })
               }
             </p>
+            <Button
+              fluid
+              animated='fade'
+              as={Link}
+              to='/features'
+            >
+              <Button.Content visible>Discover More Locations</Button.Content>
+              <Button.Content hidden>Back to Features</Button.Content>
+            </Button>
           </div>
         </div>
-        
-        <LocationComments locationId={locationId} comments={comments}/>
-        
-        <LocalPublic { ...local }/>      
+
+
+        <LocationComments locationId={locationId} comments={comments} />
+
+        <LocalPublic {...local} />
       </>
     )
   }
