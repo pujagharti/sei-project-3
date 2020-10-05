@@ -1,5 +1,6 @@
 import React from 'react'
-import { Grid, Header, Segment, Card, List, Container } from 'semantic-ui-react'
+import { Image, Grid, Header, Segment, Card, List, Container, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 function Home() {
 
@@ -13,14 +14,17 @@ function Home() {
                 Discover your Montreal
               </Header>
               <p style={{ fontSize: '1.33em' }}>
-                With events covering the city, from outdoor......
+                A city that is in love with festivals, the arts, good food, living well and enjoying life to the hilt
               </p>
               <Header as='h3' style={{ fontSize: '2em' }}>
-                We Connect thousands of people across the city
+                We aim to bring people together to share meaningful experiences
               </Header>
               <p style={{ fontSize: '1.33em' }}>
-                Allowing people to share their experiences
+                Share your
               </p>
+              <Link to={'/features'}>
+                <Button type='submit'>Find what's on</Button>
+              </Link>
             </Grid.Column>
 
 
@@ -35,15 +39,16 @@ function Home() {
         <Grid celled='internally' columns='equal' stackable>
           <Grid.Row textAlign='center'>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-              <Header as='h3' style={{ fontSize: '2em' }}>
-                {'"What a great place to meet people"'}
+              <Link to='/register'><Header as='h3' style={{ fontSize: '2em' }}>
+                Sign up to Comment & Like
               </Header>
+              </Link>
               <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
             </Grid.Column>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-              <Header as='h3' style={{ fontSize: '2em' }}>
-                {'"Become a Local to Comment & Like"'}
-              </Header>
+              <Link to={'/local-register'}><Header as='h3' style={{ fontSize: '2em' }}>
+                Or become a local to share your favorite local spots!
+              </Header></Link>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -112,7 +117,7 @@ function Home() {
                 <Header as='h3' style={{ fontSize: '2em' }}>
                   {'"Community rich city"'}
                 </Header>
-                <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
+                <p style={{ fontSize: '1.33em' }}>Words here.........</p>
               </Grid.Column>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                 <Header as='h3' style={{ fontSize: '2em' }}>
