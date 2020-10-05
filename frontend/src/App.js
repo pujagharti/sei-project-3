@@ -27,16 +27,20 @@ const App = () => {
           <Route path='/login' component={Login} />
           <Route path='/local-register' component={LocalRegister} />
           <Route path='/profile' component={LocalProfile} />
+          
+          <Route path='/features/:feature' component={LocationsIndex} />
 
           <Route path='/features' component={Features} />
           
+          
 
-          <Route
+
+          {/* <Route
             path='/locations/glamping'
             render={(props) => (
               < LocationsIndex {...props} feature={'glamping'} />
             )}
-          />
+          /> */}
 
           <Route path='/locations/:id' component={LocationShow} />
 

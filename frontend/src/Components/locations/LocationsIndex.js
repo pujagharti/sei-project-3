@@ -12,9 +12,21 @@ class LocationsIndex extends React.Component {
 
 
   async componentDidMount() {
-
+    const feature = this.props
+    console.log(feature.match.params.feature)
     const res = await getLocations()
+    console.log(res)
+    const allLocations = res.data
+    console.log(typeof(feature.match.params.feature))
 
+    const filteredLocations = allLocations.filter((location) => {
+      console.log(location.feature)
+      return location.feature.some((feature) => feature === feature.match.params.feature)
+    })
+    console.log('////////', filteredLocations)
+    // console.log('test')
+
+    
     this.setState({
       locationsData: res.data
     })
