@@ -19,24 +19,6 @@ class LocationNew extends React.Component {
     }
   }
 
-  // setCreatedLocations(){
-  //   const { createdLocations } = this.props.userProfile
-  //   this.setState({
-  //     createdLocations
-  //   })
-  // }
-
-  // async componentDidMount() {
-  //   try {
-  //     await this.setCreatedLocations()
-  //     console.log('COMPDIDMOUNT', this.state)
-
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-
   options = [
     { value: 'gowild', label: 'gowild' },
     { value: 'nightlife', label: 'nightlife' },
@@ -73,9 +55,7 @@ class LocationNew extends React.Component {
     try {
       const res = await createNewLocation(this.state.formData)
       const newLocation = res.data
-      // console.log('UPDATED LOCATIONS!!', newLocation)
       const newLocations = [...this.state.createdLocations, newLocation]
-      // console.log('newLOCATIONSALL', newLocations)
 
       this.setState({
         createdLocations: newLocations,
@@ -104,7 +84,6 @@ class LocationNew extends React.Component {
         {
           createdLocations.map((location) => {
             return <LocationCard key={location._id} {...location} />
-
           })
         }
 
@@ -145,8 +124,7 @@ class LocationNew extends React.Component {
     )
 
   }
-
-
+  
 }
 
 export default LocationNew
