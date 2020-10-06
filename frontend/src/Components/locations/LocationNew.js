@@ -5,10 +5,12 @@ import Select from 'react-select'
 import { createNewLocation } from '../../lib/api'
 
 import ImageUpload from '../common/ImageUpload'
+import LocationCard from './LocationCard'
 
 class LocationNew extends React.Component {
 
   state = {
+    createdLocations: this.props.userProfile.createdLocations,
     formData: {
       placeName: '',
       placeDescription: '',
@@ -16,7 +18,6 @@ class LocationNew extends React.Component {
       placePhotos: ['']
     }
   }
-
 
   options = [
     { value: 'gowild', label: 'gowild' },
@@ -37,7 +38,6 @@ class LocationNew extends React.Component {
   handleMultiSelectChange = (selected) => {
     const selectedItems = selected ? selected.map(item => item.value) : []
     const formData = { ...this.state.formData, feature: selectedItems }
-    console.log(formData)
     this.setState({
       formData
     })
@@ -54,7 +54,19 @@ class LocationNew extends React.Component {
 
     try {
       const res = await createNewLocation(this.state.formData)
-      console.log(res)
+      const newLocation = res.data
+      const newLocations = [...this.state.createdLocations, newLocation]
+
+      this.setState({
+        createdLocations: newLocations,
+        formData: {
+          placeName: '',
+          placeDescription: '',
+          feature: [''],
+          placePhotos: ['']
+        }
+      })
+
     } catch (err) {
       console.log(err)
     }
@@ -63,9 +75,18 @@ class LocationNew extends React.Component {
   render() {
 
     const { placeName, placeDescription } = this.state.formData
+    const { createdLocations } = this.state
 
+    if (!createdLocations) return <h1>Just getting that for you</h1>
+    
     return (
       <>
+        {
+          createdLocations.map((location) => {
+            return <LocationCard key={location._id} {...location} />
+          })
+        }
+
         <h1>Add a new place for the community!</h1>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths='equal'>
@@ -103,8 +124,7 @@ class LocationNew extends React.Component {
     )
 
   }
-
-
+  
 }
 
 export default LocationNew

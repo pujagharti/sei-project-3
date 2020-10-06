@@ -1,8 +1,7 @@
 import React from 'react'
 
 import LocationNew from '../locations/LocationNew'
-import LocationCard from '../locations/LocationCard'
-import { createNewLocation, getUserProfile } from '../../lib/api'
+import { getUserProfile } from '../../lib/api'
 
 
 class LocalProfile extends React.Component {
@@ -14,7 +13,6 @@ class LocalProfile extends React.Component {
   async componentDidMount() {
     try {
       const res = await getUserProfile()
-      console.log(res)
 
       this.setState({
         profileData: res.data
@@ -28,22 +26,12 @@ class LocalProfile extends React.Component {
   render() {
     if (!this.state.profileData) return <h1>Just getting that for you</h1>
 
-    const { createdLocations } = this.state.profileData
-
     return (
       <>
         <p>{this.state.profileData.email}</p>
         <p>{this.state.profileData.bio}</p>
 
-        {
-          createdLocations.map((location) => {
-            return <LocationCard key={location._id} {...location} />
-
-          })
-        }
-
-
-        <LocationNew />
+        <LocationNew userProfile={this.state.profileData}/>
       </>
     )
   }
