@@ -1,11 +1,11 @@
 import React from 'react'
-import { Form, Input, TextArea, Button } from 'semantic-ui-react'
+import { Form, Input, TextArea, Button, Segment, Header, Grid } from 'semantic-ui-react'
 import Select from 'react-select'
 
 import { createNewLocation } from '../../lib/api'
 
 import ImageUpload from '../common/ImageUpload'
-import LocationCard from './LocationCard'
+import LocalLocationCard from '../locals/LocalLocationCard'
 
 class LocationNew extends React.Component {
 
@@ -78,14 +78,19 @@ class LocationNew extends React.Component {
     const { createdLocations } = this.state
 
     if (!createdLocations) return <h1>Just getting that for you</h1>
-    
+
     return (
       <>
-        {
-          createdLocations.map((location) => {
-            return <LocationCard key={location._id} {...location} />
-          })
-        }
+        <Segment>
+          <Header>Your locations</Header>
+          <Grid>
+          {
+            createdLocations.map((location) => {
+              return <LocalLocationCard key={location._id} {...location} />
+            })
+          }
+          </Grid>
+        </Segment>
 
         <h1>Add a new place for the community!</h1>
         <Form onSubmit={this.handleSubmit}>
@@ -124,7 +129,7 @@ class LocationNew extends React.Component {
     )
 
   }
-  
+
 }
 
 export default LocationNew

@@ -115,3 +115,28 @@ $dark-grey: #333;
   background-color: $dark-grey;
   color: white;
 }
+
+
+//Start of LocalProfile section
+
+.profile-outer-container{
+  padding: 10px
+}
+
+.header.profile-header{
+  margin-left: 15px;
+}
+
+.local-profile-image{
+  margin-left: 10px;
+  border: 1px solid white;
+  width: 75%;
+}
+
+.header.local-profile-name{
+  padding-top: 15px;
+}
+
+.local-info-container{
+  background-color: #888;
+}
