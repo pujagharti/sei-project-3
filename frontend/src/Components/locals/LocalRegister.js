@@ -78,8 +78,8 @@ class LocalRegister extends React.Component {
     if (authenticated) {
 
       try {
-        // const dataToSend = ({ bio: this.bio, isLocal: true, userimage: this.userimage })
-        const dataToSend = ({ ...this.state.formData, isLocal: true })
+        const dataToSend = ({ bio: this.bio, isLocal: true, userimage: this.userimage })
+        // const dataToSend = ({ ...this.state.formData, isLocal: true })
         const res = await updateUser(dataToSend)
         console.log(res)
         this.setState({
