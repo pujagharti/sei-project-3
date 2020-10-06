@@ -149,5 +149,14 @@ $dark-grey: #333;
 }
 
 .local-info-container{
-  background-color: #888;
+  background-color: #CCC;
+}
+
+.card.popup-card{
+  height: 300px;
+  overflow: hidden;
+}
+
+.description.local-place-description{
+  overflow: hidden;
 }

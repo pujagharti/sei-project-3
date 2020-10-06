@@ -83,12 +83,21 @@ class LocationNew extends React.Component {
       <>
         <Segment>
           <Header>Your locations</Header>
-          <Grid>
-          {
-            createdLocations.map((location) => {
-              return <LocalLocationCard key={location._id} {...location} />
-            })
+          {createdLocations.length === 0 &&
+            <Header as='h1'>
+                You haven't posted any locations yet.
+                Add some below.
+            </Header>
           }
+          <Grid>
+            {
+              createdLocations.map((location) => {
+                return <LocalLocationCard
+                  key={location._id}
+                  {...location}
+                />
+              })
+            }
           </Grid>
         </Segment>
 

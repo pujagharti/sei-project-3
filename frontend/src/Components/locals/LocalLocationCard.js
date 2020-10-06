@@ -20,18 +20,18 @@ const LocalLocationCard = (props) => {
     <Grid.Column width={4}>
       <Popup
         trigger={
-          <Card>
-            <div style={divStyle}></div>
+          <Card className='popup-card'>
+            <Link
+              to={`/locations/${_id}`}
+              style={{ textDecoration: 'none', color: 'black' }}
+            >
+              <div style={divStyle}></div>
+            </Link>
             <Card.Content>
-              <Link 
-                to={`/locations/${_id}`} 
-                style={{ textDecoration: 'none', color: 'black' }}
-              >
-                <Card.Header>{placeName}</Card.Header>
-                <Card.Description>
-                  {placeDescription}
-                </Card.Description>
-              </Link>
+              <Card.Header>{placeName}</Card.Header>
+              <Card.Description className='local-place-description'>
+                {placeDescription}
+              </Card.Description>
             </Card.Content>
           </Card>
         }

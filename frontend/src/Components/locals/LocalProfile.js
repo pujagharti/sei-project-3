@@ -27,7 +27,7 @@ class LocalProfile extends React.Component {
   render() {
     if (!this.state.profileData) return <h1>Just getting that for you</h1>
 
-    const { username, userimage, bio } = this.state.profileData
+    const { username, userimage, bio, createdLocations } = this.state.profileData
 
     return (
       <div className='profile-outer-container'>
@@ -40,7 +40,12 @@ class LocalProfile extends React.Component {
             <Header as='h2' className='local-profile-name'>
               {username}
             </Header>
-            <Header as='h4'>{bio}</Header>
+            <Header as='h5'>A bit about you <br/>
+              <small>This is shared with the community</small>
+              <br/><br/>
+              {bio}
+            </Header>
+            <Header as='H5'>You've posted {createdLocations.length} locations</Header>
           </GridColumn>
         </Grid>
 
