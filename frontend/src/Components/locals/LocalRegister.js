@@ -1,12 +1,9 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { Form, Input, TextArea, Button, Grid, Header, Image } from 'semantic-ui-react'
-
 import { registerUser, updateUser, getUserProfile } from '../../lib/api'
 import { isAuthenticated } from '../../lib/auth'
-
 import ImageUpload from '../common/ImageUpload'
-
 class LocalRegister extends React.Component {
   state = {
     formData: {
@@ -19,11 +16,9 @@ class LocalRegister extends React.Component {
     },
     redirect: null
   }
-
   authenticated() {
     return isAuthenticated()
   }
-
   async componentDidMount() {
     try {
       console.log('DidMount')
@@ -37,8 +32,6 @@ class LocalRegister extends React.Component {
       console.log(err)
     }
   }
-
-
   handleChange = (e) => {
     // console.log(e.target.value)
     const formData = {
@@ -49,13 +42,11 @@ class LocalRegister extends React.Component {
       formData
     })
   }
-
   handleImageChange = url => {
     console.log('uploaded, and url:', url)
     const formData = { ...this.state.formData, userimage: url }
     this.setState({ formData })
   }
-
   handleSubmit = async (e) => {
     e.preventDefault()
     const authenticated = this.authenticated()
@@ -74,9 +65,7 @@ class LocalRegister extends React.Component {
         console.log(err)
       }
     }
-
     if (authenticated) {
-
       try {
         const dataToSend = ({ bio: this.bio, isLocal: true, userimage: this.userimage })
         // const dataToSend = ({ ...this.state.formData, isLocal: true })
@@ -90,14 +79,11 @@ class LocalRegister extends React.Component {
       }
     }
   }
-
   render() {
     const { username, email, password, passwordConfirmation, bio } = this.state.formData
-
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
     }
-
     return (
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
@@ -143,12 +129,9 @@ class LocalRegister extends React.Component {
                   />
                 </div>
               }
-
-
               {this.authenticated() &&
                 <h3>Thanks for your interest in contributing! Just a bit more about you, and we can get your profile set up </h3>
               }
-
               <Form.Field
                 control={TextArea}
                 label='About'
@@ -169,7 +152,5 @@ class LocalRegister extends React.Component {
       </Grid>
     )
   }
-
-
 }
 export default LocalRegister
