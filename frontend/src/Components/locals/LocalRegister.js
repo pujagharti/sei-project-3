@@ -102,69 +102,71 @@ class LocalRegister extends React.Component {
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as='h2' color='black' textAlign='center'>
-            <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' /> 
+            <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
         Register as a Local
           </Header>
-          <Form onSubmit={this.handleSubmit}>
-            {!this.authenticated() &&
-            <Form.Group widths='equal'>
-              <Form.Field 
-                control={Input}
-                label='User name'
-                placeholder='User name'
+          <div className='ui container size mini'>
+            <Form onSubmit={this.handleSubmit}>
+              {!this.authenticated() &&
+                <Form.Group widths='equal'>
+                  <Form.Field
+                    control={Input}
+                    label='User name'
+                    placeholder='User name'
+                    onChange={this.handleChange}
+                    name='username'
+                    value={username}
+                  />
+                  <Form.Field
+                    control={Input}
+                    label='Email'
+                    placeholder='Email'
+                    onChange={this.handleChange}
+                    name='email'
+                    value={email}
+                  />
+                  <Form.Field
+                    control={Input}
+                    label='Password'
+                    placeholder='Password'
+                    onChange={this.handleChange}
+                    name='password'
+                    value={password}
+                  />
+                  <Form.Field
+                    control={Input}
+                    label='Password confirmation'
+                    placeholder='Password confirmation'
+                    onChange={this.handleChange}
+                    name='passwordConfirmation'
+                    value={passwordConfirmation}
+                  />
+                </Form.Group>
+              }
+              <Form.Group inline>
+
+              </Form.Group>
+
+              {this.authenticated() &&
+                <h3>Thanks for your interest in contributing! Just a bit more about you, and we can get your profile set up </h3>
+              }
+
+              <Form.Field
+                control={TextArea}
+                label='About'
+                placeholder='Tell us more about you and your location...'
                 onChange={this.handleChange}
-                name='username'
-                value={username}
+                name='bio'
+                value={bio}
               />
               <Form.Field
-                control={Input}
-                label='Email'
-                placeholder='Email'
-                onChange={this.handleChange}
-                name='email'
-                value={email}
+                control={ImageUpload}
+                onChange={this.handleImageChange}
+                label='Profile Image'
               />
-              <Form.Field
-                control={Input}
-                label='Password'
-                placeholder='Password'
-                onChange={this.handleChange}
-                name='password'
-                value={password}
-              />
-              <Form.Field
-                control={Input}
-                label='Password confirmation'
-                placeholder='Password confirmation'
-                onChange={this.handleChange}
-                name='passwordConfirmation'
-                value={passwordConfirmation}
-              />
-            </Form.Group>
-            }
-            <Form.Group inline>
-
-            </Form.Group>
-
-            {this.authenticated() &&
-              <h3>Thanks for your interest in contributing! Just a bit more about you, and we can get your profile set up </h3>
-            }
-
-            <Form.Field
-              control={TextArea}
-              label='About'
-              placeholder='Tell us more about you and your location...'
-              onChange={this.handleChange}
-              name='bio'
-              value={bio}
-            />
-            <Form.Field
-              control={ImageUpload}
-              onChange={this.handleImageChange}
-              label='Profile Image'
-            />
-            <Form.Field control={Button}>Submit</Form.Field>
-          </Form>
+              <Form.Field control={Button}>Submit</Form.Field>
+            </Form>
+          </div>
         </Grid.Column>
       </Grid>
     )
