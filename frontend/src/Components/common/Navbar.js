@@ -25,18 +25,18 @@ class Navbar extends React.Component {
     }
   }
 
-  async componentDidUpdate(){
-    if (!isAuthenticated() || this.state.isLocal ) return
-    try {
-      const res = await getUserProfile()
-      console.log('UPDATING!', res.data.isLocal)
-      this.setState({
-        isLocal: res.data.isLocal
-      })
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // async componentDidUpdate(){
+  //   if (!isAuthenticated() || this.state.isLocal ) return
+  //   try {
+  //     const res = await getUserProfile()
+  //     console.log('UPDATING!', res.data.isLocal)
+  //     this.setState({
+  //       isLocal: res.data.isLocal
+  //     })
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name })
