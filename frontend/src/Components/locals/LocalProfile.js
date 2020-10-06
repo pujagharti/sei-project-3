@@ -1,8 +1,8 @@
 import React from 'react'
+import { Header, Image, Grid, GridColumn } from 'semantic-ui-react'
 
 import LocationNew from '../locations/LocationNew'
-import LocationCard from '../locations/LocationCard'
-import { createNewLocation, getUserProfile } from '../../lib/api'
+import { getUserProfile } from '../../lib/api'
 
 
 class LocalProfile extends React.Component {
@@ -14,7 +14,6 @@ class LocalProfile extends React.Component {
   async componentDidMount() {
     try {
       const res = await getUserProfile()
-      console.log(res)
 
       this.setState({
         profileData: res.data
@@ -28,23 +27,30 @@ class LocalProfile extends React.Component {
   render() {
     if (!this.state.profileData) return <h1>Just getting that for you</h1>
 
-    const { createdLocations } = this.state.profileData
+    const { username, userimage, bio, createdLocations } = this.state.profileData
 
     return (
-      <>
-        <p>{this.state.profileData.email}</p>
-        <p>{this.state.profileData.bio}</p>
+      <div className='profile-outer-container'>
+        <Header as='h2' className='profile-header'>Your Profile</Header>
+        <Grid className='local-info-container'>
+          <Grid.Column width={4}>
+            <Image circular src={userimage} className='local-profile-image' />
+          </Grid.Column>
+          <GridColumn width={9}>
+            <Header as='h2' className='local-profile-name'>
+              {username}
+            </Header>
+            <Header as='h5'>A bit about you <br/>
+              <small>This is shared with the community</small>
+              <br/><br/>
+              {bio}
+            </Header>
+            <Header as='H5'>You've posted {createdLocations.length} locations</Header>
+          </GridColumn>
+        </Grid>
 
-        {
-          createdLocations.map((location) => {
-            return <LocationCard key={location._id} {...location} />
-
-          })
-        }
-
-
-        <LocationNew />
-      </>
+        <LocationNew userProfile={this.state.profileData} />
+      </div>
     )
   }
 

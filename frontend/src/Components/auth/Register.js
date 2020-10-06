@@ -1,7 +1,9 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 import { Button, Form, Grid, Header, Image } from 'semantic-ui-react'
 
 import { registerUser } from '../../lib/api'
+import ImageUpload from '../common/ImageUpload'
 
 class Register extends React.Component {
 
@@ -11,11 +13,14 @@ class Register extends React.Component {
       username: '',
       email: '',
       password: '',
-      passwordConfirmation: ''
-    }
+      passwordConfirmation: '',
+      userimage: ''
+    },
+    redirect: null
   }
 
   handleChange = (e) => {
+    // console.log(e.target.value)
     const formData = {
       ...this.state.formData,
       [e.target.name]: e.target.value
@@ -23,23 +28,37 @@ class Register extends React.Component {
     this.setState({ formData })
   }
 
-  handleSubmit = async (e) => {
+  handleImageChange = url => {
+    console.log('uploaded, and url:', url)
+    const formData = { ...this.state.formData, userimage: url }
+    this.setState({ formData })
+  }
 
+  handleSubmit = async (e) => {
     e.preventDefault()
+    const dataToSend = ({ ...this.state.formData })
+    console.log(dataToSend)
     try {
-      await registerUser(this.state.formData)
-      console.log('RUNNING!')
+      const response = await registerUser(dataToSend)
+      console.log(response)
+      if (response.status === 201){
+        this.setState({
+          redirect: '/login'
+        })
+      }
     } catch (err) {
       console.log(err)
     }
   }
 
-
   render() {
     const { username, email, password, passwordConfirmation } = this.state.formData
 
-    return (
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
 
+    return (
       <>
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
@@ -81,15 +100,22 @@ class Register extends React.Component {
                     name='passwordConfirmation'
                   />
                 </Form.Field>
-                <div className='ui animated button' tabIndex='0'>
-                  <div className='visible content'>
-                    <Button className='tiny ui button'>Submit</Button>
+                <Form.Field
+                  control={ImageUpload}
+                  onChange={this.handleImageChange}
+                  label='Profile Image'
+                />
+                <Form.Field 
+                  control={Button}>
+                  <div className='tiny ui animated button' tabIndex='0'>
+                    <div className='visible content'>
+                      <div className='tiny ui button'>Submit</div>
+                    </div>
+                    <div className='hidden content'>
+                      <i className='send icon'></i>
+                    </div>
                   </div>
-                  <div className='hidden content'>
-                    <i className='send icon'></i>
-                  </div>
-                </div>
-                {/* <Button type='submit'>Submit</Button> */}
+                </Form.Field>
               </Form>
             </div>
           </Grid.Column>

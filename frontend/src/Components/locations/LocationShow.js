@@ -1,6 +1,8 @@
 import React from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import { Button, Grid, Segment, Header, Container, Divider } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 import { getSingleLocation } from '../../lib/api'
 import CarouselSlide from './CarouselSlide'
@@ -34,7 +36,76 @@ class LocationShow extends React.Component {
 
     return (
       <>
-        <div className='location-show-container'>
+        <Segment style={{ padding: '8em 0em' }} vertical>
+          <Grid container stackable verticalAlign='middle'>
+            <Grid.Row>
+              <Grid.Column width={8}>
+                <Header style={{ fontSize: '2em' }}>
+                  <p>{placeName}</p>
+                  <p>{placeDescription}</p>
+                </Header>
+                <p style={{ fontSize: '1.33em' }}>
+                  Has:<br></br>
+                  {
+                    features.map((element, index) => {
+                      return <span key={index}>{element}</span>
+                    })
+                  }
+                </p>
+
+                <p style={{ fontSize: '1.33em' }}>Amenities:
+                  <br></br>
+                  {
+                    amenities.map((amenity, index) => {
+                      return <span key={index}>{amenity}<br></br></span>
+                    })
+                  }
+                </p>
+       
+              </Grid.Column>
+              <Grid.Column floated='right' width={8}>
+                <Carousel showThumbs={false}>
+                  {placePhotos.map((photo, index) => {
+                    return <CarouselSlide key={index} photo={photo} />
+                  })}
+                </Carousel>
+              </Grid.Column>
+            </Grid.Row>
+
+            <Grid.Row>
+
+              <Button
+                fluid
+                animated='fade'
+                as={Link}
+                to='/features'
+              >
+                <Button.Content visible>Discover More Locations</Button.Content>
+                <Button.Content hidden>Back to Features</Button.Content>
+              </Button>
+            </Grid.Row>
+          </Grid>
+
+          <Segment vertical>
+            <Divider
+              as='h4'
+              className='header'
+              horizontal
+              style={{ margin: '1em 0em', textTransform: 'uppercase' }}
+            >
+              <a href='#'>Reviews</a>
+            </Divider>
+            <Container text>
+              <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                <LocationComments locationId={locationId} comments={comments} />
+                <LocalPublic {...local} />
+              </Grid.Column>
+            </Container>
+          </Segment>
+        </Segment>
+
+
+        {/* <div className='location-show-container'>
           <div className='carousel-container'>
             <Carousel showThumbs={false}>
               {placePhotos.map((photo, index) => {
@@ -44,10 +115,10 @@ class LocationShow extends React.Component {
           </div>
 
           <div className='location-show-info'>
-            
+
             <h1>{placeName}</h1>
             <h2>{placeDescription}</h2>
-            
+
             <p>Has:
               {
                 features.map((element, index) => {
@@ -63,12 +134,22 @@ class LocationShow extends React.Component {
                 })
               }
             </p>
+            <Button
+              fluid
+              animated='fade'
+              as={Link}
+              to='/features'
+            >
+              <Button.Content visible>Discover More Locations</Button.Content>
+              <Button.Content hidden>Back to Features</Button.Content>
+            </Button>
           </div>
         </div>
-        
-        <LocationComments locationId={locationId} comments={comments}/>
-        
-        <LocalPublic { ...local }/>      
+
+
+        <LocationComments locationId={locationId} comments={comments} />
+
+        <LocalPublic {...local} /> */}
       </>
     )
   }

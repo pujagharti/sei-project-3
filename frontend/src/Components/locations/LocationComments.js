@@ -35,9 +35,7 @@ class LocationComments extends React.Component {
     })
   }
 
-
   handleDropdownChange = (e, { value }) => this.setState({ ratingValue: value })
-
 
   handleSubmit = async (e) => {
     e.preventDefault()

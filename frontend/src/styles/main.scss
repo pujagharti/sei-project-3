@@ -1,5 +1,4 @@
 //HOME PAGE 
-// .container-one {
 //   background-color: red;
 // }
 // .container-two {
@@ -9,47 +8,71 @@
 // .container-three {
 //   background-color: green;
 // }
+
+$dark-grey: #333;
+
+
+// .images-bottom {
+//   height: 100px;
+//   background-size: cover;
+//   object-fit:scale-down;
+// }
 .ui.card, body .ui.cards>.card{
   box-shadow: none;
-  font-size: 24px;
   width: 400px;
 }
 
+//Start of Home Component
 
-// START of Features Component
-
-.features-container{
-  width: 100vw;
-  height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  .features-glamping,
-  .features-activities,
-  .features-events{
-    width: 100%;
-    flex-grow: 1;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .features-glamping{
-    background-color: black;
-    color: white;
- }
-
- .features-events{
-  background-color: black;
-  color: white;
-}
+.home-images{
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  border-radius: 5px;
 }
 
-//END of Features Component 
+#street-img{
+  background-image: url('https://malloryontravel.com/wp-content/uploads/2014/06/Iain-Mallory-300-101-1-1024x697.jpg');
+}
+
+#culture-img{
+  background-image: url('https://cdn.theculturetrip.com/wp-content/uploads/2017/12/33554467340_65375926e8_k.jpg');
+}
+
+#park-img{
+  background-image: url('https://www.lemontroyal.qc.ca/images/nouvelles/credit_PixupMTL.jpg');
+}
+
+.home-card-imgs{
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+}
+
+#parks-card-img{
+  background-image: url('https://sofitel.accor.com/destinations/imagerie/saint-joseph-oratory-304x253.jpg');
+}
+
+#wild-card-img{
+  background-image: url('https://www.routedurichelieu.ca/fr/wp-content/uploads/2012/06/mont-st-hilaire2.jpg');
+}
+
+#hiking-card-img{
+  background-image: url('https://www.lemontroyal.qc.ca/images/amis-s-montigne-2009-randonnee-sentier-escarpement-pano-2018-07-12-exAKqcSevEJ4TmVyr8Xoz1vI.jpg');
+}
+
+#bar-card-img{
+  background-image: url('https://i2-prod.chroniclelive.co.uk/incoming/article16517923.ece/ALTERNATES/s615/1_BHR_nec270619cosy_03.jpg');
+}
+
+#summer-card-img{
+  background-image: url('https://www.mtlblog.com/u/2018/06/06/240758774f069d072c9fc07fe428a275f22e5a0d.jpg_1200x630.jpg');
+}
+
+#gowild-card-img{
+  background-image: url('https://www.zastavki.com/pictures/originals/2015/World___Canada_Autumn_in_the_mountains_of_Canada_095887_.jpg');
+}
+//End of Home Component
 
 
 
@@ -65,19 +88,18 @@
 }
 
 .locations-index-cards{
-  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
   width: 60%;
-  background-color: black;
+  background-color: white;
 }
 
 
 .locations-map{
   border: 1px solid red;
 }
-
-
-
-//END of Locations Index Component
 
 
 //START of LocatioShow component
@@ -93,4 +115,48 @@
 
 .location-show-info{
   width: 40%;
+}
+
+
+//Start of Navbar section
+
+#active-nav-div,
+#active-nav-btn{
+  border: 1px solid $dark-grey;
+  background-color: $dark-grey;
+  color: white;
+}
+
+
+//Start of LocalProfile section
+
+.profile-outer-container{
+  padding: 10px
+}
+
+.header.profile-header{
+  margin-left: 15px;
+}
+
+.local-profile-image{
+  margin-left: 10px;
+  border: 1px solid white;
+  width: 75%;
+}
+
+.header.local-profile-name{
+  padding-top: 15px;
+}
+
+.local-info-container{
+  background-color: #CCC;
+}
+
+.card.popup-card{
+  height: 300px;
+  overflow: hidden;
+}
+
+.description.local-place-description{
+  overflow: hidden;
 }

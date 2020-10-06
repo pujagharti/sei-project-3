@@ -17,7 +17,7 @@ const commentSchema = new mongoose.Schema({
 
 const locationsSchema = new mongoose.Schema({
   
-  placeName: { type: String, unique: true },
+  placeName: { type: String },
   placeDescription: { type: String },
   placePhotos: [{ type: String }],
   amenities: [{ type: String }],

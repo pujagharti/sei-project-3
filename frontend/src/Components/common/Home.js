@@ -1,77 +1,170 @@
 import React from 'react'
-import { Image, Card, Grid } from 'semantic-ui-react'
+import { Grid, Header, Segment, Card, List, Container, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 function Home() {
 
   return (
     <>
-      <div className='container-one'>
-        <div className='ui centered card'>
-          <Card>
-            <Card.Content>
-              <Card.Header>Discover your Montreal</Card.Header>
-            </Card.Content>
-          </Card>
-        </div>
+      <Segment style={{ padding: '8em 0em' }} vertical>
+        <Grid container stackable verticalAlign='middle'>
+          <Grid.Row>
+            <Grid.Column width={9}>
+              <Header as='h3' style={{ fontSize: '2em' }}>
+                Discover your Montreal
+              </Header>
+              <p style={{ fontSize: '1.33em' }}>
+                A city that is in love with festivals, the arts, good food, living well and enjoying life to the hilt
+              </p>
+              <Header as='h3' style={{ fontSize: '2em' }}>
+                We aim to bring people together to share meaningful experiences
+              </Header>
+              <p style={{ fontSize: '1.33em' }}>
+                Share your
+              </p>
+              <Link to={'/features'}>
+                <Button type='submit'>Find what's on</Button>
+              </Link>
+            </Grid.Column>
+
+
+            <Grid.Column floated='right' width={6}>
+              <div id='park-img' className='home-images'></div>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Segment>
+
+      <Segment style={{ padding: '0em' }} vertical>
+        <Grid celled='internally' columns='equal' stackable>
+          <Grid.Row textAlign='center'>
+            <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+              <Link to='/register'><Header as='h3' style={{ fontSize: '2em' }}>
+                Sign up to Comment & Like
+              </Header>
+              </Link>
+              <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
+            </Grid.Column>
+            <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+              <Link to={'/local-register'}><Header as='h3' style={{ fontSize: '2em' }}>
+                Or become a local to share your favorite local spots!
+              </Header></Link>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Segment>
+
+      <Segment>
         <Grid>
+          <Grid.Column floated='left' width={7}>
+            <div id='street-img' className='home-images'></div>
+          </Grid.Column>
+          <Grid.Column floated='right' width={7}>
+            <div id='culture-img' className='home-images'></div>
+            {/* <Image bordered rounded size='large' src='https://cdn.theculturetrip.com/wp-content/uploads/2017/12/33554467340_65375926e8_k.jpg' /> */}
+          </Grid.Column>
+        </Grid>
+      </Segment>
+
+      <Segment style={{ padding: '0em' }} vertical>
+        <Grid celled='internally' columns='equal' stackable>
+          <Grid.Row textAlign='center'>
+            <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+              <Header as='h3' style={{ fontSize: '2em' }}>
+                Join Your Community Today!
+              </Header>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Segment>
+
+      <Segment>
+        <Grid >
           <Grid.Row columns={3}>
             <Grid.Column>
-              <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ81DZpX9_zzU7Qe3oRf3VDrE7JWWrL7O2I8g&usqp=CAU' />
+              <Card>
+                <div id='parks-card-img' className='home-card-imgs'></div>
+                <Card.Content>
+                  <Card.Header>St Joseph Oratory</Card.Header>
+                  <Card.Description>
+                    What started out as a small chapel has since become one of the world’s most visited sacred spaces and one of Montréal’s most iconic landmarks.
+                  </Card.Description>
+                </Card.Content>
+              </Card>
             </Grid.Column>
             <Grid.Column>
-              <Image src='https://cdn.tourradar.com/s3/tour/645x430/102695_5efbd8dc97a69.jpg' />
-            </Grid.Column>
-            <Grid.Column>
-              <Image src='https://images.dailyhive.com/20190603112344/montreal-circus-festival-rue-cirque.jpg' />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </div>
-      <div className='container-two'>
-        <Grid>
-          <Grid.Row columns={1}>
-            <Grid.Column>
-              <div className='ui centered card'>
-                <Card>
-                  <Card.Content>
-                    <Card.Header>Join your community</Card.Header>
-                  </Card.Content>
-                </Card>
-              </div>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+              <Card>
+                <div id='wild-card-img' className='home-card-imgs'></div>
 
-        <Grid>
-          <Grid.Row columns={3}>
-            <Grid.Column>
-              <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ81DZpX9_zzU7Qe3oRf3VDrE7JWWrL7O2I8g&usqp=CAU' />
+                <Card.Content>
+                  <Card.Header>Mont Saint-Hilaire</Card.Header>
+                  <Card.Description>
+                    Just outside of Montreal, Mont Saint-Hilaire nature reserve is another great local spot for those who like their hikes to be more scenic than strenuous, with relatively easy, straightforward trails open all year round.
+                  </Card.Description>
+                </Card.Content>
+              </Card>
             </Grid.Column>
             <Grid.Column>
-              <Image src='https://cdn.tourradar.com/s3/tour/645x430/102695_5efbd8dc97a69.jpg' />
-            </Grid.Column>
-            <Grid.Column>
-              <Image src='https://images.dailyhive.com/20190603112344/montreal-circus-festival-rue-cirque.jpg' />
+              <Card>
+                <div id='hiking-card-img' className='home-card-imgs'></div>
+                <Card.Content>
+                  <Card.Header>Mont Royal Park</Card.Header>
+                  <Card.Description>
+                    The centerpiece and the namesake of Montreal, this small mountain offers sightseeing in every direction as you explore every angle.
+                  </Card.Description>
+                </Card.Content>
+              </Card>
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </div>
+      </Segment>
 
-      <div className='container-three'>
-        <Grid>
-          <Grid.Row columns={1}>
-            <Grid.Column>
-              <div className='ui centered card'>
-                <Card>
-                  <Card.Content>
-                    <Card.Header>and become a local to share your next experience!</Card.Header>
-                  </Card.Content>
-                </Card>
-              </div>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </div>
+      <Segment>
+        <Segment style={{ padding: '0em' }} vertical>
+          <Grid celled='internally' columns='equal' stackable>
+            <Grid.Row textAlign='center'>
+              <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                <Header as='h3' style={{ fontSize: '2em' }}>
+                  {'"Community rich city"'}
+                </Header>
+                <p style={{ fontSize: '1.33em' }}>Words here.........</p>
+              </Grid.Column>
+              <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                <Header as='h3' style={{ fontSize: '2em' }}>
+                  {'"Line here about ......"'}
+                </Header>
+                <p style={{ fontSize: '1.33em' }}>
+                  Come
+                </p>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
+      </Segment>
+      <Segment inverted vertical style={{ padding: '5em 0em' }}>
+        <Container>
+          <Grid divided inverted stackable>
+            <Grid.Row>
+              <Grid.Column width={3}>
+                <Header inverted as='h4' content='About' />
+                <List link inverted>
+                  <List.Item as='a'>Sitemap</List.Item>
+                  <List.Item as='a'>Contact Us</List.Item>
+                </List>
+              </Grid.Column>
+              <Grid.Column width={3}>
+                <Header inverted as='h4' content='Services' />
+                <List link inverted>
+                  <List.Item as='a'>Map</List.Item>
+
+                </List>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
+      </Segment>
+
+
     </>
 
   )

@@ -1,13 +1,11 @@
 import React from 'react'
-<<<<<<< HEAD
 import { Redirect } from 'react-router-dom'
-import { Form, Input, TextArea, Button, Grid, Header } from 'semantic-ui-react'
-=======
 import { Form, Input, TextArea, Button, Grid, Header, Image } from 'semantic-ui-react'
->>>>>>> homepage-styling
 
 import { registerUser, updateUser, getUserProfile } from '../../lib/api'
 import { isAuthenticated } from '../../lib/auth'
+
+import ImageUpload from '../common/ImageUpload'
 
 class LocalRegister extends React.Component {
   state = {
@@ -16,7 +14,10 @@ class LocalRegister extends React.Component {
       username: '',
       password: '',
       passwordConfirmation: '',
-      bio: ''
+      bio: '',
+      userimagecurrent: '',
+      userimage: '',
+      isLocal: false
     },
     redirect: null
   }
@@ -27,20 +28,27 @@ class LocalRegister extends React.Component {
 
   async componentDidMount() {
     try {
-      const res = await getUserProfile()
-      if (this.authenticated()) {
-        this.setState({
-          formData: res.data
-        })
+      console.log('DidMount')
+      if (this.authenticated()){
+        const res = await getUserProfile()
+        console.log(res.data.username, res.data.isLocal, res.data.userimage)
+        const formData = { 
+          ...this.state.formData, 
+          username: res.data.username, 
+          bio: res.data.bio, 
+          userimagecurrent: res.data.userimage,
+          isLocal: res.data.isLocal 
+        }
+        this.setState({ formData })
       }
-
+      // return isAuthenticated()
     } catch (err) {
       console.log(err)
     }
   }
 
-
   handleChange = (e) => {
+    console.log(e.target.name, ': ', e.target.value)
     const formData = {
       ...this.state.formData,
       [e.target.name]: e.target.value
@@ -50,15 +58,21 @@ class LocalRegister extends React.Component {
     })
   }
 
+  handleImageChange = url => {
+    console.log('uploaded, and url:', url)
+    const formData = { ...this.state.formData, userimage: url }
+    this.setState({ formData })
+  }
+
   handleSubmit = async (e) => {
     e.preventDefault()
     const authenticated = this.authenticated()
+    // console.log(authenticated, this.state.formData)
     const dataToSend = ({ ...this.state.formData, isLocal: true })
-
     if (!authenticated) {
       try {
-        await registerUser(dataToSend)
-
+        const response = await registerUser(dataToSend)
+        console.log(response)
         this.setState({
           redirect: '/login'
         })
@@ -71,24 +85,20 @@ class LocalRegister extends React.Component {
     if (authenticated) {
 
       try {
+        const dataToSend = ({ bio: this.state.formData.bio, isLocal: true, userimage: this.state.formData.userimage })
         const res = await updateUser(dataToSend)
         console.log(res)
-
         this.setState({
           redirect: '/profile'
         })
-
       } catch (err) {
         console.log(err)
       }
     }
-
-
-
   }
 
   render() {
-    const { username, email, password, passwordConfirmation, bio } = this.state.formData
+    const { username, email, password, passwordConfirmation, bio, userimagecurrent, userimage, isLocal } = this.state.formData
 
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
@@ -98,55 +108,13 @@ class LocalRegister extends React.Component {
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as='h2' color='black' textAlign='center'>
-<<<<<<< HEAD
-            {/* <Image src='/logo.png' />  */}
-          Log-in to your account
-        </Header>
+            <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' /> 
+            {(!isLocal) ? 'Register as a Local' : 'Update your local profile'}
+          </Header>
           <Form onSubmit={this.handleSubmit}>
             {!this.authenticated() &&
-              <Form.Group widths='equal'>
-                <Form.Field
-                  control={Input}
-                  label='User name'
-                  placeholder='User name'
-                  onChange={this.handleChange}
-                  name='username'
-                  value={username}
-                />
-                <Form.Field
-                  control={Input}
-                  label='Email'
-                  placeholder='Email'
-                  onChange={this.handleChange}
-                  name='email'
-                  value={email}
-                />
-                <Form.Field
-                  control={Input}
-                  label='Password'
-                  placeholder='Password'
-                  onChange={this.handleChange}
-                  name='password'
-                  value={password}
-                />
-                <Form.Field
-                  control={Input}
-                  label='Password confirmation'
-                  placeholder='Password confirmation'
-                  onChange={this.handleChange}
-                  name='passwordConfirmation'
-                  value={passwordConfirmation}
-                />
-              </Form.Group>
-            }
-
-=======
-            <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' /> 
-        Register as a Local
-          </Header>
-          <Form>
             <Form.Group widths='equal'>
-              <Form.Field
+              <Form.Field 
                 control={Input}
                 label='User name'
                 placeholder='User name'
@@ -161,7 +129,6 @@ class LocalRegister extends React.Component {
                 onChange={this.handleChange}
                 name='email'
                 value={email}
-
               />
               <Form.Field
                 control={Input}
@@ -170,8 +137,6 @@ class LocalRegister extends React.Component {
                 onChange={this.handleChange}
                 name='password'
                 value={password}
-
-
               />
               <Form.Field
                 control={Input}
@@ -180,28 +145,31 @@ class LocalRegister extends React.Component {
                 onChange={this.handleChange}
                 name='passwordConfirmation'
                 value={passwordConfirmation}
-
               />
             </Form.Group>
->>>>>>> homepage-styling
+            }
             <Form.Group inline>
 
             </Form.Group>
 
             {this.authenticated() &&
-              <h3>Thanks for your interest in contributing! Just a bit more about you, and we can get your profile set up </h3>
+              <h3>{username} Thank you for your interest in contributing! Just a bit more about you, and we can get your profile set up </h3>
             }
 
             <Form.Field
               control={TextArea}
               label='About'
-              placeholder='Tell us more about you and your location...'
+              placeholder='Tell us more about you ...'
               onChange={this.handleChange}
               name='bio'
               value={bio}
-
             />
-
+            <Form.Field
+              control={ImageUpload}
+              onChange={this.handleImageChange}
+              label='Profile Image'
+            />
+            {(userimagecurrent && !userimage) ? <Image src={userimagecurrent}/>  : ''}
             <Form.Field control={Button}>Submit</Form.Field>
           </Form>
         </Grid.Column>
