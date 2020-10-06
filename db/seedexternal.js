@@ -2,11 +2,12 @@
 const mongoose = require('mongoose')
 const { dbURI  } = require('../config/environment')
 
-const faker = require('faker')
+// const faker = require('faker')
 const User = require('../models/user')
 const Location = require('../models/location')
 const locationData = require('./data/locations')
 
+const faker = require('faker/locale/fr')
 
 mongoose.connect(
   dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, 
@@ -28,8 +29,8 @@ mongoose.connect(
         const username = faker.internet.userName() // ! generating a fake username
         const firstName = faker.name.firstName() // ! A fake first name
         const lastName = faker.name.lastName() // ! A fake last name
-        const email = `${firstName}.${lastName}@email.com` // ! concatening them together to make the email
-        const userImage = faker.image.avatar()  // ! and a fake profile image
+        const email = `${firstName}.${lastName}@email.com` // ! concatenating them together to make the email
+        const userimage = faker.image.imageUrl()  // ! and a fake profile image
         const password = faker.internet.password()
         const bio = faker.lorem.paragraph()
         // const isLocal = randomBoolean()
@@ -38,7 +39,7 @@ mongoose.connect(
         users.push({
           username,
           email,
-          userImage,
+          userimage,
           password, // ! setting all the passwords the same
           passwordConfirmation: password,
           bio,
