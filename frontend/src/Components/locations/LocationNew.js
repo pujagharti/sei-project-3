@@ -4,13 +4,16 @@ import Select from 'react-select'
 
 import { createNewLocation } from '../../lib/api'
 
+import ImageUpload from '../common/ImageUpload'
+
 class LocationNew extends React.Component {
 
   state = {
     formData: {
       placeName: '',
       placeDescription: '',
-      feature: ['']
+      feature: [''],
+      placePhotos: ['']
     }
   }
 
@@ -38,6 +41,12 @@ class LocationNew extends React.Component {
     this.setState({
       formData
     })
+  }
+
+  handleImageChange = url => {
+    console.log('uploaded, and url:', url)
+    const formData = { ...this.state.formData, placePhotos: url }
+    this.setState({ formData })
   }
 
   handleSubmit = async (e) => {
@@ -81,6 +90,11 @@ class LocationNew extends React.Component {
             options={this.options}
             isMulti
             onChange={this.handleMultiSelectChange}
+          />
+          <Form.Field
+            control={ImageUpload}
+            onChange={this.handleImageChange}
+            label='Profile Image'
           />
           <Form.Field control={Button}>Submit</Form.Field>
 
