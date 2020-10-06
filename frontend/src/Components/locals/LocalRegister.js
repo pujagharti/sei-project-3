@@ -15,7 +15,8 @@ class LocalRegister extends React.Component {
       password: '',
       passwordConfirmation: '',
       bio: '',
-      userimage: ''
+      userimage: '',
+      isLocal: false
     },
     redirect: null
   }
@@ -27,20 +28,20 @@ class LocalRegister extends React.Component {
   async componentDidMount() {
     try {
       console.log('DidMount')
-      // const res = await getUserProfile()
-      // if (this.authenticated()) {
-      //   this.setState({
-      //     formData: res.data
-      //   })
-      // }
+      if (this.authenticated()){
+        const res = await getUserProfile()
+        console.log(res.data.username, res.data.isLocal)
+        const formData = { ...this.state.formData, username: res.data.username, bio: res.data.bio, isLocal: res.data.isLocal }
+        this.setState({ formData })
+      }
+      // return isAuthenticated()
     } catch (err) {
       console.log(err)
     }
   }
 
-
   handleChange = (e) => {
-    // console.log(e.target.value)
+    console.log(e.target.name, ': ', e.target.value)
     const formData = {
       ...this.state.formData,
       [e.target.name]: e.target.value
@@ -59,9 +60,8 @@ class LocalRegister extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault()
     const authenticated = this.authenticated()
-    console.log(authenticated)
+    // console.log(authenticated, this.state.formData)
     const dataToSend = ({ ...this.state.formData, isLocal: true })
-    console.log(dataToSend)
     if (!authenticated) {
       try {
         const response = await registerUser(dataToSend)
@@ -78,8 +78,7 @@ class LocalRegister extends React.Component {
     if (authenticated) {
 
       try {
-        const dataToSend = ({ bio: this.bio, isLocal: true, userimage: this.userimage })
-        // const dataToSend = ({ ...this.state.formData, isLocal: true })
+        const dataToSend = ({ bio: this.state.formData.bio, isLocal: true, userimage: this.state.formData.userimage })
         const res = await updateUser(dataToSend)
         console.log(res)
         this.setState({
@@ -103,7 +102,7 @@ class LocalRegister extends React.Component {
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as='h2' color='black' textAlign='center'>
             <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' /> 
-        Register as a Local
+            {(!this.state.formData.isLocal) ? 'Register as a Local' : 'Update your local profile'}
           </Header>
           <Form onSubmit={this.handleSubmit}>
             {!this.authenticated() &&
@@ -147,7 +146,7 @@ class LocalRegister extends React.Component {
             </Form.Group>
 
             {this.authenticated() &&
-              <h3>Thanks for your interest in contributing! Just a bit more about you, and we can get your profile set up </h3>
+              <h3>{username} Thank you for your interest in contributing! Just a bit more about you, and we can get your profile set up </h3>
             }
 
             <Form.Field
