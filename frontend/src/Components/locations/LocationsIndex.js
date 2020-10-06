@@ -46,8 +46,8 @@ class LocationsIndex extends React.Component {
     const { locationsData } = this.state
 
     return (
-      <>
 
+      <Segment style={{ padding: '3em 3em' }} vertical>
         <Grid divided='vertically'>
           <Grid.Row columns={2} divided>
             <Grid.Column>
@@ -65,15 +65,16 @@ class LocationsIndex extends React.Component {
                       }))
                     }
                   </section>
-
                 </div>
               </Segment>
             </Grid.Column>
           </Grid.Row>
         </Grid>
+      </Segment>
 
 
-      </>
+
+
     )
   }
 }
