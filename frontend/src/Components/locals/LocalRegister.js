@@ -108,7 +108,7 @@ class LocalRegister extends React.Component {
           <div className='ui container size mini'>
             <Form onSubmit={this.handleSubmit}>
               {!this.authenticated() &&
-                <Form.Group widths='equal'>
+                <div className='ui container size mini'>
                   <Form.Field
                     control={Input}
                     label='User name'
@@ -141,11 +141,9 @@ class LocalRegister extends React.Component {
                     name='passwordConfirmation'
                     value={passwordConfirmation}
                   />
-                </Form.Group>
+                </div>
               }
-              <Form.Group inline>
 
-              </Form.Group>
 
               {this.authenticated() &&
                 <h3>Thanks for your interest in contributing! Just a bit more about you, and we can get your profile set up </h3>
