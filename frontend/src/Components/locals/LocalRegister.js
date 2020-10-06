@@ -1,9 +1,12 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { Form, Input, TextArea, Button, Grid, Header, Image } from 'semantic-ui-react'
+
 import { registerUser, updateUser, getUserProfile } from '../../lib/api'
 import { isAuthenticated } from '../../lib/auth'
+
 import ImageUpload from '../common/ImageUpload'
+
 class LocalRegister extends React.Component {
   state = {
     formData: {
@@ -12,28 +15,33 @@ class LocalRegister extends React.Component {
       password: '',
       passwordConfirmation: '',
       bio: '',
-      userimage: ''
+      userimage: '',
+      isLocal: false
     },
     redirect: null
   }
+
   authenticated() {
     return isAuthenticated()
   }
+
   async componentDidMount() {
     try {
       console.log('DidMount')
-      // const res = await getUserProfile()
-      // if (this.authenticated()) {
-      //   this.setState({
-      //     formData: res.data
-      //   })
-      // }
+      if (this.authenticated()){
+        const res = await getUserProfile()
+        console.log(res.data.username, res.data.isLocal)
+        const formData = { ...this.state.formData, username: res.data.username, bio: res.data.bio, isLocal: res.data.isLocal }
+        this.setState({ formData })
+      }
+      // return isAuthenticated()
     } catch (err) {
       console.log(err)
     }
   }
+
   handleChange = (e) => {
-    // console.log(e.target.value)
+    console.log(e.target.name, ': ', e.target.value)
     const formData = {
       ...this.state.formData,
       [e.target.name]: e.target.value
@@ -42,17 +50,18 @@ class LocalRegister extends React.Component {
       formData
     })
   }
+
   handleImageChange = url => {
     console.log('uploaded, and url:', url)
     const formData = { ...this.state.formData, userimage: url }
     this.setState({ formData })
   }
+
   handleSubmit = async (e) => {
     e.preventDefault()
     const authenticated = this.authenticated()
-    console.log(authenticated)
+    // console.log(authenticated, this.state.formData)
     const dataToSend = ({ ...this.state.formData, isLocal: true })
-    console.log(dataToSend)
     if (!authenticated) {
       try {
         const response = await registerUser(dataToSend)
@@ -65,10 +74,11 @@ class LocalRegister extends React.Component {
         console.log(err)
       }
     }
+
     if (authenticated) {
+
       try {
-        const dataToSend = ({ bio: this.bio, isLocal: true, userimage: this.userimage })
-        // const dataToSend = ({ ...this.state.formData, isLocal: true })
+        const dataToSend = ({ bio: this.state.formData.bio, isLocal: true, userimage: this.state.formData.userimage })
         const res = await updateUser(dataToSend)
         console.log(res)
         this.setState({
@@ -79,78 +89,86 @@ class LocalRegister extends React.Component {
       }
     }
   }
+
   render() {
     const { username, email, password, passwordConfirmation, bio } = this.state.formData
+
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
     }
+
     return (
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as='h2' color='black' textAlign='center'>
-            <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
-        Register as a Local
+            <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' /> 
+            {(!this.state.formData.isLocal) ? 'Register as a Local' : 'Update your local profile'}
           </Header>
-          <div className='ui container size mini'>
-            <Form onSubmit={this.handleSubmit}>
-              {!this.authenticated() &&
-                <div className='ui container size mini'>
-                  <Form.Field
-                    control={Input}
-                    label='User name'
-                    placeholder='User name'
-                    onChange={this.handleChange}
-                    name='username'
-                    value={username}
-                  />
-                  <Form.Field
-                    control={Input}
-                    label='Email'
-                    placeholder='Email'
-                    onChange={this.handleChange}
-                    name='email'
-                    value={email}
-                  />
-                  <Form.Field
-                    control={Input}
-                    label='Password'
-                    placeholder='Password'
-                    onChange={this.handleChange}
-                    name='password'
-                    value={password}
-                  />
-                  <Form.Field
-                    control={Input}
-                    label='Password confirmation'
-                    placeholder='Password confirmation'
-                    onChange={this.handleChange}
-                    name='passwordConfirmation'
-                    value={passwordConfirmation}
-                  />
-                </div>
-              }
-              {this.authenticated() &&
-                <h3>Thanks for your interest in contributing! Just a bit more about you, and we can get your profile set up </h3>
-              }
-              <Form.Field
-                control={TextArea}
-                label='About'
-                placeholder='Tell us more about you and your location...'
+          <Form onSubmit={this.handleSubmit}>
+            {!this.authenticated() &&
+            <Form.Group widths='equal'>
+              <Form.Field 
+                control={Input}
+                label='User name'
+                placeholder='User name'
                 onChange={this.handleChange}
-                name='bio'
-                value={bio}
+                name='username'
+                value={username}
               />
               <Form.Field
-                control={ImageUpload}
-                onChange={this.handleImageChange}
-                label='Profile Image'
+                control={Input}
+                label='Email'
+                placeholder='Email'
+                onChange={this.handleChange}
+                name='email'
+                value={email}
               />
-              <Form.Field control={Button}>Submit</Form.Field>
-            </Form>
-          </div>
+              <Form.Field
+                control={Input}
+                label='Password'
+                placeholder='Password'
+                onChange={this.handleChange}
+                name='password'
+                value={password}
+              />
+              <Form.Field
+                control={Input}
+                label='Password confirmation'
+                placeholder='Password confirmation'
+                onChange={this.handleChange}
+                name='passwordConfirmation'
+                value={passwordConfirmation}
+              />
+            </Form.Group>
+            }
+            <Form.Group inline>
+
+            </Form.Group>
+
+            {this.authenticated() &&
+              <h3>{username} Thank you for your interest in contributing! Just a bit more about you, and we can get your profile set up </h3>
+            }
+
+            <Form.Field
+              control={TextArea}
+              label='About'
+              placeholder='Tell us more about you and your location...'
+              onChange={this.handleChange}
+              name='bio'
+              value={bio}
+            />
+            <Form.Field
+              control={ImageUpload}
+              onChange={this.handleImageChange}
+              label='Profile Image'
+            />
+            <Form.Field control={Button}>Submit</Form.Field>
+          </Form>
         </Grid.Column>
       </Grid>
     )
   }
+
+
 }
 export default LocalRegister
