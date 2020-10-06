@@ -19,9 +19,9 @@ class LocationNew extends React.Component {
 
 
   options = [
-    { value: 'outdoors', label: 'Outdoors' },
-    { value: 'food', label: 'Food' },
-    { value: 'drink', label: 'Drink' }
+    { value: 'gowild', label: 'gowild' },
+    { value: 'nightlife', label: 'nightlife' },
+    { value: 'summer', label: 'summer' }
   ]
 
   handleChange = (e) => {
