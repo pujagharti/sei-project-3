@@ -1,5 +1,7 @@
 import React from 'react'
-import { Form, Input, TextArea, Button, Segment, Header, Grid, Icon, List, Image } from 'semantic-ui-react'
+import { Form, Input, TextArea, Button,
+  Segment, Header, Grid, Icon,
+  List, Label } from 'semantic-ui-react'
 import Select from 'react-select'
 
 import { createNewLocation } from '../../lib/api'
@@ -80,10 +82,6 @@ class LocationNew extends React.Component {
     color: '#888'
   }
 
-  newLocationFormGridStyle = {
-    marginTop: '20px'
-  }
-
   render() {
 
     const { placeName, placeDescription } = this.state.formData
@@ -94,11 +92,11 @@ class LocationNew extends React.Component {
     return (
       <>
         <Segment style={this.segmentStyle}>
-          <Header as='h2'>Your locations</Header>
+          <Header as='h2'>Your contributed locations</Header>
           {createdLocations.length === 0 &&
             <Header style={this.locationsPlaceholderStyle} as='h3'>
               You haven't posted any locations yet.
-              Add some below.
+              Contribute some below.
             </Header>
           }
           <Grid>
@@ -140,40 +138,45 @@ class LocationNew extends React.Component {
             </List.Item>
           </List>
 
-          <Grid style={this.newLocationFormGridStyle}>
+          <div className='location-form-outer'>
             <Form onSubmit={this.handleSubmit}>
-              <Form.Group widths='equal'>
-                <Form.Field
-                  control={Input}
-                  label='Placename'
-                  placeholder='Placename'
-                  onChange={this.handleChange}
-                  name='placeName'
-                  value={placeName}
-                />
-              </Form.Group>
+
+              <Label>Placename</Label>
+              <Form.Field
+                control={Input}
+                placeholder='Placename'
+                onChange={this.handleChange}
+                name='placeName'
+                value={placeName}
+              />
+
+              <Label>Say a bit about this place</Label>
               <Form.Field
                 control={TextArea}
-                label='Say a bit about this place'
                 placeholder='Get the conversation started!'
                 onChange={this.handleChange}
                 name='placeDescription'
                 value={placeDescription}
               />
+
+              <Label>Pick a category!</Label>
               <Select
                 options={this.options}
                 isMulti
                 onChange={this.handleMultiSelectChange}
+                style={this.selectStyle}
               />
+              <br/>
+
+              <Label>Upload an image</Label>
               <Form.Field
                 control={ImageUpload}
                 onChange={this.handleImageChange}
-                label='Profile Image'
               />
-              <Form.Field control={Button}>Submit</Form.Field>
 
+              <Form.Field control={Button}>Submit</Form.Field>
             </Form>
-          </Grid>
+          </div>
         </Segment>
       </>
     )

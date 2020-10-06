@@ -49,7 +49,7 @@ class LocalProfile extends React.Component {
               <br/><br/>
             </Header>
             <Header as='h3'>{bio}</Header>
-            <Header as='H5'>You've posted {createdLocations.length} locations</Header>
+            <Header as='h5'>Locations contributed: {createdLocations.length}</Header>
           </GridColumn>
         </Grid>
 
