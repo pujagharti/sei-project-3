@@ -6,7 +6,7 @@ import { Card, Image } from 'semantic-ui-react'
 const LocationCard = (props) => {
 
   const { _id, placeName, placePhotos, placeDescription } = props
-
+  console.log(placePhotos)
   return (
 
     <Link to={`/locations/${_id}`} >
