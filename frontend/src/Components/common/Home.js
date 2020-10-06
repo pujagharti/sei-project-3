@@ -10,6 +10,7 @@ function Home() {
         <Grid container stackable verticalAlign='middle'>
           <Grid.Row>
             <Grid.Column width={9}>
+              <Header>HELLOOOOOOOOO</Header><
               <Header as='h3' style={{ fontSize: '2em' }}>
                 Discover your Montreal
               </Header>
