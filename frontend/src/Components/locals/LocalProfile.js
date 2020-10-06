@@ -24,6 +24,10 @@ class LocalProfile extends React.Component {
     }
   }
 
+  aboutYouStyle = {
+    color: '#555'
+  }
+
   render() {
     if (!this.state.profileData) return <h1>Just getting that for you</h1>
 
@@ -40,11 +44,11 @@ class LocalProfile extends React.Component {
             <Header as='h2' className='local-profile-name'>
               {username}
             </Header>
-            <Header as='h5'>A bit about you <br/>
+            <Header as='h5' style={this.aboutYouStyle}>A bit about you <br/>
               <small>This is shared with the community</small>
               <br/><br/>
-              {bio}
             </Header>
+            <Header as='h3'>{bio}</Header>
             <Header as='H5'>You've posted {createdLocations.length} locations</Header>
           </GridColumn>
         </Grid>

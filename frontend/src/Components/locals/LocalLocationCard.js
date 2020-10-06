@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Popup, Card, Image, Rating, Grid } from 'semantic-ui-react'
+import { Popup, Card, Rating, Grid } from 'semantic-ui-react'
 
 const LocalLocationCard = (props) => {
   const { _id, placeName, placePhotos, placeDescription } = props

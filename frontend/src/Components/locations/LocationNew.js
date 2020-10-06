@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, TextArea, Button, Segment, Header, Grid } from 'semantic-ui-react'
+import { Form, Input, TextArea, Button, Segment, Header, Grid, Icon, List, Image } from 'semantic-ui-react'
 import Select from 'react-select'
 
 import { createNewLocation } from '../../lib/api'
@@ -72,6 +72,18 @@ class LocationNew extends React.Component {
     }
   }
 
+  segmentStyle = {
+    marginTop: '30px'
+  }
+
+  locationsPlaceholderStyle = {
+    color: '#888'
+  }
+
+  newLocationFormGridStyle = {
+    marginTop: '20px'
+  }
+
   render() {
 
     const { placeName, placeDescription } = this.state.formData
@@ -81,12 +93,12 @@ class LocationNew extends React.Component {
 
     return (
       <>
-        <Segment>
-          <Header>Your locations</Header>
+        <Segment style={this.segmentStyle}>
+          <Header as='h2'>Your locations</Header>
           {createdLocations.length === 0 &&
-            <Header as='h1'>
-                You haven't posted any locations yet.
-                Add some below.
+            <Header style={this.locationsPlaceholderStyle} as='h3'>
+              You haven't posted any locations yet.
+              Add some below.
             </Header>
           }
           <Grid>
@@ -101,39 +113,68 @@ class LocationNew extends React.Component {
           </Grid>
         </Segment>
 
-        <h1>Add a new place for the community!</h1>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Group widths='equal'>
-            <Form.Field
-              control={Input}
-              label='Placename'
-              placeholder='Placename'
-              onChange={this.handleChange}
-              name='placeName'
-              value={placeName}
-            />
-          </Form.Group>
-          <Form.Field
-            control={TextArea}
-            label='Say a bit about this place'
-            placeholder='Get the conversation started!'
-            onChange={this.handleChange}
-            name='placeDescription'
-            value={placeDescription}
-          />
-          <Select
-            options={this.options}
-            isMulti
-            onChange={this.handleMultiSelectChange}
-          />
-          <Form.Field
-            control={ImageUpload}
-            onChange={this.handleImageChange}
-            label='Profile Image'
-          />
-          <Form.Field control={Button}>Submit</Form.Field>
+        <Segment>
+          <Header as='h2'>Add a new location</Header>
 
-        </Form>
+          <List horizontal>
+            <List.Item>
+
+              <List.Content>
+                <List.Header><Icon circular name='cocktail' />Great nightlife?</List.Header>
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Content>
+                <List.Header><Icon circular name='tree' />Wild nature?</List.Header>
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Content>
+                <List.Header><Icon circular name='sun' />Summer gems?</List.Header>
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Content>
+                <List.Header><Icon circular name='conversation' />Let people know!</List.Header>
+              </List.Content>
+            </List.Item>
+          </List>
+
+          <Grid style={this.newLocationFormGridStyle}>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Group widths='equal'>
+                <Form.Field
+                  control={Input}
+                  label='Placename'
+                  placeholder='Placename'
+                  onChange={this.handleChange}
+                  name='placeName'
+                  value={placeName}
+                />
+              </Form.Group>
+              <Form.Field
+                control={TextArea}
+                label='Say a bit about this place'
+                placeholder='Get the conversation started!'
+                onChange={this.handleChange}
+                name='placeDescription'
+                value={placeDescription}
+              />
+              <Select
+                options={this.options}
+                isMulti
+                onChange={this.handleMultiSelectChange}
+              />
+              <Form.Field
+                control={ImageUpload}
+                onChange={this.handleImageChange}
+                label='Profile Image'
+              />
+              <Form.Field control={Button}>Submit</Form.Field>
+
+            </Form>
+          </Grid>
+        </Segment>
       </>
     )
 
