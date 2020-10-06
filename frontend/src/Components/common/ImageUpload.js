@@ -37,7 +37,7 @@ class ImageUpload extends React.Component {
           </div>
           :
           <>
-            <label className="label">{this.props.labelText || 'Profile Upload Image (10mb max)'}</label>
+            <label className="label">{this.props.labelText || '(10mb max - please wait for the image to display)'}</label>
             <input
               className="input"
               type="file"

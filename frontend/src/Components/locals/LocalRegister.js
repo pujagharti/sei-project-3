@@ -52,7 +52,7 @@ class LocalRegister extends React.Component {
 
   handleImageChange = url => {
     console.log('uploaded, and url:', url)
-    const formData = { userimage: url }
+    const formData = { ...this.state.formData, userimage: url }
     this.setState({ formData })
   }
 
@@ -158,8 +158,10 @@ class LocalRegister extends React.Component {
               name='bio'
               value={bio}
             />
-            <ImageUpload
+            <Form.Field
+              control={ImageUpload}
               onChange={this.handleImageChange}
+              label='Profile Image'
             />
             <Form.Field control={Button}>Submit</Form.Field>
           </Form>
