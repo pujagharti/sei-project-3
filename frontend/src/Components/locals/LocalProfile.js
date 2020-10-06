@@ -29,21 +29,21 @@ class LocalProfile extends React.Component {
     if (!this.state.profileData) return <h1>Just getting that for you</h1>
 
     const { createdLocations } = this.state.profileData
-
+    console.log(createdLocations)
     return (
       <>
         <p>{this.state.profileData.email}</p>
         <p>{this.state.profileData.bio}</p>
 
-        {
+        {/* {
           createdLocations.map((location) => {
             return <LocationCard key={location._id} {...location} />
 
           })
-        }
+        } */}
 
 
-        <LocationNew />
+        <LocationNew userProfile={this.state.profileData}/>
       </>
     )
   }
