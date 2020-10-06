@@ -12,9 +12,9 @@ class LocationsMap extends React.Component {
   componentDidMount(){
     this.setState({
       viewport: {
-        latitude: 56.1304,
-        longitude: -106.3468,
-        zoom: 3,
+        latitude: 45.584733,
+        longitude: -73.78429,
+        zoom: 8,
         width: '500px',
         height: '500px'
       }

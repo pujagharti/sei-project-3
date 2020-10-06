@@ -9,10 +9,10 @@ module.exports = [
     amenities: ['shower', 'lake access', 'mornign wake-up'],
     eventDate: '',
     coords: {
-      latitude: 55.1725,
-      longitude: -118.8012
+      latitude: 45.584733,
+      longitude: -73.78429
     },
-    feature: ['glamping']
+    feature: ['summer']
   },
   {
     placeName: 'Deapcroft Woods Camping',
@@ -22,8 +22,8 @@ module.exports = [
       'https://img.theculturetrip.com/768x432/wp-content/uploads/2017/05/31746323273_f84b91b9b2_b.jpg'],
     amenities: ['shower', 'lake access', 'mornign wake-up'],
     eventDate: '',
-    coords: { latitude: 57.849494951149765, longitude: -118.07916718606882 },
-    feature: ['glamping']
+    coords: { latitude: 45.525, longitude: -73.635246 },
+    feature: ['summer']
   },
   {
     placeName: 'Foggy Farm',
@@ -33,8 +33,8 @@ module.exports = [
       'https://img.theculturetrip.com/768x432/wp-content/uploads/2017/05/31746323273_f84b91b9b2_b.jpg'],
     amenities: ['shower', 'lake access', 'mornign wake-up'],
     eventDate: '',
-    coords: { latitude: 52.65976935587413, longitude: -105.57792878190138 },
-    feature: ['glamping']
+    coords: { latitude: 45.70506, longitude: -73.792538 },
+    feature: ['summer']
   },
   {
     placeName: 'Twenty-mile Meadow',
@@ -44,7 +44,7 @@ module.exports = [
       'https://img.theculturetrip.com/768x432/wp-content/uploads/2017/05/31746323273_f84b91b9b2_b.jpg'],
     amenities: ['shower', 'lake access', 'mornign wake-up'],
     eventDate: '',
-    coords: { latitude: 55.478482913696965, longitude: -112.57284979993919 },
+    coords: { latitude: 45.434334, longitude: -73.911845 },
     feature: ['glamping']
   },
   {
@@ -79,6 +79,48 @@ module.exports = [
     eventDate: '',
     coords: { latitude: 52.78537333971177, longitude: -101.3340705038111 },
     feature: ['glamping']
+  },
+  {
+    placeName: 'Bear drive',
+    placeDescription: 'Here you will find the start of a well marked hike - just follow the trail signs',
+    placePhotos: ['https://imageresizer.static9.net.au/AecMpvdvP4gXYrkC3B-LZUlP2nA=/400x0/https%3A%2F%2Fprod.static9.net.au%2F_%2Fmedia%2F2018%2F02%2F06%2F14%2F34%2FINTRO.jpg',
+      'https://img.huffingtonpost.com/asset/5cd5264a2000005c00969e0a.jpeg?ops=scalefit_720_noupscale',
+      'https://img.theculturetrip.com/768x432/wp-content/uploads/2017/05/31746323273_f84b91b9b2_b.jpg'],
+    amenities: ['shower', 'lake access', 'mornign wake-up'],
+    eventDate: '',
+    coords: {
+      latitude: 45.584733,
+      longitude: -73.78429
+    },
+    feature: ['gowild']
+  },
+  {
+    placeName: 'Wood-edge grove',
+    placeDescription: 'Just off a main road, a hidden gem of a walk',
+    placePhotos: ['https://imageresizer.static9.net.au/AecMpvdvP4gXYrkC3B-LZUlP2nA=/400x0/https%3A%2F%2Fprod.static9.net.au%2F_%2Fmedia%2F2018%2F02%2F06%2F14%2F34%2FINTRO.jpg',
+      'https://img.huffingtonpost.com/asset/5cd5264a2000005c00969e0a.jpeg?ops=scalefit_720_noupscale',
+      'https://img.theculturetrip.com/768x432/wp-content/uploads/2017/05/31746323273_f84b91b9b2_b.jpg'],
+    amenities: ['shower', 'lake access', 'mornign wake-up'],
+    eventDate: '',
+    coords: {
+      latitude: 45.584733,
+      longitude: -73.78429
+    },
+    feature: ['gowild']
+  },
+  {
+    placeName: 'Walking tour',
+    placeDescription: 'An interesting walking tour of a local historical site',
+    placePhotos: ['https://imageresizer.static9.net.au/AecMpvdvP4gXYrkC3B-LZUlP2nA=/400x0/https%3A%2F%2Fprod.static9.net.au%2F_%2Fmedia%2F2018%2F02%2F06%2F14%2F34%2FINTRO.jpg',
+      'https://img.huffingtonpost.com/asset/5cd5264a2000005c00969e0a.jpeg?ops=scalefit_720_noupscale',
+      'https://img.theculturetrip.com/768x432/wp-content/uploads/2017/05/31746323273_f84b91b9b2_b.jpg'],
+    amenities: ['shower', 'lake access', 'mornign wake-up'],
+    eventDate: '',
+    coords: {
+      latitude: 45.695519,
+      longitude: -72.987789
+    },
+    feature: ['gowild']
   }
   // //NightLife//
   // {
