@@ -15,6 +15,7 @@ class LocalRegister extends React.Component {
       password: '',
       passwordConfirmation: '',
       bio: '',
+      userimagecurrent: '',
       userimage: '',
       isLocal: false
     },
@@ -30,8 +31,14 @@ class LocalRegister extends React.Component {
       console.log('DidMount')
       if (this.authenticated()){
         const res = await getUserProfile()
-        console.log(res.data.username, res.data.isLocal)
-        const formData = { ...this.state.formData, username: res.data.username, bio: res.data.bio, isLocal: res.data.isLocal }
+        console.log(res.data.username, res.data.isLocal, res.data.userimage)
+        const formData = { 
+          ...this.state.formData, 
+          username: res.data.username, 
+          bio: res.data.bio, 
+          userimagecurrent: res.data.userimage,
+          isLocal: res.data.isLocal 
+        }
         this.setState({ formData })
       }
       // return isAuthenticated()
@@ -91,7 +98,7 @@ class LocalRegister extends React.Component {
   }
 
   render() {
-    const { username, email, password, passwordConfirmation, bio } = this.state.formData
+    const { username, email, password, passwordConfirmation, bio, userimagecurrent, userimage, isLocal } = this.state.formData
 
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
@@ -102,7 +109,7 @@ class LocalRegister extends React.Component {
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as='h2' color='black' textAlign='center'>
             <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' /> 
-            {(!this.state.formData.isLocal) ? 'Register as a Local' : 'Update your local profile'}
+            {(!isLocal) ? 'Register as a Local' : 'Update your local profile'}
           </Header>
           <Form onSubmit={this.handleSubmit}>
             {!this.authenticated() &&
@@ -152,7 +159,7 @@ class LocalRegister extends React.Component {
             <Form.Field
               control={TextArea}
               label='About'
-              placeholder='Tell us more about you and your location...'
+              placeholder='Tell us more about you ...'
               onChange={this.handleChange}
               name='bio'
               value={bio}
@@ -162,6 +169,7 @@ class LocalRegister extends React.Component {
               onChange={this.handleImageChange}
               label='Profile Image'
             />
+            {(userimagecurrent && !userimage) ? <Image src={userimagecurrent}/>  : ''}
             <Form.Field control={Button}>Submit</Form.Field>
           </Form>
         </Grid.Column>
