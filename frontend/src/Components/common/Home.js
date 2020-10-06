@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Grid, Header, Segment, Card, List, Container, Button } from 'semantic-ui-react'
+import { Grid, Header, Segment, Card, List, Container, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 function Home() {
@@ -85,15 +85,22 @@ function Home() {
               <Card>
                 <div id='parks-card-img' className='home-card-imgs'></div>
                 <Card.Content>
-                  <Card.Header>Parks and Recreation</Card.Header>
+                  <Card.Header>St Joseph Oratory</Card.Header>
+                  <Card.Description>
+                    What started out as a small chapel has since become one of the world’s most visited sacred spaces and one of Montréal’s most iconic landmarks.
+                  </Card.Description>
                 </Card.Content>
               </Card>
             </Grid.Column>
             <Grid.Column>
               <Card>
                 <div id='wild-card-img' className='home-card-imgs'></div>
+
                 <Card.Content>
-                  <Card.Header>Wild Outdoors</Card.Header>
+                  <Card.Header>Mont Saint-Hilaire</Card.Header>
+                  <Card.Description>
+                    Just outside of Montreal, Mont Saint-Hilaire nature reserve is another great local spot for those who like their hikes to be more scenic than strenuous, with relatively easy, straightforward trails open all year round.
+                  </Card.Description>
                 </Card.Content>
               </Card>
             </Grid.Column>
@@ -101,7 +108,10 @@ function Home() {
               <Card>
                 <div id='hiking-card-img' className='home-card-imgs'></div>
                 <Card.Content>
-                  <Card.Header>Hiking and Walks</Card.Header>
+                  <Card.Header>Mont Royal Park</Card.Header>
+                  <Card.Description>
+                    The centerpiece and the namesake of Montreal, this small mountain offers sightseeing in every direction as you explore every angle.
+                  </Card.Description>
                 </Card.Content>
               </Card>
             </Grid.Column>
