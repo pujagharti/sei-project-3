@@ -63,8 +63,9 @@ class Login extends React.Component {
         >
           <a href='#'>Login</a>
         </Divider>
+        <div id='shadow-wrapper' >
         <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
-          <Grid.Column style={{ maxWidth: 450 }}>
+          <Grid.Column style={{ maxWidth: 450 }} id='auth-column'>
             <Header as='h2' color='black' textAlign='center'>
               <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
             Log-in to your account
@@ -91,8 +92,9 @@ class Login extends React.Component {
                 <Button type='submit'>Submit</Button>
               </Form>
             </div>
-          </Grid.Column>
+          </Grid.Column> 
         </Grid>
+        </div>
         <Divider
           as='h4'
           className='header'
