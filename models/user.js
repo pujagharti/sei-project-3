@@ -22,6 +22,7 @@ userSchema
     virtuals: true,
     transform(_doc, json) {
       delete json.email
+      delete json.usertelephone
       delete json.password
       return json
     }  
