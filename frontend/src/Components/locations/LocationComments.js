@@ -10,7 +10,8 @@ class LocationComments extends React.Component {
   state = {
     comments: [],
     formText: '',
-    ratingValue: 0
+    ratingValue: 0,
+    errors: null
   }
 
   componentDidMount() {
@@ -31,7 +32,7 @@ class LocationComments extends React.Component {
   handleDropdownChange = (e, { value }) => this.setState({ ratingValue: value })
 
   handleRate = (e, { rating }) => {
-    console.log('CHANGING RATING!',rating)
+    console.log('CHANGING RATING!', rating)
     this.setState({ ratingValue: rating })
   }
 
@@ -50,43 +51,19 @@ class LocationComments extends React.Component {
         comments: newComments,
         formText: '',
         ratingValue: 1
-      }, console.log('state in callback', this.state))
+      })
     } catch (err) {
+      this.setState({
+        errors: err.response.data.errors
+      })
       console.log(err)
     }
   }
 
-
-
-  // handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   const formData = {
-  //     text: this.state.formText,
-  //     rating: this.state.ratingValue
-  //   }
-  //   try {
-  //     const res = await createComment(this.props.locationId, formData)
-  //     const newComments = res.data.comments
-
-  //     this.setState({
-  //       comments: newComments,
-  //       formText: '',
-  //       ratingValue: 1
-  //     })
-
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-
-
-
-
   render() {
 
     const { comments, formText, ratingValue } = this.state
-    
+
     return (
 
       <Comment.Group>
@@ -104,20 +81,27 @@ class LocationComments extends React.Component {
         }
 
         <Form onSubmit={this.handleSubmit} reply>
-          <Form.TextArea onChange={this.handleTextChange} value={formText} />
+          <Form.TextArea 
+            onChange={this.handleTextChange}
+            value={formText}
+            placeholder={'Tell others what you think'} />
 
           <div>
-            <Rating icon='heart'
-              value={ratingValue}
+            <span style={{marginRight: '5px', fontSize: '20px'}}>Rate it!</span><Rating icon='heart'
+              rating={ratingValue}
               maxRating={5}
               onRate={this.handleRate}
             />
           </div>
-
+          <br/>
           <Button content='Add a comment'
             labelPosition='left'
             icon='edit'
             primary />
+          {this.state.errors &&
+            <p style={{ color: 'red' }}>Please give both a rating and comment<br />
+              Only available if logged-in.</p>
+          }
         </Form>
       </Comment.Group>
 
