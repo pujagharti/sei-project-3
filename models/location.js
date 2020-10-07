@@ -34,10 +34,10 @@ const locationsSchema = new mongoose.Schema({
 locationsSchema
   .virtual('avgRating')
   .get(function () {
-    if (this.comments.length === 0) return 'Glampers, please leave a comment.'
-    return Math.round(this.comments.reduce((sum, curr) => {
+    if (this.comments.length === 0) return 'Discover Montreal... please leave a comment.'
+    return Math.ceil(this.comments.reduce((sum, curr) => {
       return sum + curr.rating
-    }, 0)) / this.comments.length
+    }, 0) / this.comments.length)
   })
 
 locationsSchema.set('toJSON', { virtuals: true })
