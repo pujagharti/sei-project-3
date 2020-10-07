@@ -67,10 +67,27 @@ class LocalRegister extends React.Component {
     e.preventDefault()
     const authenticated = this.authenticated()
     // console.log(authenticated, this.state.formData)
-    const dataToSend = ({ ...this.state.formData, isLocal: true })
+    
+    let image = ''
+    if ( this.state.formData.userimagecurrent && !this.state.formData.userimage ) {
+      image = this.state.formData.userimagecurrent
+    } else { 
+      image = this.state.formData.userimage 
+    }
+
     if (!authenticated) {
       try {
+        const dataToSend = ({ 
+          email: this.state.formData.email,
+          username: this.state.formData.username,
+          password: this.state.formData.password,
+          passwordConfirmation: this.state.formData.passwordConfirmation,
+          bio: this.state.formData.bio,
+          userimage: image, 
+          isLocal: true
+        })
         const res = await registerUser(dataToSend)
+        console.log(res)
         isLocal(true)
         this.setState({
           redirect: '/login'
@@ -84,7 +101,7 @@ class LocalRegister extends React.Component {
     if (authenticated) {
 
       try {
-        const dataToSend = ({ bio: this.state.formData.bio, isLocal: true, userimage: this.state.formData.userimage })
+        const dataToSend = ({ bio: this.state.formData.bio, userimage: image, isLocal: true  })
         const res = await updateUser(dataToSend)
         isLocal(res.data.isLocal)
 
