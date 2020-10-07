@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Header, Image, Grid, GridColumn, Button } from 'semantic-ui-react'
+import { Header, Image, Grid, Button } from 'semantic-ui-react'
 
 import LocationNew from '../locations/LocationNew'
 import { getUserProfile } from '../../lib/api'

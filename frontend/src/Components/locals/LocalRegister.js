@@ -70,7 +70,7 @@ class LocalRegister extends React.Component {
     const dataToSend = ({ ...this.state.formData, isLocal: true })
     if (!authenticated) {
       try {
-        const res = await registerUser(dataToSend)
+        await registerUser(dataToSend)
         isLocal(true)
         this.setState({
           redirect: '/login'
