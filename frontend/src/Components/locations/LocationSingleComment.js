@@ -5,14 +5,15 @@ const LocationSingleComment = (props) => {
 
 
   const { text, rating, createdAt } = props
-
+  const { username, userimage } = props.local
+  console.log('☘️ SINGLE COMMENT PROPS', props)
   const createdAtSliced = createdAt.slice(0, 10)
 
   return (
     <Comment>
-      <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/matt.jpg' />
+      <Comment.Avatar src={userimage} />
       <Comment.Content>
-        <Comment.Author as='a'><span>{props.local.username}</span></Comment.Author>
+        <Comment.Author as='a'><span>{username}</span></Comment.Author>
         <Comment.Metadata>
           <div>{createdAtSliced}</div>
         </Comment.Metadata>
