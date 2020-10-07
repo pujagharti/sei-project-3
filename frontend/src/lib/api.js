@@ -27,11 +27,13 @@ export function createComment(locationId, formText){
   return axios.post(`/api/locations/${locationId}/comments`, formText, withHeaders())
 }
 
+export function createCoord(locationId, formText){
+  return axios.post(`/api/locations/${locationId}/coords`, formText, withHeaders())
+}
+
 export function getUserProfile(){
   return axios.get('/api/profile', withHeaders())
 }
-
-
 
 
 //Authentication
