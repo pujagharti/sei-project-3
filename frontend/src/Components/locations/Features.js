@@ -6,16 +6,7 @@ const Features = () => {
 
   return (
     <>
-      <Divider
-        as='h4'
-        className='header'
-        horizontal
-        style={{ margin: '3em 0em', textTransform: 'uppercase' }}
-      >
-        <a href='#'>What's on</a>
-      </Divider>
       <Segment>
-
         <Grid >
           <Grid.Row columns={3}>
             <Grid.Column>
@@ -62,7 +53,16 @@ const Features = () => {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        <Divider
+          as='h4'
+          className='header'
+          horizontal
+          style={{ margin: '3em 0em', textTransform: 'uppercase' }}
+        >
+          <p>What's on</p>
+        </Divider>
       </Segment>
+
 
     </>
 

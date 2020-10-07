@@ -55,53 +55,45 @@ class Login extends React.Component {
 
     return (
       <>
-        <Divider
-          as='h4'
-          className='header'
-          horizontal
-          style={{ margin: '6em 10em', textTransform: 'uppercase' }}
-        >
-          <a href='#'>Login</a>
-        </Divider>
-        <div id='shadow-wrapper' >
-        <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
-          <Grid.Column style={{ maxWidth: 450 }} id='auth-column'>
-            <Header as='h2' color='black' textAlign='center'>
-              <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
-            Log-in to your account
-            </Header>
-            <div className='ui container small'>
-              <Form onSubmit={this.handleSubmit}>
-                <Form.Field>
-                  <label>email</label>
-                  <input placeholder='email'
-                    onChange={this.handleChange}
-                    value={email}
-                    name='email'
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <label>Password</label>
-                  <input placeholder='password'
-                    onChange={this.handleChange}
-                    value={password}
-                    name='password'
-                  />
-                </Form.Field>
 
-                <Button type='submit'>Submit</Button>
-              </Form>
-            </div>
-          </Grid.Column> 
-        </Grid>
+        <div id='shadow-wrapper' >
+          <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
+            <Grid.Column style={{ maxWidth: 450 }} id='auth-column'>
+              <Header as='h2' color='black' textAlign='center'>
+                <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
+            Log-in to your account
+              </Header>
+              <div className='ui container small'>
+                <Form onSubmit={this.handleSubmit}>
+                  <Form.Field>
+                    <label>email</label>
+                    <input placeholder='email'
+                      onChange={this.handleChange}
+                      value={email}
+                      name='email'
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Password</label>
+                    <input placeholder='password'
+                      onChange={this.handleChange}
+                      value={password}
+                      name='password'
+                    />
+                  </Form.Field>
+                  <Button type='submit'>Submit</Button>
+                </Form>
+              </div>
+            </Grid.Column>
+          </Grid>
         </div>
         <Divider
           as='h4'
           className='header'
           horizontal
-          style={{ margin: '6em 10em', textTransform: 'uppercase' }}
+          style={{ margin: '3em 0em', textTransform: 'uppercase' }}
         >
-          <a href='#'>.</a>
+          <p>Login</p>
         </Divider>
       </>
     )

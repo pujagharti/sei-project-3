@@ -123,14 +123,7 @@ class LocalRegister extends React.Component {
 
     return (
       <>
-        <Divider
-          as='h4'
-          className='header'
-          horizontal
-          style={{ margin: '6em 10em', textTransform: 'uppercase' }}
-        >
-          <a href='#'>Register</a>
-        </Divider>
+
         <div className='local-register-container'>
           <Grid textAlign='center' style={{ height: 'auto', marginTop: '20px' }} >
             <Grid.Column style={{ maxWidth: 450 }} id='auth-column'>
@@ -183,13 +176,13 @@ class LocalRegister extends React.Component {
                   <h3>
                     Thanks for contributing, {username}!<br />
                   Just a bit more about you, and we can get your profile set up
-                </h3>
+                  </h3>
                 }
 
                 {this.authenticated() && isLocal &&
                   <h3>
                     Keep it fresh {username}<br /> Update your public profile here!
-                </h3>
+                  </h3>
                 }
 
                 <Form.Field
@@ -215,9 +208,9 @@ class LocalRegister extends React.Component {
           as='h4'
           className='header'
           horizontal
-          style={{ margin: '6em 10em', textTransform: 'uppercase' }}
+          style={{ margin: '3em 0em', textTransform: 'uppercase' }}
         >
-          <a href='#'>.</a>
+          <p>Register</p>
         </Divider>
       </>
     )
