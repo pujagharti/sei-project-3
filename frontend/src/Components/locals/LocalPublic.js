@@ -10,10 +10,12 @@ const LocalPublic = (props) => {
     <>
       <Item.Group>
         <Item>
-          <Item.Image size='small' src={userimage} className='contributor-img'/>
+          <Item.Image size='small' src={userimage} className='contributor-img' />
 
           <Item.Content>
-            <Item.Header as='a'>Contributed by: {username}</Item.Header>
+            <Item.Header>
+              By: {username}
+            </Item.Header>
             <Item.Description>
               <p>{bio}</p>
             </Item.Description>
