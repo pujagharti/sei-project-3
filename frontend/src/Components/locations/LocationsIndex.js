@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Grid } from 'semantic-ui-react'
+import { Segment, Grid, Divider, Header } from 'semantic-ui-react'
 // import Scrollbar from 'semantic-ui-react-scrollbar'
 
 import { getLocations } from '../../lib/api'
@@ -26,14 +26,14 @@ class LocationsIndex extends React.Component {
   async componentDidMount() {
     const res = await getLocations()
     const featureSelected = this.props.match.params.feature
-    // console.log('SELECTED!', featureSelected)
-    // console.log(res.data)
+
     const isFeaturePresent = (feature) => feature.toLowerCase() === featureSelected
     const filteredLocations = res.data.filter((location) => {
       return location.feature.some(isFeaturePresent)
     })
-    // console.log('LOCATIONS!', filteredLocations)
+
     this.setState({
+      featureSelected: featureSelected,
       locationsData: filteredLocations
     })
   }
@@ -43,37 +43,50 @@ class LocationsIndex extends React.Component {
     if (!this.state.locationsData) return <h1>Let me just get that for you</h1>
 
     const { feature } = this.props
-    const { locationsData } = this.state
+    const { locationsData, featureSelected } = this.state
 
     return (
 
-      <Segment style={{ padding: '3em 3em' }} vertical>
-        <Grid divided='vertically'>
-          <Grid.Row columns={2} divided>
-            <Grid.Column>
-              <div>
-                <LocationsMap locationsData={locationsData} />
-              </div>
-            </Grid.Column>
-            <Grid.Column>
-              <Segment style={{ overflow: 'auto', maxHeight: 700 }}>
-                <div className='locations-index-container'>
-                  <section className='locations-index-cards'>
-                    {
-                      locationsData.map((location => {
-                        return <LocationCard key={location._id} feature={feature} {...location} />
-                      }))
-                    }
-                  </section>
+      <>
+
+        <Divider
+          as='h4'
+          className='header'
+          horizontal
+          style={{ margin: '3em 0em', textTransform: 'uppercase' }}
+        >
+          <Header as='h1'>{featureSelected.toUpperCase()} IN MONTREAL</Header>
+        </Divider>
+
+        <Segment style={{ padding: '3em 3em' }} vertical>
+          <Grid divided='vertically'>
+            <Grid.Row columns={2} divided>
+              <Grid.Column>
+                <div>
+                  <LocationsMap 
+                    featureSelected={featureSelected}
+                    locationsData={locationsData}
+                  />
                 </div>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
+              </Grid.Column>
+              <Grid.Column>
+                <Segment style={{ overflow: 'auto', maxHeight: 700 }}>
+                  <div className='locations-index-container'>
+                    <section className='locations-index-cards'>
+                      {
+                        locationsData.map((location => {
+                          return <LocationCard key={location._id} feature={feature} {...location} />
+                        }))
+                      }
+                    </section>
+                  </div>
+                </Segment>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
 
-
-
+      </>
 
     )
   }

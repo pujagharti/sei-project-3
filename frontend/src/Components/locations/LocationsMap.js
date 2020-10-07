@@ -9,14 +9,24 @@ class LocationsMap extends React.Component {
     viewport: null
   }
 
-  componentDidMount(){
+  componentDidMount() {
+    const { featureSelected } = this.props
+    let zoom = 12
+    if (featureSelected === 'gowild') {
+      zoom = 8
+    } else if (featureSelected === 'nightlife') {
+      zoom = 13
+    } else {
+      zoom = 12
+    }
+
     this.setState({
       viewport: {
         latitude: 45.5017,
         longitude: -73.5673,
-        zoom: 13,
+        zoom: zoom,
         width: '100%',
-        height: '100vh'
+        height: '700px'
       }
     })
   }
@@ -32,20 +42,30 @@ class LocationsMap extends React.Component {
   }
 
 
+  pickMapStyle(featureSelected) {
+    if (featureSelected === 'gowild') {
+      return 'mapbox://styles/srtn10/ckfzrc12d1crn1alpsr4zljbm'
+    } else if (featureSelected === 'nightlife') {
+      return 'mapbox://styles/srtn10/ckfzqya7i0i4r19qthsh2mthu'
+    } else {
+      return 'mapbox://styles/mapbox/outdoors-v11'
+    }
+  }
+
   render() {
-    const { locationsData } = this.props
+    const { locationsData, featureSelected } = this.props
     const { viewport } = this.state
     return (
-      <MapGL 
-        { ...viewport }
+      <MapGL
+        {...viewport}
         onViewportChange={(viewport) => this.setState({ viewport })}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-        mapStyle='mapbox://styles/mapbox/outdoors-v11'
+        mapStyle={this.pickMapStyle(featureSelected)}
       >
         <div>
-          <NavigationControl onViewportChange={(viewport) => this.setState({ viewport })}/>
+          <NavigationControl onViewportChange={(viewport) => this.setState({ viewport })} />
         </div>
-        {locationsData.map((location) => location.coords[0] ? this.addMarker(location) : null) }
+        {locationsData.map((location) => location.coords[0] ? this.addMarker(location) : null)}
       </MapGL>
 
     )
