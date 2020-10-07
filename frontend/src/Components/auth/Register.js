@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { Button, Form, Grid, Header, Image } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Divider } from 'semantic-ui-react'
 
 import { registerUser } from '../../lib/api'
 import ImageUpload from '../common/ImageUpload'
@@ -40,7 +40,7 @@ class Register extends React.Component {
     try {
       const response = await registerUser(dataToSend)
       console.log('REGULAR REGISTRATION', response)
-      if (response.status === 201){
+      if (response.status === 201) {
         this.setState({
           redirect: '/login'
         })
@@ -59,10 +59,18 @@ class Register extends React.Component {
 
     return (
       <>
-        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Divider
+          as='h4'
+          className='header'
+          horizontal
+          style={{ margin: '6em 10em', textTransform: 'uppercase' }}
+        >
+          <a href='#'>Register</a>
+        </Divider>
+        <Grid textAlign='center' style={{ height: '110vh', marginTop: '20px' }} >
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='black' textAlign='center'>
-              <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' /> 
+              <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
             Register your account
             </Header>
             <div className='ui container size mini'>
@@ -104,7 +112,7 @@ class Register extends React.Component {
                   onChange={this.handleImageChange}
                   label='Profile Image'
                 />
-                <Form.Field 
+                <Form.Field
                   control={Button}>
                   <div className='tiny ui animated button' tabIndex='0'>
                     <div className='visible content'>
@@ -119,6 +127,14 @@ class Register extends React.Component {
             </div>
           </Grid.Column>
         </Grid>
+        <Divider
+          as='h4'
+          className='header'
+          horizontal
+          style={{ margin: '6em 10em', textTransform: 'uppercase' }}
+        >
+          <a href='#'>.</a>
+        </Divider>
       </>
     )
   }
