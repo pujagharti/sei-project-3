@@ -1,7 +1,10 @@
 import React from 'react'
-import { Form, Input, TextArea, Button,
+import { Link } from 'react-router-dom'
+import {
+  Form, Input, TextArea, Button,
   Segment, Header, Grid, Icon,
-  List, Label } from 'semantic-ui-react'
+  List, Label
+} from 'semantic-ui-react'
 import Select from 'react-select'
 
 import { createNewLocation } from '../../lib/api'
@@ -95,8 +98,8 @@ class LocationNew extends React.Component {
           <Header as='h2'>Your contributed locations</Header>
           {createdLocations.length === 0 &&
             <Header style={this.locationsPlaceholderStyle} as='h3'>
-              You haven't posted any locations yet.
-              Contribute some below.
+              You haven't added any locations yet.
+              Contribute some below!
             </Header>
           }
           <Grid>
@@ -111,71 +114,80 @@ class LocationNew extends React.Component {
           </Grid>
         </Segment>
 
-        <Segment>
-          <Header as='h2'>Add a new location</Header>
+        <Segment className='contribute-location-segment'>
+          <div className='contribute-location-outer'>
+            <Header as='h2'>Contribute a new location</Header>
 
-          <List horizontal>
-            <List.Item>
+            <List horizontal>
+              <List.Item>
 
-              <List.Content>
-                <List.Header><Icon circular name='cocktail' />Great nightlife?</List.Header>
-              </List.Content>
-            </List.Item>
-            <List.Item>
-              <List.Content>
-                <List.Header><Icon circular name='tree' />Wild nature?</List.Header>
-              </List.Content>
-            </List.Item>
-            <List.Item>
-              <List.Content>
-                <List.Header><Icon circular name='sun' />Summer gems?</List.Header>
-              </List.Content>
-            </List.Item>
-            <List.Item>
-              <List.Content>
-                <List.Header><Icon circular name='conversation' />Let people know!</List.Header>
-              </List.Content>
-            </List.Item>
-          </List>
+                <List.Content>
+                  <List.Header><Icon circular name='cocktail' />Great nightlife?</List.Header>
+                </List.Content>
+              </List.Item>
+              <List.Item>
+                <List.Content>
+                  <List.Header><Icon circular name='tree' />Wild nature?</List.Header>
+                </List.Content>
+              </List.Item>
+              <List.Item>
+                <List.Content>
+                  <List.Header><Icon circular name='sun' />Summer gems?</List.Header>
+                </List.Content>
+              </List.Item>
+            </List>
+            <Header as='h5' className='location-encourage'>Contribute a location and let others discover your Montreal</Header>
 
-          <div className='location-form-outer'>
-            <Form onSubmit={this.handleSubmit}>
+            <div className='location-form-outer'>
+              <Form onSubmit={this.handleSubmit}>
 
-              <Label>Placename</Label>
-              <Form.Field
-                control={Input}
-                placeholder='Placename'
-                onChange={this.handleChange}
-                name='placeName'
-                value={placeName}
-              />
+                <Label>Placename</Label>
+                <Form.Field
+                  control={Input}
+                  placeholder='Placename'
+                  onChange={this.handleChange}
+                  name='placeName'
+                  value={placeName}
+                />
 
-              <Label>Say a bit about this place</Label>
-              <Form.Field
-                control={TextArea}
-                placeholder='Get the conversation started!'
-                onChange={this.handleChange}
-                name='placeDescription'
-                value={placeDescription}
-              />
+                <Label>Say a bit about this place</Label>
+                <Form.Field
+                  control={TextArea}
+                  placeholder='Get the conversation started!'
+                  onChange={this.handleChange}
+                  name='placeDescription'
+                  value={placeDescription}
+                />
 
-              <Label>Pick a category!</Label>
-              <Select
-                options={this.options}
-                isMulti
-                onChange={this.handleMultiSelectChange}
-                style={this.selectStyle}
-              />
-              <br/>
+                <Label>Pick a category!</Label>
+                <Select
+                  options={this.options}
+                  isMulti
+                  onChange={this.handleMultiSelectChange}
+                  style={this.selectStyle}
+                />
+                <br />
 
-              <Label>Upload an image</Label>
-              <Form.Field
-                control={ImageUpload}
-                onChange={this.handleImageChange}
-              />
+                <Label>Upload an image</Label>
+                <Form.Field
+                  control={ImageUpload}
+                  onChange={this.handleImageChange}
+                />
 
-              <Form.Field control={Button}>Submit</Form.Field>
-            </Form>
+                <Form.Field control={Button}>Submit</Form.Field>
+              </Form>
+            </div>
+          </div>
+          <div className='to-update-profile'>
+            <Button
+              fluid
+              animated='fade'
+              as={Link}
+              to='/features'
+            >
+              <Button.Content visible>Discover More Locations</Button.Content>
+              <Button.Content hidden>Back to Features</Button.Content>
+            </Button>
           </div>
         </Segment>
       </>

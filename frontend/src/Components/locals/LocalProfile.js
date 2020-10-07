@@ -44,9 +44,10 @@ class LocalProfile extends React.Component {
             <Header as='h2' className='local-profile-name'>
               {username}
             </Header>
-            <Header as='h5' style={this.aboutYouStyle}>A bit about you <br/>
-              <small>This is shared with the community</small>
-              <br/><br/>
+            <Header as='h5' style={this.aboutYouStyle}>Here's what you're letting Montreal know
+              <br/>
+              <small>You share this with the community</small>
+              <br/>
             </Header>
             <Header as='h3'>{bio}</Header>
             <Header as='h5'>Locations contributed: {createdLocations.length}</Header>

@@ -168,6 +168,25 @@ $light-grey: #888;
   max-width: 500px;
 }
 
+.header.location-encourage{
+  margin-top: 5px;
+}
+
+.segment.contribute-location-segment{
+  display: flex;
+  justify-content: space-between;
+}
+
+.contribute-location-outer{
+  border: 1px solid red;
+  width: 45%;
+}
+
+.to-update-profile{
+  border: 1px solid red;
+  width: 45%;
+}
+
 //END of local profile section 
 
 
