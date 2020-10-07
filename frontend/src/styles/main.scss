@@ -140,8 +140,8 @@ $light-grey: #888;
   margin-left: 15px;
 }
 
-.local-profile-image{
-  margin-left: 10px;
+.circular.image.local-profile-image{
+  margin: 0;
   border: 1px solid white;
   width: 75%;
 }
@@ -178,13 +178,15 @@ $light-grey: #888;
 }
 
 .contribute-location-outer{
-  border: 1px solid red;
   width: 45%;
 }
 
 .to-update-profile{
-  border: 1px solid red;
   width: 45%;
+}
+
+.update-info-btn{
+  padding: 10px;
 }
 
 //END of local profile section 
