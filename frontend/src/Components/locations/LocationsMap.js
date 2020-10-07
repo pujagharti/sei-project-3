@@ -1,5 +1,5 @@
 import React from 'react'
-import MapGL, { Marker, NavigationControl } from 'react-map-gl'
+import MapGL, { NavigationControl, Popup } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 
@@ -12,22 +12,23 @@ class LocationsMap extends React.Component {
   componentDidMount(){
     this.setState({
       viewport: {
-        latitude: 45.584733,
-        longitude: -73.78429,
-        zoom: 8,
-        width: '500px',
-        height: '500px'
+        latitude: 45.5017,
+        longitude: -73.5673,
+        zoom: 13,
+        width: '100%',
+        height: '100vh'
       }
     })
   }
 
   addMarker(locationToAdd) {
-    return <Marker key={locationToAdd._id}
+    return <Popup
+      key={locationToAdd._id}
       latitude={locationToAdd.coords[0].latitude}
       longitude={locationToAdd.coords[0].longitude}
     >
-      <span role='img' aria-label='marker'>🏕</span>
-    </Marker>
+      <span role='img' aria-label='marker'>{locationToAdd.placeName}</span>
+    </Popup>
   }
 
 
