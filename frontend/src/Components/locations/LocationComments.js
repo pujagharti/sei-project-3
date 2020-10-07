@@ -87,7 +87,7 @@ class LocationComments extends React.Component {
             placeholder={'Tell others what you think'} />
 
           <div>
-            <span style={{marginRight: '5px', fontSize: '20px'}}>Rate it!</span><Rating icon='heart'
+            <span style={{ marginRight: '5px', fontSize: '20px' }}>Rate it!</span><Rating icon='heart'
               rating={ratingValue}
               maxRating={5}
               onRate={this.handleRate}

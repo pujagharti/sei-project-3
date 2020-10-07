@@ -1,8 +1,7 @@
 import React from 'react'
-import { Comment } from 'semantic-ui-react'
+import { Comment, Rating } from 'semantic-ui-react'
 
 const LocationSingleComment = (props) => {
-
 
   const { text, rating, createdAt } = props
   const { username, userimage } = props.local
@@ -18,7 +17,9 @@ const LocationSingleComment = (props) => {
           <div>{createdAtSliced}</div>
         </Comment.Metadata>
         <Comment.Text>{text}</Comment.Text>
-        <Comment.Text>Rating: {rating}</Comment.Text>
+        <Comment.Text>
+          <Rating icon='heart' size='mini' maxRating={5} rating={rating} disabled />
+        </Comment.Text>
       </Comment.Content>
     </Comment>
   )

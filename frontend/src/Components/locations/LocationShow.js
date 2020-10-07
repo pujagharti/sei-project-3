@@ -121,7 +121,7 @@ class LocationShow extends React.Component {
             <Container text>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                 <Header>Community Rating:</Header>
-                <Rating icon='heart' defaultRating={avgRating} maxRating={5} disabled/>
+                <Rating icon='heart' size='large' defaultRating={avgRating} maxRating={5} disabled/>
                 <LocationComments locationId={locationId} comments={comments} />
               </Grid.Column>
             </Container>
