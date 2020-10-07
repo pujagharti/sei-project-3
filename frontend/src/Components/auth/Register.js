@@ -37,10 +37,9 @@ class Register extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault()
     const dataToSend = ({ ...this.state.formData })
-    console.log(dataToSend)
     try {
       const response = await registerUser(dataToSend)
-      console.log(response)
+      console.log('REGULAR REGISTRATION', response)
       if (response.status === 201){
         this.setState({
           redirect: '/login'

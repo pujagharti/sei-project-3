@@ -2,8 +2,8 @@ import React from 'react'
 import { Button, Form, Grid, Header, Image } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 
-import { loginUser } from '../../lib/api'
-import { setToken } from '../../lib/auth'
+import { loginUser, getUserProfile } from '../../lib/api'
+import { setToken, isLocal } from '../../lib/auth'
 
 class Login extends React.Component {
 
@@ -28,8 +28,12 @@ class Login extends React.Component {
 
     try {
       const res = await loginUser(this.state.formData)
-
       setToken(res.data.token)
+      
+      const userProfile = await getUserProfile()
+      console.log(userProfile.data.isLocal)
+      isLocal(userProfile.data.isLocal)
+      
 
       this.setState({
         redirect: '/features'

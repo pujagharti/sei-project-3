@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { Form, Input, TextArea, Button, Grid, Header, Image } from 'semantic-ui-react'
 
 import { registerUser, updateUser, getUserProfile } from '../../lib/api'
-import { isAuthenticated } from '../../lib/auth'
+import { isAuthenticated, isLocal } from '../../lib/auth'
 
 import ImageUpload from '../common/ImageUpload'
 
@@ -28,7 +28,6 @@ class LocalRegister extends React.Component {
 
   async componentDidMount() {
     try {
-      console.log('DidMount')
       if (this.authenticated()) {
         const res = await getUserProfile()
         console.log(res.data.username, res.data.isLocal, res.data.userimage)
@@ -71,8 +70,8 @@ class LocalRegister extends React.Component {
     const dataToSend = ({ ...this.state.formData, isLocal: true })
     if (!authenticated) {
       try {
-        const response = await registerUser(dataToSend)
-        console.log(response)
+        const res = await registerUser(dataToSend)
+        isLocal(true)
         this.setState({
           redirect: '/login'
         })
@@ -87,7 +86,8 @@ class LocalRegister extends React.Component {
       try {
         const dataToSend = ({ bio: this.state.formData.bio, isLocal: true, userimage: this.state.formData.userimage })
         const res = await updateUser(dataToSend)
-        console.log(res)
+        isLocal(res.data.isLocal)
+
         this.setState({
           redirect: '/profile'
         })

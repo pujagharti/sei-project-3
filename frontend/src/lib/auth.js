@@ -8,8 +8,20 @@ export const getToken = () =>{
   return localStorage.getItem('token')
 }
 
+export function isLocal(isLocal){
+  return localStorage.setItem('isLocal', isLocal)
+}
+
+export function checkIsLocal(){
+  if (localStorage.getItem('isLocal') === 'false'){
+    return false
+  }
+  return localStorage.getItem('isLocal')
+}
+
 export function logout(){
   localStorage.removeItem('token')
+  localStorage.removeItem('isLocal')
 }
 
 const getPayload = () => {
