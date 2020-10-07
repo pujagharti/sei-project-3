@@ -110,7 +110,7 @@ class LocalRegister extends React.Component {
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='black' textAlign='center'>
               <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
-              {(!isLocal) ? 'Register as a Local' : 'Update your local profile'}
+              {(!isLocal) ? 'Register to contribute' : 'Update your profile'}
             </Header>
             <Form onSubmit={this.handleSubmit}>
               {!this.authenticated() &&
@@ -153,14 +153,23 @@ class LocalRegister extends React.Component {
 
               </Form.Group>
 
-              {this.authenticated() &&
-                <h3>{username} Thank you for your interest in contributing! Just a bit more about you, and we can get your profile set up </h3>
+              {this.authenticated() && !isLocal &&
+                <h3>
+                  Thanks for contributing, {username}!<br/>
+                  Just a bit more about you, and we can get your profile set up
+                </h3>
+              }
+
+              {this.authenticated() && isLocal &&
+                <h3>
+                  Keep it fresh {username}<br/> Update your public profile here!
+                </h3>
               }
 
               <Form.Field
                 control={TextArea}
-                label='About'
-                placeholder='Tell us more about you ...'
+                label='Tell the community about you'
+                placeholder=" Let Montreal know what you're about..."
                 onChange={this.handleChange}
                 name='bio'
                 value={bio}
