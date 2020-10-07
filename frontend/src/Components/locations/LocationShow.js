@@ -1,8 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import { Button, Grid, Segment, Header, Container, Divider } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { 
+  Button, Grid,
+  Segment, Header,
+  Container, Divider,
+  Rating 
+} from 'semantic-ui-react'
+  
 
 import { getSingleLocation } from '../../lib/api'
 import CarouselSlide from './CarouselSlide'
@@ -31,6 +37,7 @@ class LocationShow extends React.Component {
     if (!this.state.locationData) return <h1>Trying to find that for you now</h1>
 
     const { placePhotos, placeName, placeDescription, amenities, local, comments } = this.state.locationData
+    const { avgRating } = this.state.locationData
     const features = this.state.locationData.feature
     const locationId = this.props.match.params.id
 
@@ -113,6 +120,8 @@ class LocationShow extends React.Component {
 
             <Container text>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                <Header>Community Rating:</Header>
+                <Rating icon='heart' defaultRating={avgRating} maxRating={5} />
                 <LocationComments locationId={locationId} comments={comments} />
               </Grid.Column>
             </Container>

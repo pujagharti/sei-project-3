@@ -39,10 +39,13 @@ class LocationComments extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault()
-    const formData = { text: this.state.formText, rating: this.state.ratingValue }
+    const formData = { 
+      text: this.state.formText,
+      rating: this.state.ratingValue
+    }
     try {
       const res = await createComment(this.props.locationId, formData)
-      console.log(res)
+      console.log('🍤JUST CREATED A NEW COMMENT!', res)
       const newComments = res.data.comments
 
       this.setState({
