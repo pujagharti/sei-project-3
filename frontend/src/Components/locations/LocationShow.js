@@ -47,10 +47,10 @@ class LocationShow extends React.Component {
           <Grid container stackable verticalAlign='middle'>
             <Grid.Row>
               <Grid.Column width={8}>
-                <Header style={{ fontSize: '2em' }}>
+                <Header style={{ fontSize: '2.5em' }}>
                   <p>{placeName}</p>
-                  <p>{placeDescription}</p>
                 </Header>
+                <p style={{ fontSize: '1.20em' }}>{placeDescription}</p>
                 <p style={{ fontSize: '1.33em' }}>
                   Has:<br></br>
                   {

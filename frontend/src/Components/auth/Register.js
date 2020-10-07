@@ -59,14 +59,6 @@ class Register extends React.Component {
 
     return (
       <>
-        <Divider
-          as='h4'
-          className='header'
-          horizontal
-          style={{ margin: '6em 10em', textTransform: 'uppercase' }}
-        >
-          <a href='#'>Register</a>
-        </Divider>
         <Grid textAlign='center' style={{ height: 'auto', marginTop: '20px' }} >
           <Grid.Column style={{ maxWidth: 450 }} id='auth-column'>
             <Header as='h2' color='black' textAlign='center'>
@@ -131,9 +123,9 @@ class Register extends React.Component {
           as='h4'
           className='header'
           horizontal
-          style={{ margin: '6em 10em', textTransform: 'uppercase' }}
+          style={{ margin: '3em 0em', textTransform: 'uppercase' }}
         >
-          <a href='#'>.</a>
+          <p>Register</p>
         </Divider>
       </>
     )

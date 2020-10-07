@@ -7,10 +7,13 @@ import {
 } from 'semantic-ui-react'
 import Select from 'react-select'
 
-import { createNewLocation } from '../../lib/api'
+import { createNewLocation, createCoord } from '../../lib/api'
 
 import ImageUpload from '../common/ImageUpload'
 import LocalLocationCard from '../locals/LocalLocationCard'
+import { geoCoord } from '../../lib/geocoord'
+
+// import Geocoord from '../../lib/Geocoord'
 
 class LocationNew extends React.Component {
 
@@ -21,6 +24,13 @@ class LocationNew extends React.Component {
       placeDescription: '',
       feature: [''],
       placePhotos: ['']
+    },
+    coordForm: {
+      coordInput: ''
+    },
+    coordData: {
+      latitude: 0,
+      longitude: 0
     }
   }
 
@@ -37,6 +47,13 @@ class LocationNew extends React.Component {
     }
     this.setState({
       formData
+    })
+  }
+
+  handleCoordInputChange = (e) => {
+    const coordForm = { ...this.state.coordForm, [e.target.name]: e.target.value }
+    this.setState({
+      coordForm
     })
   }
 
@@ -58,10 +75,12 @@ class LocationNew extends React.Component {
     e.preventDefault()
 
     try {
+      const result = await geoCoord(this.state.coordForm.coordInput)
       const res = await createNewLocation(this.state.formData)
       const newLocation = res.data
+      const resCoord = await createCoord(res.data._id, result)
+      console.log(resCoord)
       const newLocations = [...this.state.createdLocations, newLocation]
-
       this.setState({
         createdLocations: newLocations,
         formData: {
@@ -69,6 +88,13 @@ class LocationNew extends React.Component {
           placeDescription: '',
           feature: [''],
           placePhotos: ['']
+        },
+        coordForm: {
+          coordInput: ''
+        },
+        coordData: { 
+          latitude: 0,
+          longitude: 0
         }
       })
 
@@ -88,6 +114,7 @@ class LocationNew extends React.Component {
   render() {
 
     const { placeName, placeDescription } = this.state.formData
+    const { coordInput } = this.state.coordForm
     const { createdLocations } = this.state
 
     if (!createdLocations) return <h1>Just getting that for you</h1>
@@ -173,7 +200,14 @@ class LocationNew extends React.Component {
                   control={ImageUpload}
                   onChange={this.handleImageChange}
                 />
-
+                <Label>Enter the location name or postcode</Label>
+                <Form.Field
+                  control={Input}
+                  placeholder='Montreal'
+                  onChange={this.handleCoordInputChange}
+                  name='coordInput'
+                  value={coordInput}
+                />
                 <Form.Field control={Button}>Submit</Form.Field>
               </Form>
             </div>

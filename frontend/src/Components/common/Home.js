@@ -11,7 +11,7 @@ function Home() {
           <Grid.Row>
             <Grid.Column width={9}>
               <Header as='h3' style={{ fontSize: '2em' }}>
-                Discover your Montreal
+                Discover your Montréal
               </Header>
               <p style={{ fontSize: '1.33em' }}>
                 A city that is in love with festivals, the arts, good food, living well and enjoying life to the hilt
@@ -39,11 +39,10 @@ function Home() {
                 Sign up to Comment & Like
               </Header>
               </Link>
-              <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
             </Grid.Column>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
               <Link to={'/local-register'}><Header as='h3' style={{ fontSize: '2em' }}>
-                Or become a local to share your favorite local spots!
+                Register as a local to share your favorite spots!
               </Header></Link>
             </Grid.Column>
           </Grid.Row>
@@ -67,7 +66,7 @@ function Home() {
           <Grid.Row textAlign='center'>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
               <Header as='h3' style={{ fontSize: '2em' }}>
-                Join Your Community Today!
+                Join Your Community
               </Header>
             </Grid.Column>
           </Grid.Row>
@@ -95,7 +94,7 @@ function Home() {
                 <Card.Content>
                   <Card.Header>Mont Saint-Hilaire</Card.Header>
                   <Card.Description>
-                    Just outside of Montreal, Mont Saint-Hilaire nature reserve is another great local spot for those who like their hikes to be more scenic than strenuous, with relatively easy, straightforward trails open all year round.
+                    Just outside of Montréal, Mont Saint-Hilaire nature reserve is another great local spot for those who like their hikes to be more scenic than strenuous, with relatively easy, straightforward trails open all year round.
                   </Card.Description>
                 </Card.Content>
               </Card>
@@ -106,7 +105,7 @@ function Home() {
                 <Card.Content>
                   <Card.Header>Mont Royal Park</Card.Header>
                   <Card.Description>
-                    The centerpiece and the namesake of Montreal, this small mountain offers sightseeing in every direction as you explore every angle.
+                    The centerpiece and the namesake of Montréal, this small mountain offers sightseeing in every direction as you explore every angle.
                   </Card.Description>
                 </Card.Content>
               </Card>
