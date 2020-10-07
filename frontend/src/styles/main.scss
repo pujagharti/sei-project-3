@@ -1,4 +1,7 @@
 
+* {
+  box-sizing: border-box;
+}
 //HOME PAGE 
 //   background-color: red;
 // }
@@ -10,9 +13,7 @@
 //   background-color: green;
 // 
 .ui{
- font-family: 'Barlow Condensed', sans-serif !important;
- 
- 
+font-family: 'Barlow Condensed', sans-serif !important;
 }
 
 $dark-grey: #333;
@@ -83,13 +84,32 @@ $lightest-grey: #CCC;
 }
 //End of Home Component
 
-
-.column {
-  box-shadow: 0 30px 40px rgba(193, 100, 33, 0.1);
-  }
-.ui-button-button {
+// .ui form{
+//   box-shadow: 0 30px 40px rgba(193, 100, 33, 0.1);
+//   }
+.ui-button-button{
     background-color: rgb(212, 91, 18);
   }
+  
+// .ui header{
+//   border-color: lightblue;
+
+// }
+
+// Login/register/contribute
+.column
+{
+  border-radius: 15px;
+  box-shadow: 0px 0px 2.5px 2.5px #fff;
+  max-height: auto;
+  
+  box-sizing: border-box;
+}
+
+#auth-column
+{
+  background-color: lightgray;
+}
 
 
 
@@ -118,7 +138,7 @@ $lightest-grey: #CCC;
 // }
 
 
-//START of LocatioShow component
+//START of LocationShow component
 
 .location-show-container{
   display: flex;
@@ -185,6 +205,7 @@ $lightest-grey: #CCC;
   margin-top: 20px;
   max-width: 500px;
 }
+
 
 .header.location-encourage{
   margin-top: 5px;

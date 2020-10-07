@@ -132,8 +132,8 @@ class LocalRegister extends React.Component {
           <a href='#'>Register</a>
         </Divider>
         <div className='local-register-container'>
-          <Grid textAlign='center' style={{ height: '110vh', marginTop: '20px' }} >
-            <Grid.Column style={{ maxWidth: 450 }}>
+          <Grid textAlign='center' style={{ height: 'auto', marginTop: '20px' }} >
+            <Grid.Column style={{ maxWidth: 450 }} id='auth-column'>
               <Header as='h2' color='black' textAlign='center'>
                 <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
                 {(!isLocal) ? 'Register to contribute' : 'Update your profile'}

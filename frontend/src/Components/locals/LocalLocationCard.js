@@ -12,7 +12,7 @@ const LocalLocationCard = (props) => {
     width: '100%',
     height: '200px',
     borderRadius: '5px',
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
   }
 
   return (
