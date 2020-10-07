@@ -33,11 +33,11 @@ class ImageUpload extends React.Component {
       <>
         {image ?
           <div style={{ width: '300px' }}>
-            <img src={image} alt="selected" style={{ width: '100%', height: 'auto' }}/>
+            <img src={image} alt="selected" style={{ width: '50%', height: 'auto' }}/>
           </div>
           :
           <>
-            <label className="label">{this.props.labelText || '(10mb max - please wait for the image to display)'}</label>
+            <label id='img-upload-label' className="label">{this.props.labelText || '(10mb max - please wait for the image to display)'}</label>
             <input
               className="input"
               type="file"

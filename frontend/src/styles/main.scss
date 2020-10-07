@@ -10,6 +10,8 @@
 // }
 
 $dark-grey: #333;
+$med-grey: #555;
+$light-grey: #888;
 
 
 // .images-bottom {
@@ -164,5 +166,18 @@ $dark-grey: #333;
 .location-form-outer{
   margin-top: 20px;
   max-width: 500px;
+}
+
+//END of local profile section 
+
+
+//Start of Local Register section
+
+.local-register-container{
+  height: 100vh;
+}
+
+#img-upload-label{
+  color: $light-grey;
 }
 

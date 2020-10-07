@@ -29,15 +29,15 @@ class LocalRegister extends React.Component {
   async componentDidMount() {
     try {
       console.log('DidMount')
-      if (this.authenticated()){
+      if (this.authenticated()) {
         const res = await getUserProfile()
         console.log(res.data.username, res.data.isLocal, res.data.userimage)
-        const formData = { 
-          ...this.state.formData, 
-          username: res.data.username, 
-          bio: res.data.bio, 
+        const formData = {
+          ...this.state.formData,
+          username: res.data.username,
+          bio: res.data.bio,
           userimagecurrent: res.data.userimage,
-          isLocal: res.data.isLocal 
+          isLocal: res.data.isLocal
         }
         this.setState({ formData })
       }
@@ -105,75 +105,77 @@ class LocalRegister extends React.Component {
     }
 
     return (
-      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-        <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h2' color='black' textAlign='center'>
-            <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' /> 
-            {(!isLocal) ? 'Register as a Local' : 'Update your local profile'}
-          </Header>
-          <Form onSubmit={this.handleSubmit}>
-            {!this.authenticated() &&
-            <Form.Group widths='equal'>
-              <Form.Field 
-                control={Input}
-                label='User name'
-                placeholder='User name'
+      <div className='local-register-container'>
+        <Grid textAlign='center' style={{ height: '110vh', marginTop: '20px' }} >
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Header as='h2' color='black' textAlign='center'>
+              <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
+              {(!isLocal) ? 'Register as a Local' : 'Update your local profile'}
+            </Header>
+            <Form onSubmit={this.handleSubmit}>
+              {!this.authenticated() &&
+                <>
+                  <Form.Field
+                    control={Input}
+                    label='User name'
+                    placeholder='User name'
+                    onChange={this.handleChange}
+                    name='username'
+                    value={username}
+                  />
+                  <Form.Field
+                    control={Input}
+                    label='Email'
+                    placeholder='Email'
+                    onChange={this.handleChange}
+                    name='email'
+                    value={email}
+                  />
+                  <Form.Field
+                    control={Input}
+                    label='Password'
+                    placeholder='Password'
+                    onChange={this.handleChange}
+                    name='password'
+                    value={password}
+                  />
+                  <Form.Field
+                    control={Input}
+                    label='Password confirmation'
+                    placeholder='Password confirmation'
+                    onChange={this.handleChange}
+                    name='passwordConfirmation'
+                    value={passwordConfirmation}
+                  />
+                </>
+              }
+              <Form.Group inline>
+
+              </Form.Group>
+
+              {this.authenticated() &&
+                <h3>{username} Thank you for your interest in contributing! Just a bit more about you, and we can get your profile set up </h3>
+              }
+
+              <Form.Field
+                control={TextArea}
+                label='About'
+                placeholder='Tell us more about you ...'
                 onChange={this.handleChange}
-                name='username'
-                value={username}
+                name='bio'
+                value={bio}
               />
               <Form.Field
-                control={Input}
-                label='Email'
-                placeholder='Email'
-                onChange={this.handleChange}
-                name='email'
-                value={email}
+                control={ImageUpload}
+                onChange={this.handleImageChange}
+                label='Profile Image'
               />
-              <Form.Field
-                control={Input}
-                label='Password'
-                placeholder='Password'
-                onChange={this.handleChange}
-                name='password'
-                value={password}
-              />
-              <Form.Field
-                control={Input}
-                label='Password confirmation'
-                placeholder='Password confirmation'
-                onChange={this.handleChange}
-                name='passwordConfirmation'
-                value={passwordConfirmation}
-              />
-            </Form.Group>
-            }
-            <Form.Group inline>
-
-            </Form.Group>
-
-            {this.authenticated() &&
-              <h3>{username} Thank you for your interest in contributing! Just a bit more about you, and we can get your profile set up </h3>
-            }
-
-            <Form.Field
-              control={TextArea}
-              label='About'
-              placeholder='Tell us more about you ...'
-              onChange={this.handleChange}
-              name='bio'
-              value={bio}
-            />
-            <Form.Field
-              control={ImageUpload}
-              onChange={this.handleImageChange}
-              label='Profile Image'
-            />
-            {(userimagecurrent && !userimage) ? <Image src={userimagecurrent}/>  : ''}
-            <Form.Field control={Button}>Submit</Form.Field>
-          </Form>
-        </Grid.Column>
-      </Grid>
+              {(userimagecurrent && !userimage) ? <Image src={userimagecurrent} /> : ''}
+              <Form.Field control={Button}>Submit</Form.Field>
+            </Form>
+          </Grid.Column>
+        </Grid>
+      </div>
     )
   }
 
