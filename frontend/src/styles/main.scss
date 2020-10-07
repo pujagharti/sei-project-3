@@ -12,6 +12,7 @@
 $dark-grey: #333;
 $med-grey: #555;
 $light-grey: #888;
+$lightest-grey: #CCC;
 
 
 // .images-bottom {
@@ -119,6 +120,10 @@ $light-grey: #888;
   width: 40%;
 }
 
+.contributor-img{
+  border: 1px solid $lightest-grey;
+  border-radius: 5px;
+}
 
 //Start of Navbar section
 

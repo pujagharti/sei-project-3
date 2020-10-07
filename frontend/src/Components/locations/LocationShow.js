@@ -61,7 +61,7 @@ class LocationShow extends React.Component {
                     })
                   }
                 </p>
-       
+
               </Grid.Column>
               <Grid.Column floated='right' width={8}>
                 <Carousel showThumbs={false}>
@@ -93,12 +93,27 @@ class LocationShow extends React.Component {
               horizontal
               style={{ margin: '1em 0em', textTransform: 'uppercase' }}
             >
-              <a href='#'>Reviews</a>
+              <a href='#'>Contributed By</a>
             </Divider>
             <Container text>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                <LocationComments locationId={locationId} comments={comments} />
                 <LocalPublic {...local} />
+              </Grid.Column>
+            </Container>
+
+            <Divider
+              as='h4'
+              className='header'
+              horizontal
+              style={{ margin: '1em 0em', textTransform: 'uppercase' }}
+            >
+              <a href='#'>Reviews</a>
+            </Divider>
+
+
+            <Container text>
+              <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                <LocationComments locationId={locationId} comments={comments} />
               </Grid.Column>
             </Container>
           </Segment>
