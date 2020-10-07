@@ -15,9 +15,12 @@ router.route('/locations/:id')
 
 router.route('/locations/:id/comments')
   .post(secureRoute, locations.commentCreate)
-  
+
 router.route('/locations/:id/comments/:commentId')
   .delete(secureRoute, locations.commentDelete)
+
+router.route('/locations/:id/coords')
+  .post(secureRoute, locations.coordCreate)
 
 router.route('/register')
   .post(auth.register)

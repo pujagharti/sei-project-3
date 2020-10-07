@@ -97,6 +97,20 @@ async function locationCommentDelete(req, res, next) {
   }
 }
 
+async function locationCoordCreate(req, res,next) {
+  try {
+    const location = await Location.findById(req.params.id)
+    if (!location) throw new Error(notFound)
+    const coord = { ...req.body, local: req.currentUser._Id }
+    if (location.coords.length > 0) (location.coords.pop())
+    location.coords.push(coord)
+    await location.save()
+    res.status(201).json(location)
+  } catch (err){
+    next(err)
+  }
+} 
+
 module.exports = {
   index: locationIndex,
   create: locationCreate,
@@ -104,5 +118,6 @@ module.exports = {
   delete: locationDelete,
   update: locationUpdate,
   commentCreate: locationCommentCreate,
-  commentDelete: locationCommentDelete
+  commentDelete: locationCommentDelete,
+  coordCreate: locationCoordCreate
 }
