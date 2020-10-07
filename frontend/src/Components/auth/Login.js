@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form, Grid, Header, Image } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Divider } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 
 import { loginUser, getUserProfile } from '../../lib/api'
@@ -54,8 +54,16 @@ class Login extends React.Component {
     }
 
     return (
-      <div className='login-wrapper'>
-        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+      <>
+        <Divider
+          as='h4'
+          className='header'
+          horizontal
+          style={{ margin: '6em 10em', textTransform: 'uppercase' }}
+        >
+          <a href='#'>Login</a>
+        </Divider>
+        <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='black' textAlign='center'>
               <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
@@ -85,7 +93,15 @@ class Login extends React.Component {
             </div>
           </Grid.Column>
         </Grid>
-      </div>
+        <Divider
+          as='h4'
+          className='header'
+          horizontal
+          style={{ margin: '6em 10em', textTransform: 'uppercase' }}
+        >
+          <a href='#'>.</a>
+        </Divider>
+      </>
     )
   }
 

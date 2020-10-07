@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { Form, Input, TextArea, Button, Grid, Header, Image } from 'semantic-ui-react'
+import { Form, Input, TextArea, Button, Grid, Header, Image, Divider } from 'semantic-ui-react'
 
 import { registerUser, updateUser, getUserProfile } from '../../lib/api'
 import { isAuthenticated, isLocal } from '../../lib/auth'
@@ -67,23 +67,23 @@ class LocalRegister extends React.Component {
     e.preventDefault()
     const authenticated = this.authenticated()
     // console.log(authenticated, this.state.formData)
-    
+
     let image = ''
-    if ( this.state.formData.userimagecurrent && !this.state.formData.userimage ) {
+    if (this.state.formData.userimagecurrent && !this.state.formData.userimage) {
       image = this.state.formData.userimagecurrent
-    } else { 
-      image = this.state.formData.userimage 
+    } else {
+      image = this.state.formData.userimage
     }
 
     if (!authenticated) {
       try {
-        const dataToSend = ({ 
+        const dataToSend = ({
           email: this.state.formData.email,
           username: this.state.formData.username,
           password: this.state.formData.password,
           passwordConfirmation: this.state.formData.passwordConfirmation,
           bio: this.state.formData.bio,
-          userimage: image, 
+          userimage: image,
           isLocal: true
         })
         const res = await registerUser(dataToSend)
@@ -101,7 +101,7 @@ class LocalRegister extends React.Component {
     if (authenticated) {
 
       try {
-        const dataToSend = ({ bio: this.state.formData.bio, userimage: image, isLocal: true  })
+        const dataToSend = ({ bio: this.state.formData.bio, userimage: image, isLocal: true })
         const res = await updateUser(dataToSend)
         isLocal(res.data.isLocal)
 
@@ -122,86 +122,104 @@ class LocalRegister extends React.Component {
     }
 
     return (
-      <div className='local-register-container'>
-        <Grid textAlign='center' style={{ height: '110vh', marginTop: '20px' }} >
-          <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as='h2' color='black' textAlign='center'>
-              <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
-              {(!isLocal) ? 'Register to contribute' : 'Update your profile'}
-            </Header>
-            <Form onSubmit={this.handleSubmit}>
-              {!this.authenticated() &&
-                <>
-                  <Form.Field
-                    control={Input}
-                    label='User name'
-                    placeholder='User name'
-                    onChange={this.handleChange}
-                    name='username'
-                    value={username}
-                  />
-                  <Form.Field
-                    control={Input}
-                    label='Email'
-                    placeholder='Email'
-                    onChange={this.handleChange}
-                    name='email'
-                    value={email}
-                  />
-                  <Form.Field
-                    control={Input}
-                    label='Password'
-                    placeholder='Password'
-                    onChange={this.handleChange}
-                    name='password'
-                    value={password}
-                  />
-                  <Form.Field
-                    control={Input}
-                    label='Password confirmation'
-                    placeholder='Password confirmation'
-                    onChange={this.handleChange}
-                    name='passwordConfirmation'
-                    value={passwordConfirmation}
-                  />
-                </>
-              }
-              <Form.Group inline>
+      <>
+        <Divider
+          as='h4'
+          className='header'
+          horizontal
+          style={{ margin: '6em 10em', textTransform: 'uppercase' }}
+        >
+          <a href='#'>Register</a>
+        </Divider>
+        <div className='local-register-container'>
+          <Grid textAlign='center' style={{ height: '110vh', marginTop: '20px' }} >
+            <Grid.Column style={{ maxWidth: 450 }}>
+              <Header as='h2' color='black' textAlign='center'>
+                <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
+                {(!isLocal) ? 'Register to contribute' : 'Update your profile'}
+              </Header>
+              <Form onSubmit={this.handleSubmit}>
+                {!this.authenticated() &&
+                  <>
+                    <Form.Field
+                      control={Input}
+                      label='User name'
+                      placeholder='User name'
+                      onChange={this.handleChange}
+                      name='username'
+                      value={username}
+                    />
+                    <Form.Field
+                      control={Input}
+                      label='Email'
+                      placeholder='Email'
+                      onChange={this.handleChange}
+                      name='email'
+                      value={email}
+                    />
+                    <Form.Field
+                      control={Input}
+                      label='Password'
+                      placeholder='Password'
+                      onChange={this.handleChange}
+                      name='password'
+                      value={password}
+                    />
+                    <Form.Field
+                      control={Input}
+                      label='Password confirmation'
+                      placeholder='Password confirmation'
+                      onChange={this.handleChange}
+                      name='passwordConfirmation'
+                      value={passwordConfirmation}
+                    />
+                  </>
+                }
+                <Form.Group inline>
 
-              </Form.Group>
+                </Form.Group>
 
-              {this.authenticated() && !isLocal &&
-                <h3>
-                  Thanks for contributing, {username}!<br/>
+                {this.authenticated() && !isLocal &&
+                  <h3>
+                    Thanks for contributing, {username}!<br />
                   Just a bit more about you, and we can get your profile set up
                 </h3>
-              }
+                }
 
-              {this.authenticated() && isLocal &&
-                <h3>
-                  Keep it fresh {username}<br/> Update your public profile here!
+                {this.authenticated() && isLocal &&
+                  <h3>
+                    Keep it fresh {username}<br /> Update your public profile here!
                 </h3>
-              }
+                }
 
-              <Form.Field
-                control={TextArea}
-                label='Tell the community about you'
-                placeholder=" Let Montreal know what you're about..."
-                onChange={this.handleChange}
-                name='bio'
-                value={bio}
-              />
-              <Form.Field
-                control={ImageUpload}
-                onChange={this.handleImageChange}
-                label='Profile Image'
-              />
-              {(userimagecurrent && !userimage) ? <Image src={userimagecurrent} /> : ''}
-              <Form.Field control={Button}>Submit</Form.Field>
-            </Form>
-          </Grid.Column>
-        </Grid>
-      </div>
+                <Form.Field
+                  control={TextArea}
+                  label='Tell the community about you'
+                  placeholder=" Let Montreal know what you're about..."
+                  onChange={this.handleChange}
+                  name='bio'
+                  value={bio}
+                />
+                <Form.Field
+                  control={ImageUpload}
+                  onChange={this.handleImageChange}
+                  label='Profile Image'
+                />
+                {(userimagecurrent && !userimage) ? <Image src={userimagecurrent} /> : ''}
+                <Form.Field control={Button}>Submit</Form.Field>
+              </Form>
+            </Grid.Column>
+          </Grid>
+        </div>
+        <Divider
+          as='h4'
+          className='header'
+          horizontal
+          style={{ margin: '6em 10em', textTransform: 'uppercase' }}
+        >
+          <a href='#'>.</a>
+        </Divider>
+      </>
     )
   }
 
