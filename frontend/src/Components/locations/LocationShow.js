@@ -71,7 +71,7 @@ class LocationShow extends React.Component {
 
               </Grid.Column>
               <Grid.Column floated='right' width={8}>
-                <Carousel showThumbs={false}>
+                <Carousel className='our-carousel-control' showThumbs={false}>
                   {placePhotos.map((photo, index) => {
                     return <CarouselSlide key={index} photo={photo} />
                   })}

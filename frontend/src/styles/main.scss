@@ -138,6 +138,15 @@ $lightest-grey: #CCC;
   border-radius: 5px;
 }
 
+#park-image-carousel{
+  width: 90%;
+  height: auto;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
 //Start of Navbar section
 
 #active-nav-div,
