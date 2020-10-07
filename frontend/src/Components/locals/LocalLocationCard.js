@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Popup, Card, Rating, Grid } from 'semantic-ui-react'
 
 const LocalLocationCard = (props) => {
-  const { _id, placeName, placePhotos, placeDescription } = props
+  const { _id, placeName, placePhotos, placeDescription, avgRating } = props
   console.log(placePhotos)
 
 
@@ -38,7 +38,7 @@ const LocalLocationCard = (props) => {
       >
         <Popup.Header>Community Rating</Popup.Header>
         <Popup.Content>
-          <Rating icon='heart' defaultRating={3} maxRating={5} />
+          <Rating icon='heart' defaultRating={avgRating} maxRating={5} disabled/>
         </Popup.Content>
       </Popup>
     </Grid.Column>
