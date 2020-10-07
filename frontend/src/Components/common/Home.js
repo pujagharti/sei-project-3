@@ -6,7 +6,7 @@ function Home() {
 
   return (
     <>
-      <Segment style={{ padding: '8em 0em' }} vertical>
+      <Segment style={{ padding: '8em 0em' }} vertical id='home-page'>
         <Grid container stackable verticalAlign='middle'>
           <Grid.Row>
             <Grid.Column width={9}>
@@ -26,11 +26,7 @@ function Home() {
                 <Button type='submit'>Find what's on</Button>
               </Link>
             </Grid.Column>
-
-
-            <Grid.Column floated='right' width={6}>
-              <div id='park-img' className='home-images'></div>
-            </Grid.Column>
+            
           </Grid.Row>
         </Grid>
       </Segment>

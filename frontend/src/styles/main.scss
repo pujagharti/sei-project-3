@@ -256,3 +256,23 @@ $lightest-grey: #CCC;
   color: $light-grey;
 }
 
+//home page
+#home-page
+{
+  background-image: url('./assets/mont-royal-pan.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 85.5vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+#home-page * {
+  color: white;
+  
+  box-shadow: none;
+}
+#home-page button {
+  color: #000;
+}
