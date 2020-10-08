@@ -17,7 +17,7 @@ function Footer() {
             <Header inverted as='h4' content='About' />
             <List link inverted>
               <Link to='/about'>
-                <List.Item as='a'>Our story</List.Item>
+                <List.Item>Our story</List.Item>
               </Link>
             </List>
           </Grid.Column>
