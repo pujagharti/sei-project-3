@@ -36,7 +36,10 @@ class LocationShow extends React.Component {
 
     if (!this.state.locationData) return <h1>Trying to find that for you now</h1>
 
-    const { placePhotos, placeName, placeDescription, amenities, local, comments } = this.state.locationData
+    const { placePhotos, placeName,
+      placeDescription, amenities,
+      local, comments
+    } = this.state.locationData
     const { avgRating } = this.state.locationData
     const features = this.state.locationData.feature
     const locationId = this.props.match.params.id
@@ -121,8 +124,17 @@ class LocationShow extends React.Component {
             <Container text>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                 <Header>Community Rating:</Header>
-                <Rating icon='heart' size='large' defaultRating={avgRating} maxRating={5} disabled/>
-                <LocationComments locationId={locationId} comments={comments} />
+                <Rating icon='heart'
+                  size='large'
+                  defaultRating={avgRating}
+                  maxRating={5}
+                  disabled
+                />
+                <LocationComments 
+                  locationId={locationId}
+                  comments={comments}
+                  {...local}
+                />
               </Grid.Column>
             </Container>
           </Segment>

@@ -5,7 +5,6 @@ const LocationSingleComment = (props) => {
 
   const { text, rating, createdAt } = props
   const { username, userimage } = props.local
-  console.log('☘️ SINGLE COMMENT PROPS', props)
   const createdAtSliced = createdAt.slice(0, 10)
 
   return (

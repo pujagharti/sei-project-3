@@ -1,13 +1,14 @@
 import React from 'react'
-import { Button, Comment, Form, Header, Dropdown, Rating } from 'semantic-ui-react'
+import { Button, Comment, Form, Header, Rating } from 'semantic-ui-react'
 
 import LocationSingleComment from './LocationSingleComment'
-import { createComment } from '../../lib/api'
+import { createComment, getUserProfile } from '../../lib/api'
 
 
 class LocationComments extends React.Component {
 
   state = {
+    profileData: null,
     comments: [],
     formText: '',
     ratingValue: 0,
@@ -15,8 +16,11 @@ class LocationComments extends React.Component {
   }
 
   componentDidMount() {
+    
+    const { comments } = this.props
+
     this.setState({
-      comments: this.props.comments
+      comments: comments
     })
   }
 
@@ -29,26 +33,35 @@ class LocationComments extends React.Component {
     })
   }
 
-  handleDropdownChange = (e, { value }) => this.setState({ ratingValue: value })
 
   handleRate = (e, { rating }) => {
-    console.log('CHANGING RATING!', rating)
     this.setState({ ratingValue: rating })
   }
 
 
-
   handleSubmit = async (e) => {
     e.preventDefault()
+   
     const formData = {
       text: this.state.formText,
       rating: this.state.ratingValue
     }
     try {
-      const res = await createComment(this.props.locationId, formData)
-      const newComments = res.data.comments
+      const resCreateComment = await createComment(this.props.locationId, formData)
+      const returnedComments = resCreateComment.data.comments
+      const newCommentsUpdated = [...returnedComments]
+      
+      const resGetUser = await getUserProfile()
+
+      if (typeof(returnedComments[returnedComments.length - 1].local) === 'string'){
+        newCommentsUpdated[newCommentsUpdated.length - 1].local = {
+          username: resGetUser.data.username,
+          userimage: resGetUser.data.userimage
+        }
+      }
+
       this.setState({
-        comments: newComments,
+        comments: newCommentsUpdated,
         formText: '',
         ratingValue: 1
       })
@@ -71,7 +84,6 @@ class LocationComments extends React.Component {
           What people say
         </Header>
 
-
         {!comments.length &&
           <p>Be the first to comment on this location</p>
         }
@@ -87,7 +99,10 @@ class LocationComments extends React.Component {
             placeholder={'Tell others what you think'} />
 
           <div>
-            <span style={{ marginRight: '5px', fontSize: '20px' }}>Rate it!</span><Rating icon='heart'
+            <span style={{ marginRight: '5px', fontSize: '20px' }}>
+              Rate it!
+            </span>
+            <Rating icon='heart'
               rating={ratingValue}
               maxRating={5}
               onRate={this.handleRate}
