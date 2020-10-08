@@ -6,8 +6,4 @@ import App from './App'
 
 
 
-
-// import { Button, Form } from 'semantic--react'
-
-
 ReactDOM.render(<App />, document.getElementById('root'))

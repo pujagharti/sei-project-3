@@ -283,7 +283,7 @@ module.exports = [
   {
     placeName: 'Mont Tremblant',
     placeDescription: 'Mont Tremblant is famous around the world for its skiing, but locals know there’s a lot more to the mountain than its ski slopes. Choose from 11 trails that cater to all fitness levels, from easy, pet-friendly strolls to strenuous climbs. Nestled among the beautiful and fun-filled Laurentians, Mont Tremblant is beautiful year-round, but perhaps most of all in autumn when the summit offers 360-degree views of leaves changing colour to vibrant oranges, reds and yellows.',
-    placePhotos: ['https://lh3.googleusercontent.com/proxy/bMKmfPlDv78jdDYoN-Budc8L-UdkRcaSCNdxuKFPNurUc934W7UnwI-L-2tWHGkje1qpWWji26AK9bccX6cFbHfPYMqD-67KrTj5emHyWelDnk9KRaRY61xvxkTd0U6NAIfKHszTsWn0Wuaf7en-v-_dOV7-nZJUYwWOIxwIBhRiXDusSGgTmDlTANrzsFbw3ktp3vFbH5twQC0JsgYrTDNHznS10VVt8rpEwuqDoM7bk1qkqnDs9Q'],
+    placePhotos: ['https://1.bp.blogspot.com/-ZiGa5dlBMF4/UlP1sj7VpPI/AAAAAAAAbCc/IrNqOeo6s5c/s640/mont-tremblant-quebec-ski.jpg'],
     amenities: ['Restaurants', 'Trails'],
     coords: {
       latitude: 46.212985,

@@ -17,6 +17,10 @@ class LocationComments extends React.Component {
     errors: null
   }
 
+  authenticated() {
+    return isAuthenticated()
+  }
+
   async componentDidMount() {
 
     if (isAuthenticated()) {
@@ -115,6 +119,7 @@ class LocationComments extends React.Component {
         })
         }
 
+        {this.authenticated() &&
         <Form onSubmit={this.handleSubmit} reply>
           <Form.TextArea
             onChange={this.handleTextChange}
@@ -140,7 +145,9 @@ class LocationComments extends React.Component {
             <p style={{ color: 'red' }}>Please give both a rating and comment<br />
               Only available if logged-in.</p>
           }
-        </Form>
+        </Form> 
+        }
+
       </Comment.Group>
 
     )
