@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Header, Segment, Card, List, Container, Button } from 'semantic-ui-react'
+import { Grid, Header, Segment, Card, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 function Home() {
@@ -23,7 +23,7 @@ function Home() {
                 Share your
               </p>
               <Link to={'/features'}>
-                <Button type='submit'>Find what's on</Button>
+                <Button type='submit'>Find what{'\''}s on</Button>
               </Link>
             </Grid.Column>
 

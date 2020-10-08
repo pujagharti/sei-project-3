@@ -1,10 +1,13 @@
 import React from 'react'
-import { Segment, Link, Header, Container, Button, Divider } from 'semantic-ui-react'
+import { Segment, Header, Container, Divider } from 'semantic-ui-react'
 
 function About() {
 
   return (
-    <Segment style={{ padding: '8em 0em' }} vertical>
+    <Segment 
+      style={{ padding: '8em 0em', borderBottom: 'none' }}
+      vertical
+    >
 
       <Container text>
         <div className='about-box'>

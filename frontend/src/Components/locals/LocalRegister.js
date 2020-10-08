@@ -124,86 +124,85 @@ class LocalRegister extends React.Component {
     return (
       <>
 
-        <div className='local-register-container'>
-          <Grid textAlign='center' style={{ height: 'auto', marginTop: '20px' }} >
-            <Grid.Column style={{ maxWidth: 450 }} id='auth-column'>
-              <Header as='h2' color='black' textAlign='center'>
-                <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
-                {(!isLocal) ? 'Register to contribute' : 'Update your profile'}
-              </Header>
-              <Form onSubmit={this.handleSubmit}>
-                {!this.authenticated() &&
-                  <>
-                    <Form.Field
-                      control={Input}
-                      label='User name'
-                      placeholder='User name'
-                      onChange={this.handleChange}
-                      name='username'
-                      value={username}
-                    />
-                    <Form.Field
-                      control={Input}
-                      label='Email'
-                      placeholder='Email'
-                      onChange={this.handleChange}
-                      name='email'
-                      value={email}
-                    />
-                    <Form.Field
-                      control={Input}
-                      label='Password'
-                      placeholder='Password'
-                      onChange={this.handleChange}
-                      name='password'
-                      value={password}
-                    />
-                    <Form.Field
-                      control={Input}
-                      label='Password confirmation'
-                      placeholder='Password confirmation'
-                      onChange={this.handleChange}
-                      name='passwordConfirmation'
-                      value={passwordConfirmation}
-                    />
-                  </>
-                }
-                <Form.Group inline>
+        <Grid textAlign='center' style={{ height: 'auto', marginTop: '70px' }} >
+          <Grid.Column style={{ maxWidth: 450 }} id='auth-column'>
+            <Header as='h2' color='black' textAlign='center'>
+              <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
+              {(!isLocal) ? 'Register to contribute' : 'Update your profile'}
+            </Header>
+            <Form onSubmit={this.handleSubmit}>
+              {!this.authenticated() &&
+                <>
+                  <Form.Field
+                    control={Input}
+                    label='User name'
+                    placeholder='User name'
+                    onChange={this.handleChange}
+                    name='username'
+                    value={username}
+                  />
+                  <Form.Field
+                    control={Input}
+                    label='Email'
+                    placeholder='Email'
+                    onChange={this.handleChange}
+                    name='email'
+                    value={email}
+                  />
+                  <Form.Field
+                    control={Input}
+                    label='Password'
+                    placeholder='Password'
+                    onChange={this.handleChange}
+                    name='password'
+                    value={password}
+                  />
+                  <Form.Field
+                    control={Input}
+                    label='Password confirmation'
+                    placeholder='Password confirmation'
+                    onChange={this.handleChange}
+                    name='passwordConfirmation'
+                    value={passwordConfirmation}
+                  />
+                </>
+              }
+              <Form.Group inline>
 
-                </Form.Group>
+              </Form.Group>
 
-                {this.authenticated() && !isLocal &&
-                  <h3>
-                    Thanks for contributing, {username}!<br />
+              {this.authenticated() && !isLocal &&
+                <h3>
+                  Thanks for contributing, {username}!<br />
                   Just a bit more about you, and we can get your profile set up
-                  </h3>
-                }
+                </h3>
+              }
 
-                {this.authenticated() && isLocal &&
-                  <h3>
-                    Keep it fresh {username}<br /> Update your public profile here!
-                  </h3>
-                }
+              {this.authenticated() && isLocal &&
+                <h3>
+                  Keep it fresh {username}<br /> Update your public profile here!
+                </h3>
+              }
 
-                <Form.Field
-                  control={TextArea}
-                  label='Tell the community about you'
-                  placeholder=" Let Montreal know what you're about..."
-                  onChange={this.handleChange}
-                  name='bio'
-                  value={bio}
-                />
-                <Form.Field
-                  control={ImageUpload}
-                  onChange={this.handleImageChange}
-                  label='Profile Image'
-                />
-                {(userimagecurrent && !userimage) ? <Image src={userimagecurrent} /> : ''}
-                <Form.Field control={Button}>Submit</Form.Field>
-              </Form>
-            </Grid.Column>
-          </Grid>
-        </div>
+              <Form.Field
+                control={TextArea}
+                label='Tell the community about you'
+                placeholder=" Let Montreal know what you're about..."
+                onChange={this.handleChange}
+                name='bio'
+                value={bio}
+              />
+              <Form.Field
+                control={ImageUpload}
+                onChange={this.handleImageChange}
+                label='Profile Image'
+              />
+              {(userimagecurrent && !userimage) ? <Image src={userimagecurrent} /> : ''}
+              <Form.Field control={Button}>Submit</Form.Field>
+            </Form>
+          </Grid.Column>
+        </Grid>
+
         <Divider
           as='h4'
           className='header'
