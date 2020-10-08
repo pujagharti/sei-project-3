@@ -12,15 +12,18 @@ class LocationComments extends React.Component {
     comments: [],
     formText: '',
     ratingValue: 0,
+    currentUserProfile: null,
     errors: null
   }
 
-  componentDidMount() {
-    
+  async componentDidMount() {
+
+    const resGetUser = await getUserProfile()
     const { comments } = this.props
 
     this.setState({
-      comments: comments
+      comments: comments,
+      currentUserProfile: resGetUser.data
     })
   }
 
@@ -41,7 +44,7 @@ class LocationComments extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault()
-   
+
     const formData = {
       text: this.state.formText,
       rating: this.state.ratingValue
@@ -50,10 +53,10 @@ class LocationComments extends React.Component {
       const resCreateComment = await createComment(this.props.locationId, formData)
       const returnedComments = resCreateComment.data.comments
       const newCommentsUpdated = [...returnedComments]
-      
+
       const resGetUser = await getUserProfile()
 
-      if (typeof(returnedComments[returnedComments.length - 1].local) === 'string'){
+      if (typeof (returnedComments[returnedComments.length - 1].local) === 'string') {
         newCommentsUpdated[newCommentsUpdated.length - 1].local = {
           username: resGetUser.data.username,
           userimage: resGetUser.data.userimage
@@ -75,7 +78,10 @@ class LocationComments extends React.Component {
 
   render() {
 
-    const { comments, formText, ratingValue } = this.state
+    const {
+      comments, formText,
+      ratingValue, currentUserProfile
+    } = this.state
 
     return (
 
@@ -88,12 +94,17 @@ class LocationComments extends React.Component {
           <p>Be the first to comment on this location</p>
         }
         {comments.map((comment, index) => {
-          return <LocationSingleComment key={index} {...comment} />
+          return <LocationSingleComment
+            key={index}
+            {...comment}
+            locationId={this.props.locationId}
+            currentUserProfile={currentUserProfile}
+          />
         })
         }
 
         <Form onSubmit={this.handleSubmit} reply>
-          <Form.TextArea 
+          <Form.TextArea
             onChange={this.handleTextChange}
             value={formText}
             placeholder={'Tell others what you think'} />
@@ -108,7 +119,7 @@ class LocationComments extends React.Component {
               onRate={this.handleRate}
             />
           </div>
-          <br/>
+          <br />
           <Button content='Add a comment'
             labelPosition='left'
             icon='edit'

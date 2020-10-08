@@ -27,6 +27,10 @@ export function createComment(locationId, formText){
   return axios.post(`/api/locations/${locationId}/comments`, formText, withHeaders())
 }
 
+export function deleteComment(locationId, commentId){
+  return axios.delete(`/api/locations/${locationId}/comments/${commentId}`, withHeaders())
+}
+
 export function createCoord(locationId, formText){
   return axios.post(`/api/locations/${locationId}/coords`, formText, withHeaders())
 }
