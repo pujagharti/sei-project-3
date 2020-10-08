@@ -20,6 +20,7 @@ $dark-grey: #333;
 $med-grey: #555;
 $light-grey: #888;
 $lightest-grey: #CCC;
+$autumn-orange: rgb(212, 91, 18);
 
 
 // .images-bottom {
@@ -140,6 +141,17 @@ $lightest-grey: #CCC;
 .mapboxgl-ctrl-group {
   width: 30px;
   margin: 10px 0 0 10px;
+}
+
+.our-popup{
+  .mapboxgl-popup-content{
+    border: 1px solid $autumn-orange;
+  }
+}
+
+
+.mapboxgl-popup-close-button{
+  display: none;
 }
 
 //START of LocationShow component

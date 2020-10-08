@@ -36,6 +36,7 @@ class LocationsMap extends React.Component {
       key={locationToAdd._id}
       latitude={locationToAdd.coords[0].latitude}
       longitude={locationToAdd.coords[0].longitude}
+      className='our-popup'
     >
       <span role='img' aria-label='marker'>{locationToAdd.placeName}</span>
     </Popup>
