@@ -7,7 +7,7 @@ const Features = () => {
   return (
     <>
       <Segment>
-        <Grid >
+        <Grid className='features-container'>
           <Grid.Row columns={3}>
             <Grid.Column>
               <Link to="/features/nightlife">
