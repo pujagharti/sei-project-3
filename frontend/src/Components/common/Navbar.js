@@ -50,7 +50,7 @@ class Navbar extends React.Component {
           name='home'
           onClick={this.handleItemClick}
           as={Link}
-          to='/home'
+          to='/'
         >
           <div
             id={activeItem === 'home' ? 'active-nav-btn' : '' }
@@ -152,7 +152,7 @@ class Navbar extends React.Component {
             name='home'
             onClick={this.handleLogoutClick}
             as={Link}
-            to='/home'
+            to='/'
           >
             <div 
               className='ui animated button'
