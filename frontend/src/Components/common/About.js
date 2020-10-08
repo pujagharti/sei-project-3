@@ -15,7 +15,7 @@ function About() {
             We empower local people to share, inspire and build stronger communities together.
           </Header>
           <p style={{ fontSize: '1.33em' }}>
-            We provide everything you need to know about the our city, as well as celebrating the quirks, eccentricities, hidden and surprising bits that make up the alternative side of the city. Upbeat and eclectic, created by a diverse team of contributors who share a passion for Montreal.
+            We provide everything you need to know about the our city, as well as celebrating the quirks, eccentricities, hidden and surprising bits that make up the alternative side of the city. Upbeat and eclectic, created by a diverse team of contributors who share a passion for Montréal.
           </p>
         </div>
       </Container>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Menu } from 'semantic-ui-react'
+import { Button, Menu, Image } from 'semantic-ui-react'
 import { Link, withRouter } from 'react-router-dom'
 
 import { isAuthenticated, checkIsLocal, logout } from '../../lib/auth'
@@ -42,7 +42,7 @@ class Navbar extends React.Component {
   render() {
 
     const { activeItem } = this.state
-
+    const pathToTree = '../../styles/assets/tree-icon.jpeg'
     return (
 
       <Menu>
@@ -62,7 +62,9 @@ class Navbar extends React.Component {
             </div>
           </div>
         </Menu.Item>
+        {/* <Image size='tiny' src={pathToTree} /> */}
 
+        <div className='tree-logo'></div>
         <div className='ui container'></div>
 
         {!isAuthenticated() &&
