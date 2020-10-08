@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { Form, Input, TextArea, Button, Grid, Header, Image, Divider } from 'semantic-ui-react'
+import { Form, Input, TextArea, Button, Grid, Header, Image, Divider, Message } from 'semantic-ui-react'
 
 import { registerUser, updateUser, getUserProfile } from '../../lib/api'
 import { isAuthenticated, isLocal } from '../../lib/auth'
@@ -19,6 +19,7 @@ class LocalRegister extends React.Component {
       userimage: '',
       isLocal: false
     },
+    formUsernameError: false,
     redirect: null
   }
 
@@ -47,18 +48,17 @@ class LocalRegister extends React.Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.name, ': ', e.target.value)
     const formData = {
       ...this.state.formData,
       [e.target.name]: e.target.value
     }
     this.setState({
-      formData
+      formData,
+      formUsernameError: false
     })
   }
 
   handleImageChange = url => {
-    console.log('uploaded, and url:', url)
     const formData = { ...this.state.formData, userimage: url }
     this.setState({ formData })
   }
@@ -94,7 +94,7 @@ class LocalRegister extends React.Component {
         })
         return
       } catch (err) {
-        console.log(err)
+        this.setState({ formUsernameError: true })
       }
     }
 
@@ -127,39 +127,52 @@ class LocalRegister extends React.Component {
         <Grid textAlign='center' style={{ height: 'auto', marginTop: '70px' }} >
           <Grid.Column style={{ maxWidth: 450 }} id='auth-column'>
             <Header as='h2' color='black' textAlign='center'>
-              <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
               {(!isLocal) ? 'Register to contribute' : 'Update your profile'}
             </Header>
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit} error={this.state.formUsernameError}>
+              {this.state.formUsernameError ? (
+                <Message error header='Fail' content='Please enter your email and password' />
+              ) : null}
               {!this.authenticated() &&
                 <>
+                  <Form.Field>
+                    <label className='form-label'>Username</label>
+                  </Form.Field>
                   <Form.Field
                     control={Input}
-                    label='User name'
                     placeholder='User name'
                     onChange={this.handleChange}
                     name='username'
                     value={username}
                   />
+
+                  <Form.Field>
+                    <label className='form-label'>Email</label>
+                  </Form.Field>
                   <Form.Field
                     control={Input}
-                    label='Email'
                     placeholder='Email'
                     onChange={this.handleChange}
                     name='email'
                     value={email}
                   />
+
+                  <Form.Field>
+                    <label className='form-label'>Password</label>
+                  </Form.Field>
                   <Form.Field
                     control={Input}
-                    label='Password'
                     placeholder='Password'
                     onChange={this.handleChange}
                     name='password'
                     value={password}
                   />
+
+                  <Form.Field>
+                    <label className='form-label'>Password Confirmation</label>
+                  </Form.Field>
                   <Form.Field
                     control={Input}
-                    label='Password confirmation'
                     placeholder='Password confirmation'
                     onChange={this.handleChange}
                     name='passwordConfirmation'
@@ -184,18 +197,24 @@ class LocalRegister extends React.Component {
                 </h3>
               }
 
+
+              <Form.Field>
+                <label className='form-label'>Tell the community about you</label>
+              </Form.Field>
               <Form.Field
                 control={TextArea}
-                label='Tell the community about you'
                 placeholder=" Let Montreal know what you're about..."
                 onChange={this.handleChange}
                 name='bio'
                 value={bio}
               />
+
+              <Form.Field>
+                <label className='form-label'>Profile Image</label>
+              </Form.Field>
               <Form.Field
                 control={ImageUpload}
                 onChange={this.handleImageChange}
-                label='Profile Image'
               />
               {(userimagecurrent && !userimage) ? <Image src={userimagecurrent} /> : ''}
               <Form.Field control={Button}>Submit</Form.Field>

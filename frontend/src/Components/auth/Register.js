@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Divider, Message } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Divider, Message } from 'semantic-ui-react'
 
 import { registerUser } from '../../lib/api'
 import ImageUpload from '../common/ImageUpload'
@@ -30,7 +30,6 @@ class Register extends React.Component {
   }
 
   handleImageChange = url => {
-    console.log('uploaded, and url:', url)
     const formData = { ...this.state.formData, userimage: url }
     this.setState({ formData })
   }
@@ -40,7 +39,6 @@ class Register extends React.Component {
     const dataToSend = ({ ...this.state.formData })
     try {
       const response = await registerUser(dataToSend)
-      console.log('REGULAR REGISTRATION', response)
       if (response.status === 201) {
         this.setState({
           redirect: '/login'
@@ -110,19 +108,10 @@ class Register extends React.Component {
                   control={ImageUpload}
                   onChange={this.handleImageChange}
                 >
+                </Form.Field>
+                
+                <Form.Field control={Button}>Submit</Form.Field>
 
-                </Form.Field>
-                <Form.Field
-                  control={Button}>
-                  <div className='tiny ui animated button' tabIndex='0'>
-                    <div className='visible content'>
-                      <div className='tiny ui button'>Submit</div>
-                    </div>
-                    <div className='hidden content'>
-                      <i className='send icon'></i>
-                    </div>
-                  </div>
-                </Form.Field>
               </Form>
             </div>
           </Grid.Column>
