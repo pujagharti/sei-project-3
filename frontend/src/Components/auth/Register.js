@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Divider } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Divider, Message } from 'semantic-ui-react'
 
 import { registerUser } from '../../lib/api'
 import ImageUpload from '../common/ImageUpload'
@@ -16,6 +16,7 @@ class Register extends React.Component {
       passwordConfirmation: '',
       userimage: ''
     },
+    formUsernameError: false,
     redirect: null
   }
 
@@ -25,11 +26,10 @@ class Register extends React.Component {
       ...this.state.formData,
       [e.target.name]: e.target.value
     }
-    this.setState({ formData })
+    this.setState({ formData, formUsernameError: false })
   }
 
   handleImageChange = url => {
-    console.log('uploaded, and url:', url)
     const formData = { ...this.state.formData, userimage: url }
     this.setState({ formData })
   }
@@ -39,14 +39,13 @@ class Register extends React.Component {
     const dataToSend = ({ ...this.state.formData })
     try {
       const response = await registerUser(dataToSend)
-      console.log('REGULAR REGISTRATION', response)
       if (response.status === 201) {
         this.setState({
           redirect: '/login'
         })
       }
     } catch (err) {
-      console.log(err)
+      this.setState({ formUsernameError: true })
     }
   }
 
@@ -59,16 +58,18 @@ class Register extends React.Component {
 
     return (
       <>
-        <Grid textAlign='center' style={{ height: 'auto', marginTop: '70px' }} >
+        <Grid textAlign='center' style={{ height: 'auto', marginTop: '70px', marginBottom: '70px' }} >
           <Grid.Column style={{ maxWidth: 450 }} id='auth-column'>
             <Header as='h2' color='black' textAlign='center'>
-              <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_0XVXWXbh6quw4pprg2muCVE-P3Jt_aG8JQ&usqp=CAU' />
             Register your account
             </Header>
             <div className='ui container size mini'>
-              <Form onSubmit={this.handleSubmit}>
+              <Form onSubmit={this.handleSubmit} error={this.state.formUsernameError}>
+                {this.state.formUsernameError ? (
+                  <Message error header='Fail' content='All fields required except for image' />
+                ) : null}
                 <Form.Field>
-                  <label>Username</label>
+                  <label className='form-label'>Username</label>
                   <input placeholder='username'
                     onChange={this.handleChange}
                     value={username}
@@ -76,7 +77,7 @@ class Register extends React.Component {
                   />
                 </Form.Field>
                 <Form.Field>
-                  <label>Email</label>
+                  <label className='form-label'>Email</label>
                   <input placeholder='email'
                     onChange={this.handleChange}
                     value={email}
@@ -84,7 +85,7 @@ class Register extends React.Component {
                   />
                 </Form.Field>
                 <Form.Field>
-                  <label>Password</label>
+                  <label className='form-label'>Password</label>
                   <input placeholder='password'
                     onChange={this.handleChange}
                     value={password}
@@ -92,29 +93,25 @@ class Register extends React.Component {
                   />
                 </Form.Field>
                 <Form.Field>
-                  <label>Password Confirmation</label>
+                  <label className='form-label'>Password Confirmation</label>
                   <input placeholder='password confirmation'
                     onChange={this.handleChange}
                     value={passwordConfirmation}
                     name='passwordConfirmation'
                   />
                 </Form.Field>
+
+                <Form.Field>
+                  <label className='form-label'>Profile Image</label>
+                </Form.Field>
                 <Form.Field
                   control={ImageUpload}
                   onChange={this.handleImageChange}
-                  label='Profile Image'
-                />
-                <Form.Field
-                  control={Button}>
-                  <div className='tiny ui animated button' tabIndex='0'>
-                    <div className='visible content'>
-                      <div className='tiny ui button'>Submit</div>
-                    </div>
-                    <div className='hidden content'>
-                      <i className='send icon'></i>
-                    </div>
-                  </div>
+                >
                 </Form.Field>
+                
+                <Form.Field control={Button}>Submit</Form.Field>
+
               </Form>
             </div>
           </Grid.Column>
