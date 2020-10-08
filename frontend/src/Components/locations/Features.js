@@ -6,10 +6,10 @@ const Features = () => {
 
   return (
     <>
-      <Segment>
+      <div className='features-outer-container'>
         <Grid className='features-container'>
           <Grid.Row columns={3}>
-            <Grid.Column>
+            <Grid.Column className='feature-column'>
               <Link to="/features/nightlife">
                 <Card>
 
@@ -24,7 +24,7 @@ const Features = () => {
               </Link>
 
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column className='feature-column'>
               <Link to="/features/summer">
                 <Card>
                   <div id='summer-card-img' className='home-card-imgs'></div>
@@ -38,7 +38,7 @@ const Features = () => {
                 </Card>
               </Link>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column className='feature-column'>
               <Link to="/features/gowild">
                 <Card>
                   <div id='gowild-card-img' className='home-card-imgs'></div>
@@ -53,6 +53,7 @@ const Features = () => {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        {/* <div className='divider-container'> */}
         <Divider
           as='h4'
           className='header'
@@ -61,8 +62,8 @@ const Features = () => {
         >
           <p>What's on</p>
         </Divider>
-      </Segment>
-
+        {/* </div> */}
+      </div>
 
     </>
 
