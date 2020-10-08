@@ -3,6 +3,7 @@ import { Button, Comment, Form, Header, Rating } from 'semantic-ui-react'
 
 import LocationSingleComment from './LocationSingleComment'
 import { createComment, getUserProfile } from '../../lib/api'
+import { isAuthenticated } from '../../lib/auth'
 
 
 class LocationComments extends React.Component {
@@ -12,18 +13,26 @@ class LocationComments extends React.Component {
     comments: [],
     formText: '',
     ratingValue: 0,
-    currentUserProfile: null,
+    currentUserProfile: {},
     errors: null
   }
 
   async componentDidMount() {
 
-    const resGetUser = await getUserProfile()
+    if (isAuthenticated()) {
+      try {
+        const resGetUser = await getUserProfile()
+        this.setState({
+          currentUserProfile: resGetUser.data
+        })
+      } catch (err) {
+        console.log(err)
+      }
+    }
     const { comments } = this.props
 
     this.setState({
-      comments: comments,
-      currentUserProfile: resGetUser.data
+      comments: comments
     })
   }
 
@@ -55,12 +64,14 @@ class LocationComments extends React.Component {
       const returnedComments = resCreateComment.data.comments
       const newCommentsUpdated = [...returnedComments]
 
-      const resGetUser = await getUserProfile()
+      if (isAuthenticated()) {
+        const resGetUser = await getUserProfile()
 
-      if (typeof (returnedComments[returnedComments.length - 1].local) === 'string') {
-        newCommentsUpdated[newCommentsUpdated.length - 1].local = {
-          username: resGetUser.data.username,
-          userimage: resGetUser.data.userimage
+        if (typeof (returnedComments[returnedComments.length - 1].local) === 'string') {
+          newCommentsUpdated[newCommentsUpdated.length - 1].local = {
+            username: resGetUser.data.username,
+            userimage: resGetUser.data.userimage
+          }
         }
       }
 
