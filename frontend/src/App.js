@@ -18,29 +18,31 @@ const App = () => {
     <>
 
       <BrowserRouter>
-        <Navbar />
-        
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/register' component={Register} />
-          <Route path='/login' component={Login} />
-          <Route path='/local-register' component={LocalRegister} />
-          <Route path='/profile' component={LocalProfile} />
-          <Route path='/about' component={About} />
-          
-          <Route path='/features/:feature' component={LocationsIndex} />
+        <div className='page-container'>
+          <Navbar />
 
-          <Route path='/features' component={Features} />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/register' component={Register} />
+            <Route path='/login' component={Login} />
+            <Route path='/local-register' component={LocalRegister} />
+            <Route path='/profile' component={LocalProfile} />
+            <Route path='/about' component={About} />
 
-          {/* <Route
+            <Route path='/features/:feature' component={LocationsIndex} />
+
+            <Route path='/features' component={Features} />
+
+            {/* <Route
             path='/locations/glamping'
             render={(props) => (
               < LocationsIndex {...props} feature={'glamping'} />
             )}
           /> */}
 
-          <Route path='/locations/:id' component={LocationShow} />
-        </Switch>
+            <Route path='/locations/:id' component={LocationShow} />
+          </Switch>
+        </div>
         <Footer />
 
       </BrowserRouter>

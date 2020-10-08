@@ -4,12 +4,24 @@ $light-grey: #888;
 $lightest-grey: #CCC;
 $autumn-orange: rgb(212, 91, 18);
 
-* {
+html,
+ body {
+  height: 100%;
+  position: relative;
+ }
+
+.page-container{
+  min-height: 100vh;
+}
+
+*{
   box-sizing: border-box;
 }
+
 .ui{
 font-family: 'Barlow Condensed', sans-serif !important;
 }
+
 
 //HOME PAGE 
 .join-community-container{
@@ -266,10 +278,6 @@ font-family: 'Barlow Condensed', sans-serif !important;
 
 //Start of Local Register section
 
-.local-register-container{
-  height: 100vh;
-}
-
 #img-upload-label{
   color: $light-grey;
 }
@@ -309,3 +317,13 @@ font-family: 'Barlow Condensed', sans-serif !important;
 #home-page button {
   color: #000;
 }
+
+
+
+//Start of Footer Section
+
+#footer-segment{
+  width: 100vw;
+}
+
+//End of Footer Section
