@@ -1,8 +1,8 @@
 module.exports = [
 
   {
-    username: 'Bambino',
-    email: 'me@email.com',
+    username: 'Alpha Test Account',
+    email: 'a@email.com',
     password: 'pass',
     passwordConfirmation: 'pass',
     userimage: '',
@@ -11,8 +11,8 @@ module.exports = [
     usertelephone: ''
   },
   {
-    username: 'Clark',
-    email: 'clark@email.com',
+    username: 'Beta Test Account',
+    email: 'b@email.com',
     password: 'pass',
     passwordConfirmation: 'pass',
     userimage: '',

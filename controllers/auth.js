@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken')
 const { secret } = require('../config/environment')
 const { unauthorized, notFound } = require('../lib/errorMessage')
 
-
 async function register(req, res, next) {
   try {
     const user = await User.create(req.body)
@@ -63,55 +62,52 @@ async function profile(req, res, next) {
   }
 }
 
-async function local(req, res, next) {
-  const { email, username, password, passwordConfirmation } = req.body
-  try {
+// async function local(req, res, next) {
+//   const { email, username, password, passwordConfirmation } = req.body
+//   try {
 
-    let user = await User.findOne({ email })
-    if (user) {
-      return res.status(401).json({ msg: 'User not authorised.' })
-    }
+//     let user = await User.findOne({ email })
+//     if (user) {
+//       return res.status(401).json({ msg: 'User not authorised.' })
+//     }
     
-    user = new User({
-      username,
-      email,
-      password,
-      passwordConfirmation,
-      isLocal: true
-    })
+//     user = new User({
+//       username,
+//       email,
+//       password,
+//       passwordConfirmation,
+//       isLocal: true
+//     })
 
-    await user.save()
+//     await user.save()
 
 
-    res.json(user)
+//     res.json(user)
 
-  } catch (err) {
-    next(err)
-  }
-}
+//   } catch (err) {
+//     next(err)
+//   }
+// }
 
-async function becomeLocal(req, res, next) {
-  try {
+// async function becomeLocal(req, res, next) {
+//   try {
 
-    const user = await User.findById(req.currentUser._id)
+//     const user = await User.findById(req.currentUser._id)
 
-    user.isLocal = true
+//     user.isLocal = true
 
-    await user.save()
+//     await user.save()
 
-    res.json(user)
-  } catch (err) {
-    next(err)
-  }
+//     res.json(user)
+//   } catch (err) {
+//     next(err)
+//   }
 
-}
+// }
 
 module.exports = {
   register, 
   login,
   profile,
-  update: userUpdate,
-  local,
-  becomeLocal
+  update: userUpdate
 }
-

@@ -25,8 +25,8 @@ router.route('/locations/:id/coords')
 router.route('/register')
   .post(auth.register)
 
-router.route('/local')
-  .post(auth.local)
+// router.route('/local')
+//   .post(auth.local)
 
 router.route('/login')
   .post(auth.login)
@@ -38,7 +38,7 @@ router.route('/profile')
   .get(secureRoute, auth.profile)
 
 // modify user to be a local
-router.route('/become_local')
-  .put(secureRoute, auth.becomeLocal)
+// router.route('/become_local')
+//   .put(secureRoute, auth.becomeLocal)
 
 module.exports = router
