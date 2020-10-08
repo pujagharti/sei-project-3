@@ -26,7 +26,7 @@ function Home() {
                 <Button type='submit'>Find what's on</Button>
               </Link>
             </Grid.Column>
-            
+
           </Grid.Row>
         </Grid>
       </Segment>
@@ -42,26 +42,34 @@ function Home() {
             </Grid.Column>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
               <Link to={'/local-register'}><Header as='h3' style={{ fontSize: '2em' }}>
-                Register as a local to share your favorite spots!
+                Register as a local to share your favorite spots
               </Header></Link>
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Segment>
 
-      <Segment>
-        <Grid>
-          <Grid.Column floated='left' width={7}>
-            <div id='street-img' className='home-images'></div>
-          </Grid.Column>
-          <Grid.Column floated='right' width={7}>
-            <div id='culture-img' className='home-images'></div>
-            {/* <Image bordered rounded size='large' src='https://cdn.theculturetrip.com/wp-content/uploads/2017/12/33554467340_65375926e8_k.jpg' /> */}
-          </Grid.Column>
-        </Grid>
-      </Segment>
+      {/* <Segment> */}
+      <Grid>
+        <Grid.Column
+          className='home-column-box'
+          floated='left'
+          width={7}
+        >
+          <div id='street-img' className='home-images'></div>
+        </Grid.Column>
+        <Grid.Column
+          className='home-column-box'
+          floated='right'
+          width={7}
+        >
+          <div id='culture-img' className='home-images'></div>
+          {/* <Image bordered rounded size='large' src='https://cdn.theculturetrip.com/wp-content/uploads/2017/12/33554467340_65375926e8_k.jpg' /> */}
+        </Grid.Column>
+      </Grid>
+      {/* </Segment> */}
 
-      <Segment style={{ padding: '0em' }} vertical>
+      <Segment style={{ padding: '0em' }} className='join-community-container' vertical>
         <Grid celled='internally' columns='equal' stackable>
           <Grid.Row textAlign='center'>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
@@ -120,16 +128,20 @@ function Home() {
             <Grid.Row textAlign='center'>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                 <Header as='h3' style={{ fontSize: '2em' }}>
-                  {'"Community rich city"'}
+
+                  {'"Our favorite app to discover Montréal"'}
+                
                 </Header>
-                <p style={{ fontSize: '1.33em' }}>Words here.........</p>
+                <p style={{ fontSize: '1.33em' }}>Explore throughout the seasons......</p>
               </Grid.Column>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                 <Header as='h3' style={{ fontSize: '2em' }}>
-                  {'"Line here about ......"'}
+
+                  {'"Great way to join local events"'}
+                
                 </Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  Come
+                  Meet your locals......
                 </p>
               </Grid.Column>
             </Grid.Row>
