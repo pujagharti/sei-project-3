@@ -19,8 +19,12 @@ export function createNewLocation(formData){
   return axios.post('/api/locations', formData, withHeaders())
 }
 
-export function getSingleLocation(id){
-  return axios.get(`${baseUrl}/locations/${id}`)
+export function deleteLocation(locationId){
+  return axios.delete(`${baseUrl}/locations/${locationId}`, withHeaders())
+}
+
+export function getSingleLocation(locationId){
+  return axios.get(`${baseUrl}/locations/${locationId}`)
 }
 
 export function createComment(locationId, formText){
@@ -38,6 +42,7 @@ export function createCoord(locationId, formText){
 export function getUserProfile(){
   return axios.get('/api/profile', withHeaders())
 }
+
 
 
 //Authentication
