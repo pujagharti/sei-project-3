@@ -102,6 +102,8 @@ class LocalRegister extends React.Component {
 
       try {
         const dataToSend = ({ bio: this.state.formData.bio, userimage: image, isLocal: true })
+        if (!dataToSend.bio) throw new Error()
+        
         const res = await updateUser(dataToSend)
         isLocal(res.data.isLocal)
 
@@ -109,7 +111,7 @@ class LocalRegister extends React.Component {
           redirect: '/profile'
         })
       } catch (err) {
-        console.log(err)
+        this.setState({ formUsernameError: true })
       }
     }
   }
@@ -131,7 +133,7 @@ class LocalRegister extends React.Component {
             </Header>
             <Form onSubmit={this.handleSubmit} error={this.state.formUsernameError}>
               {this.state.formUsernameError ? (
-                <Message error header='Fail' content='Please enter your email and password' />
+                <Message error header='Fail' content={this.authenticated() ? 'Please enter a bio' : 'Please enter your email and password'} />
               ) : null}
               {!this.authenticated() &&
                 <>
@@ -186,14 +188,14 @@ class LocalRegister extends React.Component {
 
               {this.authenticated() && !isLocal &&
                 <h3>
-                  Thanks for contributing, {username}!<br />
+                  Thanks for contributing, <span style={{ color: '#71B600' }}>{username}</span>!<br />
                   Just a bit more about you, and we can get your profile set up
                 </h3>
               }
 
               {this.authenticated() && isLocal &&
                 <h3>
-                  Keep it fresh {username}<br /> Update your public profile here!
+                  Keep it fresh <span style={{ color: '#71B600' }}>{username}</span><br /> Update your public profile here!
                 </h3>
               }
 

@@ -103,7 +103,7 @@ class LocationShow extends React.Component {
               horizontal
               style={{ margin: '1em 0em', textTransform: 'uppercase' }}
             >
-              <a href='#'>Contributed By</a>
+              Contributed By
             </Divider>
             <Container text>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
@@ -117,7 +117,7 @@ class LocationShow extends React.Component {
               horizontal
               style={{ margin: '1em 0em', textTransform: 'uppercase' }}
             >
-              <a href='#'>Reviews</a>
+              Reviews
             </Divider>
 
 

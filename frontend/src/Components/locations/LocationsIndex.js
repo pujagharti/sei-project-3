@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Grid, Divider, Header } from 'semantic-ui-react'
+import { Segment, Grid, Divider, Header, Dimmer, Loader } from 'semantic-ui-react'
 // import Scrollbar from 'semantic-ui-react-scrollbar'
 
 import { getLocations } from '../../lib/api'
@@ -40,7 +40,13 @@ class LocationsIndex extends React.Component {
 
   render() {
 
-    if (!this.state.locationsData) return <h1>Let me just get that for you</h1>
+    if (!this.state.locationsData) {
+      return (
+        <Dimmer active>
+          <Loader>Loading</Loader>
+        </Dimmer>
+      )
+    }
 
     const { feature } = this.props
     const { locationsData, featureSelected } = this.state
@@ -63,14 +69,14 @@ class LocationsIndex extends React.Component {
             <Grid.Row columns={2} divided>
               <Grid.Column>
                 <div>
-                  <LocationsMap 
+                  <LocationsMap
                     featureSelected={featureSelected}
                     locationsData={locationsData}
                   />
                 </div>
               </Grid.Column>
               <Grid.Column>
-                <Segment style={{ overflow: 'auto', maxHeight: 700 }}>
+                <Segment style={{ overflow: 'auto', maxHeight: 700, marginLeft: '100px' }}>
                   <div className='locations-index-container'>
                     <section className='locations-index-cards'>
                       {
