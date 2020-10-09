@@ -21,7 +21,7 @@ class LocationNew extends React.Component {
     formData: {
       placeName: '',
       placeDescription: '',
-      feature: [''],
+      feature: [],
       placePhotos: ['']
     },
     coordForm: {
@@ -77,19 +77,23 @@ class LocationNew extends React.Component {
 
     try {
       console.log(this.state.formData.feature)
-      if (this.state.formData.feature[0] === '') throw new Error()
-      const result = await geoCoord(this.state.coordForm.coordInput)
+      if (this.state.formData.feature.length === 0) throw new Error()
       const res = await createNewLocation(this.state.formData)
+      if (this.state.coordForm.coordInput !== ''){
+
+        const result = await geoCoord(this.state.coordForm.coordInput)
+        const resCoord = await createCoord(res.data._id, result)
+        console.log(resCoord)
+
+      }
       const newLocation = res.data
-      const resCoord = await createCoord(res.data._id, result)
-      console.log(resCoord)
       const newLocations = [...this.state.createdLocations, newLocation]
       this.setState({
         createdLocations: newLocations,
         formData: {
           placeName: '',
           placeDescription: '',
-          feature: [''],
+          feature: [],
           placePhotos: ['']
         },
         coordForm: {
@@ -179,7 +183,9 @@ class LocationNew extends React.Component {
                   options={this.options}
                   isMulti
                   onChange={this.handleMultiSelectChange}
-                  style={this.selectStyle}
+                  value={
+                    this.state.formData.feature.map((item) => ({ value: item, label: item }))
+                  }
                 />
                 <br />
 
