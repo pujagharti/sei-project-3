@@ -62,49 +62,6 @@ async function profile(req, res, next) {
   }
 }
 
-// async function local(req, res, next) {
-//   const { email, username, password, passwordConfirmation } = req.body
-//   try {
-
-//     let user = await User.findOne({ email })
-//     if (user) {
-//       return res.status(401).json({ msg: 'User not authorised.' })
-//     }
-    
-//     user = new User({
-//       username,
-//       email,
-//       password,
-//       passwordConfirmation,
-//       isLocal: true
-//     })
-
-//     await user.save()
-
-
-//     res.json(user)
-
-//   } catch (err) {
-//     next(err)
-//   }
-// }
-
-// async function becomeLocal(req, res, next) {
-//   try {
-
-//     const user = await User.findById(req.currentUser._id)
-
-//     user.isLocal = true
-
-//     await user.save()
-
-//     res.json(user)
-//   } catch (err) {
-//     next(err)
-//   }
-
-// }
-
 module.exports = {
   register, 
   login,
