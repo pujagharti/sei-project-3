@@ -77,7 +77,10 @@ class LocationNew extends React.Component {
 
     try {
       console.log(this.state.formData.feature)
-      if (this.state.formData.feature.length === 0) throw new Error()
+      if (this.state.formData.feature.length === 0 ||
+        this.state.coordForm.coordInput === '' ||
+        this.state.formData.placeName === '') throw new Error()
+
       const res = await createNewLocation(this.state.formData)
       if (this.state.coordForm.coordInput !== ''){
 
@@ -158,7 +161,7 @@ class LocationNew extends React.Component {
             <div className='location-form-outer'>
               <Form onSubmit={this.handleSubmit} error={this.state.formUsernameError}>
                 {this.state.formUsernameError ? (
-                  <Message error header='Fail' content='Please select an activity' />
+                  <Message error header='Fail' content='Please input, place name, activity and location' />
                 ) : null}
                 <Label>Placename</Label>
                 <Form.Field
