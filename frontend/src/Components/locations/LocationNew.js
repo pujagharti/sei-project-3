@@ -2,8 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {
   Form, Input, TextArea, Button,
-  Segment, Header, Grid, Icon,
-  List, Label
+  Segment, Header, Grid, Label, Message
 } from 'semantic-ui-react'
 import Select from 'react-select'
 
@@ -31,7 +30,8 @@ class LocationNew extends React.Component {
     coordData: {
       latitude: 0,
       longitude: 0
-    }
+    },
+    formUsernameError: false
   }
 
   options = [
@@ -46,7 +46,8 @@ class LocationNew extends React.Component {
       [e.target.name]: e.target.value
     }
     this.setState({
-      formData
+      formData, 
+      formUsernameError: false 
     })
   }
 
@@ -75,6 +76,8 @@ class LocationNew extends React.Component {
     e.preventDefault()
 
     try {
+      console.log(this.state.formData.feature)
+      if (this.state.formData.feature[0] === '') throw new Error()
       const result = await geoCoord(this.state.coordForm.coordInput)
       const res = await createNewLocation(this.state.formData)
       const newLocation = res.data
@@ -95,11 +98,13 @@ class LocationNew extends React.Component {
         coordData: { 
           latitude: 0,
           longitude: 0
-        }
+        },
+        formUsernameError: false
       })
 
     } catch (err) {
       console.log(err)
+      this.setState({ formUsernameError: true })
     }
   }
 
@@ -144,30 +149,13 @@ class LocationNew extends React.Component {
         <Segment className='contribute-location-segment'>
           <div className='contribute-location-outer'>
             <Header as='h2'>Contribute a new location</Header>
-
-            <List horizontal>
-              <List.Item>
-
-                <List.Content>
-                  <List.Header><Icon circular name='cocktail' />Great nightlife?</List.Header>
-                </List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Content>
-                  <List.Header><Icon circular name='tree' />Wild nature?</List.Header>
-                </List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Content>
-                  <List.Header><Icon circular name='sun' />Summer gems?</List.Header>
-                </List.Content>
-              </List.Item>
-            </List>
             <Header as='h5' className='location-encourage'>Contribute a location and let others discover your Montreal</Header>
 
             <div className='location-form-outer'>
-              <Form onSubmit={this.handleSubmit}>
-
+              <Form onSubmit={this.handleSubmit} error={this.state.formUsernameError}>
+                {this.state.formUsernameError ? (
+                  <Message error header='Fail' content='Please select an activity' />
+                ) : null}
                 <Label>Placename</Label>
                 <Form.Field
                   control={Input}

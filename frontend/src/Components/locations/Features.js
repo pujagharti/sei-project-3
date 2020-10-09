@@ -17,7 +17,7 @@ const Features = () => {
                   <Card.Content>
                     <Card.Header>NightLife</Card.Header>
                     <Card.Description>
-                      We will write a description later
+                      Bar, clubs, comedy and atmosphere 
                     </Card.Description>
                   </Card.Content>
                 </Card>
@@ -32,7 +32,7 @@ const Features = () => {
                   <Card.Content>
                     <Card.Header>Summer Festivals</Card.Header>
                     <Card.Description>
-                      we will write the description later
+                      Across the city there is a festival for you
                     </Card.Description>
                   </Card.Content>
                 </Card>
@@ -45,7 +45,7 @@ const Features = () => {
                   <Card.Content>
                     <Card.Header>Go Wild</Card.Header>
                     <Card.Description>
-                      We will write the description.
+                      Venture into Montréal's wilderness 
                     </Card.Description>
                   </Card.Content>
                 </Card>

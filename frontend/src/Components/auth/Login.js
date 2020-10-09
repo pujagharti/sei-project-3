@@ -20,7 +20,9 @@ class Login extends React.Component {
       ...this.state.formData,
       [e.target.name]: e.target.value
     }
-    this.setState({ formData, formUsernameError: false })
+    this.setState({ 
+      formData, 
+      formUsernameError: false })
   }
 
 

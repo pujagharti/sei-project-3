@@ -15,6 +15,11 @@ html,
   min-height: 100vh;
 }
 
+.profile-outer-container.profile-container-padding{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 *{
   box-sizing: border-box;
 }
@@ -261,8 +266,10 @@ font-family: 'Barlow Condensed', sans-serif !important;
   padding-top: 15px;
 }
 
-.local-info-container{
+.grid.local-info-container{
   background-color: #CCC;
+  margin-left: 0;
+  margin-right:0;
 }
 
 .card.popup-card{
