@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Divider, Header, Image, Grid, Button } from 'semantic-ui-react'
+import { Divider, Header, Image, Grid, Button, Dimmer, Loader } from 'semantic-ui-react'
 
 import LocationNew from '../locations/LocationNew'
 import { getUserProfile } from '../../lib/api'
@@ -30,7 +30,13 @@ class LocalProfile extends React.Component {
   }
 
   render() {
-    if (!this.state.profileData) return <h1>Just getting that for you</h1>
+    if (!this.state.profileData) {
+      return (
+        <Dimmer active>
+          <Loader>Loading</Loader>
+        </Dimmer>
+      )
+    }
 
     const { username, userimage, bio, createdLocations } = this.state.profileData
 

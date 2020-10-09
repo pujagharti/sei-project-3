@@ -20,7 +20,7 @@ class LocationsIndex extends React.Component {
   }
 
   changeScrollPosition = (newScrollPosition) => {
-    this.setState({ scrollPosition: newScrollPosition });
+    this.setState({ scrollPosition: newScrollPosition })
   }
 
   async componentDidMount() {

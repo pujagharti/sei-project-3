@@ -6,7 +6,7 @@ import {
   Button, Grid,
   Segment, Header,
   Container, Divider,
-  Rating 
+  Rating, Dimmer, Loader 
 } from 'semantic-ui-react'
   
 
@@ -34,7 +34,14 @@ class LocationShow extends React.Component {
 
   render() {
 
-    if (!this.state.locationData) return <h1>Trying to find that for you now</h1>
+    if (!this.state.locationData) {
+      return (
+        <Dimmer active>
+          <Loader>Loading</Loader>
+        </Dimmer>
+      )
+    }
+
 
     const { placePhotos, placeName,
       placeDescription, amenities,
