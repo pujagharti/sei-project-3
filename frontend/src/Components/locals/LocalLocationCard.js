@@ -8,7 +8,8 @@ import { deleteLocation } from '../../lib/api'
 class LocalLocationCard extends React.Component {
 
   state = {
-    renderLocation: true
+    renderLocation: true,
+    showConfirmDelete: false
   }
 
   divStyle = {
@@ -19,7 +20,19 @@ class LocalLocationCard extends React.Component {
     backgroundSize: 'cover'
   }
 
-  handleDelete = async () => {
+  handleFirstDeleteClick = () => {
+    this.setState({
+      showConfirmDelete: true
+    })
+
+    setTimeout(() => {
+      this.setState({
+        showConfirmDelete: false
+      })
+    }, 3000)
+  }
+
+  confirmDelete = async () => {
     try {
       await deleteLocation(this.props._id)
 
@@ -31,6 +44,7 @@ class LocalLocationCard extends React.Component {
     }
   }
 
+ 
 
   render() {
 
@@ -52,10 +66,25 @@ class LocalLocationCard extends React.Component {
                   <Card.Content>
                     <Card.Header>{placeName}</Card.Header>
                     <Card.Description className='local-place-description'>
-                      {placeDescription}
+                      {placeDescription.slice(0, 40)}...
+                      {!this.state.showConfirmDelete &&
+                      <Button
+                        onClick={this.handleFirstDeleteClick}
+                        floated='right'
+                        color='orange'
+                      >
+                        Delete</Button>
+                      }
+                      {this.state.showConfirmDelete &&
+                      <Button
+                        onClick={this.confirmDelete}
+                        floated='right'
+                        color='red'
+                      >
+                        Sure?</Button>
+                      }
                     </Card.Description>
                   </Card.Content>
-                  <Button onClick={this.handleDelete}>Delete</Button>
                 </Card>
               }
             >
