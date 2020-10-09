@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Grid, Segment, Card, Divider } from 'semantic-ui-react'
+import { Grid, Card, Divider } from 'semantic-ui-react'
 
 const Features = () => {
 

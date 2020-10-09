@@ -9,7 +9,7 @@ const CarouselSlide = ({ photo }) => {
   return (
     <div>
       <div style={{ backgroundColor: 'white' }}>
-        <img src={photo} id='park-image-carousel'/>
+        <img src={photo} alt='location' id='park-image-carousel'/>
       </div>
  
     </div>

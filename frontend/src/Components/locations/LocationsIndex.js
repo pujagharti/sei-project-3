@@ -61,7 +61,7 @@ class LocationsIndex extends React.Component {
           horizontal
           style={{ margin: '3em 0em', textTransform: 'uppercase' }}
         >
-          <Header as='h1'>{featureSelected.toUpperCase()} IN MONTREAL</Header>
+          <Header style={{ fontSize: '25px' }}>{featureSelected.toUpperCase()} IN MONTREAL</Header>
         </Divider>
 
         <Segment style={{ padding: '3em 3em' }} vertical>
