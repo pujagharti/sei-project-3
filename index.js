@@ -1,4 +1,4 @@
-
+const path = require('path')
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
@@ -33,5 +33,10 @@ app.use(logger)
 app.use('/api', router)
 
 app.use(errorHandler)
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'prontend', 'build', 'index.html'))
+})
+
 
 app.listen(port, () => console.log(`Listening on localhost:${port} 🌈 `))
