@@ -35,7 +35,7 @@ app.use('/api', router)
 app.use(errorHandler)
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'prontend', 'build', 'index.html'))
+  res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
 })
 
 
