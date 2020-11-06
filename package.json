@@ -19,7 +19,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "seed": "node ./db/seeds.js",
-    "seedexternal": "node ./db/seedexternal.js"
+    "seedexternal": "node ./db/seedexternal.js",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "repository": {
     "type": "git",
