@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
-const uploadUrl = process.env.REACT_APP_CLOUDINARY_URL
-const uploadPreset = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+const uploadUrl = 'LJnFklit_xdObD2KPgi4BwozuLU'
+const uploadPreset = 'CLOUDINARY_URL=cloudinary://277644277527898:LJnFklit_xdObD2KPgi4BwozuLU@dubpuack1'
 
 class ImageUpload extends React.Component {
 
@@ -26,8 +26,11 @@ class ImageUpload extends React.Component {
     }
   }
 
+
   render() {
     const { image } = this.state
+
+    console.log(uploadUrl, uploadPreset)
     return (
       // <div>HelloImageUpload</div>
       <>
