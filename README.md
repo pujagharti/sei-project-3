@@ -64,10 +64,16 @@ npm start
 Navigate in your browser to localhost:4000/. While the server is running you should see the frontend being served by database to the browser.
 ```
 # Wireframes:
+We utilised wireframes on Figma to guide the MVP and Trello for managing progress. As a team of four, we split the tasks, sometimes working individually and sometimes pair coding.
+Working on a group project creating a wireframe was really important to make sure we were all working to the same goal.
 ![planning](./figma.png)
 # Planning:
 ![planning](./trello.png)
 # Process
+We had a stand up every morning and looked at our trello board creating a list of the days tasks and reviewing the previous days achievements. This structure meant that we kept to the time schedule and also celebrate the small wins of the previous day.
+We also checked in throughout the day if were done with a certain task and were moving onto the next - this meant that we would have fewer Github conflicts.
+
+# Development process
 Backend - Seeding
 ```
 mongoose.connect(
@@ -199,6 +205,7 @@ mongoose.connect(
 ```
 # Challenges
 Using semantic UI react for styling was really challenging because it was difficult to style and target the one component.
+
 # Wins
 Working on a team and communicating regular tasks, solving issues together, pair-coding was a great win.
  
@@ -206,5 +213,6 @@ Working on a team and communicating regular tasks, solving issues together, pair
  
 Need smooth functionalities on profile page i.e rating and comment adding section.
 
-
+# Key Learnings
+Working in a team was a great experience. Learn so much from every single teammate. Having different ideas but working together to achieve the same goal and trying every idea was tremendous.
 
