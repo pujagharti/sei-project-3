@@ -9,7 +9,8 @@ const errorHandler = require('./lib/errorHandler')
 const { dbURI, port } = require('./config/environment')
 const router = require('./config/router')
 
-  
+
+app.use(express.static('frontend/build'))
 
 mongoose.connect(dbURI,
   { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
   next()
 }) 
 
+
 app.use(express.json())
 
 
@@ -34,8 +36,6 @@ app.use(logger)
 app.use('/api', router)
 
 app.use(errorHandler)
-
-app.use(express.static('frontend/build'))
 
 
 app.get('*', (req, res) => {
