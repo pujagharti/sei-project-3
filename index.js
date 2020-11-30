@@ -28,13 +28,14 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 
-app.use(express.static('frontend/build'))
 
 app.use(logger)
 
 app.use('/api', router)
 
 app.use(errorHandler)
+
+app.use(express.static('frontend/build'))
 
 
 app.get('*', (req, res) => {
