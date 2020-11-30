@@ -22,10 +22,10 @@ mongoose.connect(dbURI,
     console.log('mongo connected')
   })
 
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
   console.log(`🚨 Incoming Request: Method: ${req.method}  URL: ${req.url}`)
   next()
-}) 
+})  */
 
 
 app.use(express.json())
