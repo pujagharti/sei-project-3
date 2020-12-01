@@ -18,8 +18,8 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "start": "node server",
-    "server": "nodemon server",
+    "start": "node index",
+    "server": "nodemon index",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTIION=false npm install --prefix frontend && npm run build --prefix frontend"
