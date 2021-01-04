@@ -9,17 +9,16 @@ const LocationCard = (props) => {
 
   return (
 
-    <Link to={`/locations/${_id}`} >
-      <Card className='location-card'>
-        <Image src={placePhotos[0]} />
-        <Card.Content>
-          <Card.Header>{placeName}</Card.Header>
-          <Card.Description>
-            {placeDescription}
-          </Card.Description>
-        </Card.Content>
-      </Card>
-    </Link>
+      <>
+      
+      <Image src={placePhotos[0]}/>
+      <Card.Content style={{ marginBottom: '64px' }}>
+        <Card.Header>{placeName}</Card.Header>
+        <Card.Description>
+          {placeDescription}
+        </Card.Description>
+      </Card.Content>
+      </>
   )
 
 }

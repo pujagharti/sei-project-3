@@ -29,12 +29,11 @@ const App = () => {
             <Route path='/profile' component={LocalProfile} />
             <Route path='/about' component={About} />
 
-            {/* <Route path='/features/:feature' component={LocationsIndex} /> */}
+            <Route path='/features/:feature' component={LocationsIndex} />
 
             <Route path='/features' component={Features} />
 
-
-            {/* <Route path='/locations/:id' component={LocationShow} /> */}
+            <Route path='/locations/:id' component={LocationShow} />
           </Switch>
         </div>
         <Footer />

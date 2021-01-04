@@ -52,6 +52,7 @@ async function userUpdate(req, res, next) {
 
 async function profile(req, res, next) {
   try {
+    console.log(req)
     const user = await User.findById(req.currentUser._id)
       .populate('createdLocations')
     // console.log('**', user)

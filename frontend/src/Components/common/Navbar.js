@@ -14,14 +14,11 @@ class Navbar extends React.Component {
   }
 
 
-  authenticated() {
-    return isAuthenticated()
-  }
 
 
   async componentDidMount() {
     try {
-      if (this.authenticated()){
+      if (isAuthenticated()){
         const res = await getUserProfile()
         this.setState({
           isLocal: res.data.isLocal

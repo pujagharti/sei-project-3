@@ -20,7 +20,7 @@ class LocalRegister extends React.Component {
       isLocal: false
     },
     formUsernameError: false,
-    redirect: null
+    redirect: ''
   }
 
   authenticated() {

@@ -1,7 +1,7 @@
 import Geocode from 'react-geocode'
 
 export async function geoCoord(coordInput){
-  const ApiKey = process.env.REACT_APP_GOOGLE_MAPS_GEOCODING_API
+  const ApiKey = 'AIzaSyCGc1Gv1hGn7iQmC3RntdKil4d6FrVCFOY'
 
   Geocode.setApiKey(ApiKey)
   Geocode.setLanguage('en')
@@ -13,7 +13,7 @@ export async function geoCoord(coordInput){
       return { latitude: lat, longitude: lng } 
     },
     error => {
-      console.error(error)
+      console.log(error)
     }
   )
   return result

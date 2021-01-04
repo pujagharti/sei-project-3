@@ -13,7 +13,7 @@ async function locationIndex(req, res, next) {
   }
 }
 
-async function locationCreate(req, res, next) {
+async function locationCreate(req, res, next) {  
   try {
     const newLocationData = { ...req.body, local: req.currentUser._id }
     const newLocation = await Location.create(newLocationData)

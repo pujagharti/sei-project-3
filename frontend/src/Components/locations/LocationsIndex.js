@@ -1,15 +1,14 @@
 import React from 'react'
 import { Segment, Grid, Divider, Header, Dimmer, Loader } from 'semantic-ui-react'
-// import Scrollbar from 'semantic-ui-react-scrollbar'
 
-import { getLocations } from '../../lib/api'
 import LocationCard from './LocationCard'
 import LocationsMap from './LocationsMap'
+import { locations } from '../../locations'
 
 class LocationsIndex extends React.Component {
 
   state = {
-    locationsData: null
+    locationsData: []
   }
 
   constructor(props) {
@@ -24,13 +23,11 @@ class LocationsIndex extends React.Component {
   }
 
   async componentDidMount() {
-    const res = await getLocations()
+    const res = locations
     const featureSelected = this.props.match.params.feature
 
-    const isFeaturePresent = (feature) => feature.toLowerCase() === featureSelected
-    const filteredLocations = res.data.filter((location) => {
-      return location.feature.some(isFeaturePresent)
-    })
+    
+    const filteredLocations = res.filter((location) => location.feature[0].toLowerCase() == featureSelected)
 
     this.setState({
       featureSelected: featureSelected,
@@ -64,21 +61,13 @@ class LocationsIndex extends React.Component {
           <Header style={{ fontSize: '25px' }}>{featureSelected.toUpperCase()} IN MONTREAL</Header>
         </Divider>
 
-        <Segment style={{ padding: '3em 3em' }} vertical>
-          <Grid divided='vertically'>
-            <Grid.Row columns={2} divided>
+        <Segment style={{ padding: '0em 0em' }} vertical>
+          <Grid >
+              
               <Grid.Column>
-                <div>
-                  <LocationsMap
-                    featureSelected={featureSelected}
-                    locationsData={locationsData}
-                  />
-                </div>
-              </Grid.Column>
-              <Grid.Column>
-                <Segment style={{ overflow: 'auto', maxHeight: 700, marginLeft: '100px' }}>
-                  <div className='locations-index-container'>
-                    <section className='locations-index-cards'>
+                <Segment style={{ overflow: 'auto', maxHeight: '100%', paddingLeft: '100px', paddingRight: '100px' }}>
+                  <div className='locations-index-container' style={{width: '100%', justifyContent: 'center', display:'flex', fontSize: '19px', height: '100%'}}>
+                    <section className='locations-index-cards' style={{ display:'flex', justifyContent: 'center', flexDirection: 'column'}}>
                       {
                         locationsData.map((location => {
                           return <LocationCard key={location._id} feature={feature} {...location} />
@@ -88,7 +77,6 @@ class LocationsIndex extends React.Component {
                   </div>
                 </Segment>
               </Grid.Column>
-            </Grid.Row>
           </Grid>
         </Segment>
 
